@@ -1,6 +1,6 @@
-const entry = document.getElementById('entry');
-const input = document.getElementById('description')
-const form = document.getElementById('enterMon')
+const input = document.getElementById('description');
+const form = document.getElementById('enterMon');
+const team = document.getElementById('team');
 
 requestByName = (name) => {
     const baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
@@ -22,8 +22,8 @@ getAllNatures = () => {
         if (xhr.readyState === 4) {
             const natures = JSON.parse(xhr.responseText);
             const nature = document.createElement('select')
-    
-            entry.appendChild(nature);
+
+            team.lastElementChild.appendChild(nature);
             const defaultNature = document.createElement('option');
             defaultNature.textContent = 'Natures'
             defaultNature.style="display:none";
@@ -40,26 +40,39 @@ getAllNatures = () => {
     xhr.send();
 }
 
+// if (requestByName(name'-alola')) {
+//     console.log('nice')
+// } else {
+//     null
+// }
 
 const updatePokemonResult = (pokemon) => {
+    const entry = document.createElement('div');
     const h2 = document.createElement('h2');
     const img = document.createElement('img');
     const type1 = document.createElement('p')
     const ability = document.createElement('select')
-
+    
+    team.appendChild(entry);
     h2.textContent = pokemon.name;
     entry.appendChild(h2);
 
-    if (Math.floor(Math.random() * 8192) + 1 === 1) {
-        // img.src = pokemon.sprites.versions["generation-viii"].icons.front_default;
-        img.src = pokemon.sprites.front_shiny;
-    } else {
-        // img.src = pokemon.sprites.versions["generation-viii"].icons.front_default;
-        img.src = pokemon.sprites.front_default;
-    }
+    //Currently, not all sprites are available for special forms (Alolan, Galar, some megas, etc) and shiny pokemon.
+    //When they become available, the below code can be used to make a shiny sprite easter-egg in the team builder.
+    //For example, the below code works for "Mudkip" and "Ditto" but not Alolan Sandshrew or Mega Swampert
+    //
+    // if (Math.floor(Math.random() * 8192) + 1 === 1) {
+    //     img.src = pokemon.sprites.front_shiny;
+    // } else {
+    //     img.src = pokemon.sprites.front_default;
+    // }
+
+    //this will do for now
+    img.src = pokemon.sprites.other["official-artwork"].front_default;
     entry.appendChild(img);
     
     type1.textContent = pokemon.types[0].type.name;
+    type1.className = pokemon.types[0].type.name+"Border";
     entry.appendChild(type1);
     
     if (pokemon.types[1] === undefined) {
@@ -67,6 +80,7 @@ const updatePokemonResult = (pokemon) => {
     } else {
         const type2 = document.createElement('p')
         type2.textContent = pokemon.types[1].type.name;
+        type2.className = pokemon.types[1].type.name+"Border2";
         entry.appendChild(type2)
     };
 
@@ -92,8 +106,7 @@ form.addEventListener('submit', (e) => {
     input.value = '';
     requestByName(name);
 
-    const team = document.getElementById('team')
-    if (team.children === 6) {
-        
+    if (team.childElementCount > 4) {
+        form.style.display = "none";
     }
 });
