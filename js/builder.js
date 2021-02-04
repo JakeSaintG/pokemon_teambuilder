@@ -50,6 +50,7 @@ const updatePokemonResult = (pokemon) => {
     const entry = document.createElement('div');
     const h2 = document.createElement('h2');
     const img = document.createElement('img');
+    const types = document.createElement('div')
     const type1 = document.createElement('p')
     const ability = document.createElement('select')
     
@@ -71,17 +72,21 @@ const updatePokemonResult = (pokemon) => {
     img.src = pokemon.sprites.other["official-artwork"].front_default;
     entry.appendChild(img);
     
+    types.className = "types";
+    entry.appendChild(types);
     type1.textContent = pokemon.types[0].type.name;
-    type1.className = pokemon.types[0].type.name+"Border";
-    entry.appendChild(type1);
+    type1.className = pokemon.types[0].type.name+' '+"typeIcon";
+    entry.className = pokemon.types[0].type.name+"Border"+' '+"entry";
+    types.appendChild(type1);
     
     if (pokemon.types[1] === undefined) {
         null;
     } else {
         const type2 = document.createElement('p')
         type2.textContent = pokemon.types[1].type.name;
-        type2.className = pokemon.types[1].type.name+"Border2";
-        entry.appendChild(type2)
+        type2.className = pokemon.types[1].type.name+' '+"typeIcon";
+        entry.className = pokemon.types[0].type.name+"Border"+' '+pokemon.types[1].type.name+"Border2"+' '+"entry";
+        types.appendChild(type2)
     };
 
     entry.appendChild(ability);
