@@ -102,6 +102,10 @@ const updatePokemonResult = (pokemon) => {
     }
 
     getAllNatures();
+
+    if (team.childElementCount == 6) {
+        form.style.display = "none";
+    }
 };
 
 form.addEventListener('submit', (e) => {
@@ -111,7 +115,5 @@ form.addEventListener('submit', (e) => {
     input.value = '';
     requestByName(name);
 
-    if (team.childElementCount > 4) {
-        form.style.display = "none";
-    }
+
 });
