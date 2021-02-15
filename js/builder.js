@@ -204,6 +204,11 @@ mainDiv.addEventListener('click', (e) => {
             input.value = '';
             let pokeNameUrl = pokeUrl+`pokemon/${name}`
             requestByName(pokeNameUrl);
+        } else if (action === 'X') {
+            e.target.parentElement.parentElement.remove()
+            if (teamOf6.childElementCount === 5) {
+                enterMon.parentNode.style.display = "block";
+            };
         }
     }
 });
