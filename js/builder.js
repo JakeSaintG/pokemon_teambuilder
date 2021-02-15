@@ -146,8 +146,22 @@ const updatePokemonResult = (pokemon) => {
 
 document.getElementById("teamColor").addEventListener("click",function(e) {
     if(e.target.nodeName === "LI") {
+        if (e.target.parentElement.parentElement.parentElement.parentElement.className == "black") {
+            for (i = 0; i < e.target.parentElement.childElementCount; i++) {
+                e.target.parentElement.children[i].style.borderColor = "black"
+            }
+            e.target.parentElement.parentElement.parentElement.parentElement.style.color = 'black';
+            e.target.parentElement.parentElement.parentElement.parentElement.style.borderColor = 'black';
+        }
         const teamColor = e.target.className;
         e.target.parentElement.parentElement.parentElement.parentElement.className = teamColor;
+        if (teamColor == "black") {
+            for (i = 0; i < e.target.parentElement.childElementCount; i++) {
+                e.target.parentElement.children[i].style.borderColor = "white"
+            }
+            e.target.parentElement.parentElement.parentElement.parentElement.style.color = 'white';
+            e.target.parentElement.parentElement.parentElement.parentElement.style.borderColor = 'grey';
+        }
     }
 });
 
@@ -169,8 +183,11 @@ mainDiv.addEventListener('click', (e) => {
         } else if (action === 'Edit') {
             const span = teamName.firstElementChild
             const input = document.createElement('input')
+            const nameYourTeam = document.createElement('h2')
+            nameYourTeam.textContent = "Rename your team!"
             input.type = 'text';
             input.value = span.textContent;
+            teamName.parentNode.insertBefore(nameYourTeam, teamName);
             teamName.insertBefore(input, span);
             teamName.removeChild(span);
             button.textContent = 'Save';
