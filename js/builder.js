@@ -1,50 +1,48 @@
+const pokeUrl = 'https://pokeapi.co/api/v2/';
 const input = document.getElementById('description');
-const form = document.getElementById('enterMon');
-const team = document.getElementById('team');
+const enterMon = document.getElementById('enterMon');
+const teamOf6 = document.getElementById('teamOf6');
+const teamName = document.getElementById('teamName');
 
-requestByName = (name) => {
-    const baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
+requestByName = (url) => {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
         if(xhr.readyState === 4) {
             const pokemon = JSON.parse(xhr.responseText)
             updatePokemonResult(pokemon);
-        }
+        };
     };
-    xhr.open('GET', `${baseUrl}${name}`);
+    xhr.open('GET', `${url}`);
     xhr.send();
 }
 
-getAllNatures = () => {
-    const baseUrl = 'https://pokeapi.co/api/v2/nature';
+getAllNatures = (url) => {
     const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4) {
+    xhr.onload = () => {
+        if (xhr.status === 200) {
             const natures = JSON.parse(xhr.responseText);
-            const nature = document.createElement('select')
-
-            team.lastElementChild.appendChild(nature);
-            const defaultNature = document.createElement('option');
-            defaultNature.textContent = 'Natures'
-            defaultNature.style="display:none";
-            nature.appendChild(defaultNature);
-        
-            for (i = 0; i < natures.results.length; i++) {
-                const option = document.createElement('option');
-                option.textContent = natures.results[i].name;
-                nature.appendChild(option);
-            }; 
-        }
+            natureBuilder(natures);
+        };
     };
-    xhr.open('GET', `${baseUrl}`);
+    xhr.open('GET', `${url}`);
     xhr.send();
 }
 
-// if (requestByName(name'-alola')) {
-//     console.log('nice')
-// } else {
-//     null
-// }
+natureBuilder = (natures) => {
+    const nature = document.createElement('select')
+
+    const defaultNature = document.createElement('option');
+    defaultNature.textContent = 'Natures'
+    defaultNature.style="display:none";
+    nature.appendChild(defaultNature);
+
+    for (i = 0; i < natures.results.length; i++) {
+        const option = document.createElement('option');
+        option.textContent = natures.results[i].name;
+        nature.appendChild(option);
+    }; 
+    teamOf6.lastElementChild.appendChild(nature);
+}
 
 const updatePokemonResult = (pokemon) => {
     const entry = document.createElement('div');
@@ -53,13 +51,31 @@ const updatePokemonResult = (pokemon) => {
     const types = document.createElement('div')
     const type1 = document.createElement('p')
     const ability = document.createElement('select')
+    const remove = document.createElement('button')
+    const title = document.createElement('div')
+    const dex = document.createElement('img');
+    const stats = document.createElement('div');
+    const forms = document.createElement('select');
+
+    // Adds the entry for the pokemon
+    teamOf6.appendChild(entry);
+    entry.style.backgroundColor = 'white';
     
-    team.appendChild(entry);
+    // Adds title header for the pokemon
+    dex.src = 'imgs/dexicon.png'
+    dex.className="dex"
+    dex.title = "Show in PokeDex not functional yet"
+    title.appendChild(dex);
+    title.className='title';
     h2.textContent = pokemon.name;
-    entry.appendChild(h2);
+    title.appendChild(h2);
+    entry.appendChild(title);
+    remove.textContent = 'X'
+    remove.title = "Show in PokeDex not functional yet"
+    title.appendChild(remove)
 
     //Currently, not all sprites are available for special forms (Alolan, Galar, some megas, etc) and shiny pokemon.
-    //When they become available, the below code can be used to make a shiny sprite easter-egg in the team builder.
+    //When they become available, the below code can be used to make a shiny sprite easter-egg in the teamOf6 builder.
     //For example, the below code works for "Mudkip" and "Ditto" but not Alolan Sandshrew or Mega Swampert
     //
     // if (Math.floor(Math.random() * 8192) + 1 === 1) {
@@ -70,6 +86,7 @@ const updatePokemonResult = (pokemon) => {
 
     //this will do for now
     img.src = pokemon.sprites.other["official-artwork"].front_default;
+    img.className="PokeImg"
     entry.appendChild(img);
     
     types.className = "types";
@@ -90,30 +107,86 @@ const updatePokemonResult = (pokemon) => {
     };
 
     entry.appendChild(ability);
-    const defaultOption = document.createElement('option');
-    defaultOption.textContent = 'Abilties'
-    defaultOption.style="display:none";
-    ability.appendChild(defaultOption);
+    const defaultAbilitiesOption = document.createElement('option');
+    defaultAbilitiesOption.textContent = 'Abilties'
+    defaultAbilitiesOption.style="display:none";
+    ability.appendChild(defaultAbilitiesOption);
 
     for (i = 0; i < pokemon.abilities.length; i++) {
-        const option = document.createElement('option');
-        option.textContent = pokemon.abilities[i].ability.name;
-        ability.appendChild(option);
+        const abiltiesOption = document.createElement('option');
+        abiltiesOption.textContent = pokemon.abilities[i].ability.name;
+        ability.appendChild(abiltiesOption);
     }
 
-    getAllNatures();
+    // =================================================================================================FINISH FORMS====================
+    entry.appendChild(forms);
+    const defaultFormsOption = document.createElement('option');
+    defaultFormsOption.textContent = 'Forms'
+    defaultFormsOption.style="display:none";
+    forms.appendChild(defaultFormsOption);
+    const formsOption = document.createElement('option');
+    formsOption.textContent = '(Test) Alolan';
+    forms.appendChild(formsOption);
+    // =================================================================================================FINISH FORMS====================
 
-    if (team.childElementCount == 6) {
-        form.style.display = "none";
-    }
+    getAllNatures(pokeUrl+`nature`);
+
+    // =================================================================================================FINISH STATS====================
+    stats.textContent = "StatsPlaceholder"
+    stats.className = 'statsGraph'
+    entry.appendChild(stats);
+    // =================================================================================================FINISH STATS====================
+
+    if (teamOf6.childElementCount === 6) {
+        enterMon.parentNode.style.display = "none";
+    };
 };
 
-form.addEventListener('submit', (e) => {
+// ===================================================================================================EVENT LISTENERS===================
+
+document.getElementById("teamColor").addEventListener("click",function(e) {
+    if(e.target.nodeName === "LI") {
+        const teamColor = e.target.className;
+        e.target.parentElement.parentElement.parentElement.parentElement.className = teamColor;
+    }
+});
+
+const mainDiv = document.getElementById('enterTeam');
+mainDiv.addEventListener('click', (e) => {
     e.preventDefault();
-    const data = input.value;
-    const name = data.toLowerCase()
-    input.value = '';
-    requestByName(name);
-
-
+    if(e.target.tagName === 'BUTTON') {
+        e.preventDefault();
+        const button = e.target;
+        const action = button.textContent;
+        if(action === 'Save') {
+            const input = teamName.firstElementChild
+            const span = document.createElement('span')
+            span.textContent = input.value;
+            teamName.insertBefore(span, input);
+            teamName.parentNode.firstElementChild.remove();
+            teamName.removeChild(input);
+            button.textContent = 'Edit';
+        } else if (action === 'Edit') {
+            const span = teamName.firstElementChild
+            const input = document.createElement('input')
+            input.type = 'text';
+            input.value = span.textContent;
+            teamName.insertBefore(input, span);
+            teamName.removeChild(span);
+            button.textContent = 'Save';
+        } else if (action === 'Add') {
+            const missingNo = document.getElementById('missingNo')
+            if (missingNo !== null) {
+                missingNo.remove()   
+            }
+            if (input.value == '') {
+                return
+            }
+            const data = input.value;
+            const name = data.toLowerCase()
+            input.value = '';
+            let pokeNameUrl = pokeUrl+`pokemon/${name}`
+            requestByName(pokeNameUrl);
+        }
+    }
 });

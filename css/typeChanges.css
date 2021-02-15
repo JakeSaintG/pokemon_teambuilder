@@ -1,0 +1,321 @@
+/* 
+============================================
+            Types and Colors Key
+============================================
+bug #C3D21F
+electric #FEE844
+fire #FA5442
+grass #86D04C
+normal #B8B7A9
+rock #CEBD72
+dark #8D6855
+fairy #F9ADFF
+flying #79A3FF
+ground #F0CF5C
+poison #AA5DA1
+steel #C4C2D9
+dragon #8975FF
+fighting #A75545
+ghost #7975D7
+ice #96F1FF
+psychic #FA64B5
+water #56B0FF
+============================================
+            Types and Colors Key
+============================================
+*/
+
+/*============================================
+                Versions
+============================================*/
+.red {
+    background-color: #FC072B;
+}
+
+.blue {
+    background-color: #096DA7;
+}
+
+.green {
+    background-color: #22A72B;
+}
+
+.yellow {
+    background-color: #F5D060;
+}
+
+.gold {
+    background-color: #988A56;
+}
+
+.silver {
+    background-color: #7B8591 ;
+}
+
+.crystal {
+    background-color: #7286C3;
+}
+
+.ruby {
+    background-color: #752117;
+}
+
+.sapphire {
+    background-color: #2A4D68;
+}
+
+.emerald {
+    background-color: #4B8978;
+}
+
+.diamond {
+    background-color: #4EA1B1;
+}
+
+.pearl {
+    background-color: #E9A5C1;
+}
+
+.platinum {
+    background-color: #4EA1B1;
+}
+
+.black {
+    background-color: black;
+}
+
+.white {
+    background-color: white;
+}
+
+.x-version {
+    background-color: #00609D;
+}
+
+.y-version {
+    background-color: #CA2337;
+}
+
+.sun {
+    background-color: #FAA21A;
+}
+
+.moon {
+    background-color: #27C2F1;
+}
+
+.letsGoE {
+    background-color: #C98240;
+}
+
+.sword {
+    background-color: #00ADEF;
+}
+
+.shield {
+    background-color: #EC1165;
+}
+
+/*============================================
+                Versions
+============================================*/
+
+.bug {
+    background-color: #C3D21F;
+} 
+
+.electric  {
+    background-color: #FEE844;
+} 
+
+.fire {
+    background-color: #FA5442;
+} 
+
+.grass {
+    background-color: #86D04C;
+} 
+
+.normal {
+    background-color: #B8B7A9;
+} 
+
+.rock {
+    background-color: #CEBD72;
+} 
+
+.dark {
+    background-color: #8D6855;
+} 
+
+.fairy {
+    background-color: #F9ADFF;
+} 
+
+.flying {
+    background-color: #79A3FF;
+} 
+
+.ground {
+    background-color: #F0CF5C;
+} 
+
+.poison {
+    background-color: #AA5DA1;
+} 
+
+.steel {
+    background-color: #C4C2D9;
+} 
+
+.dragon {
+    background-color: #8975FF;
+} 
+
+.fighting {
+    background-color: #A75545;
+} 
+
+.ghost {
+    background-color: #7975D7;
+} 
+
+.ice {
+    background-color: #96F1FF;
+} 
+
+.psychic {
+    background-color: #FA64B5;
+} 
+
+.water {
+    background-color: #56B0FF;
+} 
+
+.rockBorder {
+    border: 5px solid #CEBD72;
+}
+.bugBorder {
+    border: 5px solid #C3D21F;
+}
+.fireBorder {
+    border: 5px solid #FA5442;
+}
+.grassBorder {
+    border: 5px solid #86D04C;
+}
+.electricBorder {
+    border: 5px solid #FEE844;
+}
+.normalBorder {
+    border: 5px solid #B8B7A9;
+}
+.darkBorder {
+    border: 5px solid #8D6855;
+}
+.fairyBorder {
+    border: 5px solid #F9ADFF;
+}
+.flyingBorder {
+    border: 5px solid #79A3FF;
+}
+.groundBorder {
+    border: 5px solid #F0CF5C;
+}
+.poisonBorder {
+    border: 5px solid #AA5DA1;
+}
+.steelBorder {
+    border: 5px solid #C4C2D9;
+}
+.dragonBorder {
+    border: 5px solid #8975FF;
+}
+.fightingBorder {
+    border: 5px solid #A75545;
+}
+.ghostBorder {
+    border: 5px solid #7975D7;
+}
+.iceBorder {
+    border: 5px solid #96F1FF;
+}
+.psychicBorder {
+    border: 5px solid #FA64B5;
+}
+.waterBorder {
+    border: 5px solid #56B0FF;
+}
+
+.rockBorder2 {
+    border-bottom-color: #CEBD72;
+    border-right-color: #CEBD72;
+}
+.bugBorder2 {
+    border-bottom-color: #C3D21F;
+    border-right-color: #C3D21F;
+}
+.fireBorder2 {
+    border-bottom-color: #FA5442;
+    border-right-color: #FA5442;
+}
+.grassBorder2 {
+    border-bottom-color: #86D04C;
+    border-right-color: #86D04C;
+}
+.electricBorder2 {
+    border-bottom-color: #FEE844;
+    border-right-color: #FEE844;
+}
+.normalBorder2 {
+    border-bottom-color: #B8B7A9;
+    border-right-color: #B8B7A9;
+}
+.darkBorder2 {
+    border-bottom-color: #8D6855;
+    border-right-color: #8D6855;
+}
+.fairyBorder2 {
+    border-bottom-color: #F9ADFF;
+    border-right-color: #F9ADFF;
+}
+.flyingBorder2 {
+    border-bottom-color: #79A3FF;
+    border-right-color: #79A3FF;
+}
+.groundBorder2 {
+    border-bottom-color: #F0CF5C;
+    border-right-color: #F0CF5C;
+}
+.poisonBorder2 {
+    border-bottom-color: #AA5DA1;
+    border-right-color: #AA5DA1;
+}
+.steelBorder2 {
+    border-bottom-color: #C4C2D9;
+    border-right-color: #C4C2D9;
+}
+.dragonBorder2 {
+    border-bottom-color: #8975FF;
+    border-right-color: #8975FF;
+}
+.fightingBorder2 {
+    border-bottom-color: #A75545;
+    border-right-color: #A75545;
+}
+.ghostBorder2 {
+    border-bottom-color: #7975D7;
+    border-right-color: #7975D7;
+}
+.iceBorder2 {
+    border-bottom-color: #96F1FF;
+    border-right-color: #96F1FF;
+}
+.psychicBorder2 {
+    border-bottom-color: #FA64B5;
+    border-right-color: #FA64B5;
+}
+.waterBorder2 {
+    border-bottom-color: #56B0FF;
+    border-right-color: #56B0FF;
+}

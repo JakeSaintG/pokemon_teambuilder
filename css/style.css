@@ -1,41 +1,99 @@
-/* 
-bug #C3D21F
-electric #FEE844
-fire #FA5442
-grass #86D04C
-normal #B8B7A9
-rock #CEBD72
-dark #8D6855
-fairy #F9ADFF
-flying #79A3FF
-ground #F0CF5C
-poison #AA5DA1
-steel #C4C2D9
-dragon #8975FF
-fighting #A75545
-ghost #7975D7
-ice #96F1FF
-psychic #FA64B5
-water #56B0FF
-*/
+
+* {
+	box-sizing: border-box; /*IE*/
+	-webkit-box-sizing: border-box; /* Safari/Chrome*/
+    -moz-box-sizing: border-box;    /*Firefox*/
+}
+
+body {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+nav > ul  {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-evenly; 
+}
 
 form,
 h1 {
     text-align: center;
 }
-.team {
+.teamOf6 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+}
+
+.enterTeam {
+    background-color: rgb(160, 160, 160);
+}
+
+#enterTeam {
+    border: 5px solid #000000;
+    border-radius: 11px;
+}
+
+.teamOptions > h2,
+.team > div > h2 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#teamName > span {
+    display: inline-block;
+    font-size: 50px;
+    margin-top: 20px;
+}
+
+.teamColor {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-evenly;
+    margin: 20px;
+    padding: 0;
+}
+
+#versionColor{
+    border: 4px solid black;
+    height: 25px;
+    width: 25px;
 }
 
 .entry {
     border-radius: 5px;
     box-shadow: 0px 0px 6px 5px rgba(0,0,0,0.52);
-    margin: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-h2 {
+.title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title > h2 {
+    margin: 10px auto;
+    flex-grow: 3;
+    text-align: center;
     text-transform: capitalize;
+}
+
+.dex {
+    height: 25px;
+    width: 25px;
+    margin: 4px;
+}
+
+.title > button {
+    height: 25px;
+    width: 25px;
+    margin: 4px;
+}
+
+.PokeImg {
+    width: 200px;
+    height: 200px;
 }
 
 .types {
@@ -56,221 +114,7 @@ h2 {
     text-shadow: 2px 2px 5px rgba(0,0,0,0.61);
 }
 
-/* RENAME THIS! */
-img {
-    width: 200px;
-    height: 200px;
+.statsGraph {
+    margin: 10px auto;
 }
 
-.team > div {
-    text-align: center;
-}
-
-
-
-
-.bug {
-    background-color: #C3D21F;
-} 
-
-
-.electric  {
-    background-color: #FEE844;
-} 
-
-.fire {
-    background-color: #FA5442;
-} 
-
-.grass {
-    background-color: #86D04C;
-} 
-
-.normal {
-    background-color: #B8B7A9;
-} 
-
-.rock {
-    background-color: #CEBD72;
-} 
-
-.dark {
-    background-color: #8D6855;
-} 
-
-.fairy {
-    background-color: #F9ADFF;
-} 
-
-.flying {
-    background-color: #79A3FF;
-} 
-
-.ground {
-    background-color: #F0CF5C;
-} 
-
-.poison {
-    background-color: #AA5DA1;
-} 
-
-.steel {
-    background-color: #C4C2D9;
-} 
-
-.dragon {
-    background-color: #8975FF;
-} 
-
-.fighting {
-    background-color: #A75545;
-} 
-
-.ghost {
-    background-color: #7975D7;
-} 
-
-.ice {
-    background-color: #96F1FF;
-} 
-
-.psychic {
-    background-color: #FA64B5;
-} 
-
-.water {
-    background-color: #56B0FF;
-} 
-
-
-
-
-
-
-.rockBorder {
-    border: 5px solid #CEBD72;
-}
-.bugBorder {
-    border: 5px solid #C3D21F;
-}
-.fireBorder {
-    border: 5px solid #FA5442;
-}
-.grassBorder {
-    border: 5px solid #86D04C;
-}
-.electricBorder {
-    border: 5px solid #FEE844;
-}
-.normalBorder {
-    border: 5px solid #B8B7A9;
-}
-.darkBorder {
-    border: 5px solid #8D6855;
-}
-.fairyBorder {
-    border: 5px solid #F9ADFF;
-}
-.flyingBorder {
-    border: 5px solid #79A3FF;
-}
-.groundBorder {
-    border: 5px solid #F0CF5C;
-}
-.poisonBorder {
-    border: 5px solid #AA5DA1;
-}
-.steelBorder {
-    border: 5px solid #C4C2D9;
-}
-.dragonBorder {
-    border: 5px solid #8975FF;
-}
-.fightingBorder {
-    border: 5px solid #A75545;
-}
-.ghostBorder {
-    border: 5px solid #7975D7;
-}
-.iceBorder {
-    border: 5px solid #96F1FF;
-}
-.psychicBorder {
-    border: 5px solid #FA64B5;
-}
-.waterBorder {
-    border: 5px solid #56B0FF;
-}
-
-.rockBorder2 {
-    border-bottom-color: #CEBD72;
-    border-right-color: #CEBD72;
-}
-.bugBorder2 {
-    border-bottom-color: #C3D21F;
-    border-right-color: #C3D21F;
-}
-.fireBorder2 {
-    border-bottom-color: #FA5442;
-    border-right-color: #FA5442;
-}
-.grassBorder2 {
-    border-bottom-color: #86D04C;
-    border-right-color: #86D04C;
-}
-.electricBorder2 {
-    border-bottom-color: #FEE844;
-    border-right-color: #FEE844;
-}
-.normalBorder2 {
-    border-bottom-color: #B8B7A9;
-    border-right-color: #B8B7A9;
-}
-.darkBorder2 {
-    border-bottom-color: #8D6855;
-    border-right-color: #8D6855;
-}
-.fairyBorder2 {
-    border-bottom-color: #F9ADFF;
-    border-right-color: #F9ADFF;
-}
-.flyingBorder2 {
-    border-bottom-color: #79A3FF;
-    border-right-color: #79A3FF;
-}
-.groundBorder2 {
-    border-bottom-color: #F0CF5C;
-    border-right-color: #F0CF5C;
-}
-.poisonBorder2 {
-    border-bottom-color: #AA5DA1;
-    border-right-color: #AA5DA1;
-}
-.steelBorder2 {
-    border-bottom-color: #C4C2D9;
-    border-right-color: #C4C2D9;
-}
-.dragonBorder2 {
-    border-bottom-color: #8975FF;
-    border-right-color: #8975FF;
-}
-.fightingBorder2 {
-    border-bottom-color: #A75545;
-    border-right-color: #A75545;
-}
-.ghostBorder2 {
-    border-bottom-color: #7975D7;
-    border-right-color: #7975D7;
-}
-.iceBorder2 {
-    border-bottom-color: #96F1FF;
-    border-right-color: #96F1FF;
-}
-.psychicBorder2 {
-    border-bottom-color: #FA64B5;
-    border-right-color: #FA64B5;
-}
-.waterBorder2 {
-    border-bottom-color: #56B0FF;
-    border-right-color: #56B0FF;
-}
