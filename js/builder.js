@@ -4,9 +4,14 @@ const enterMon = document.getElementById('enterMon');
 const teamOf6 = document.getElementById('teamOf6');
 const teamName = document.getElementById('teamName');
 
+
 requestByName = (url) => {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
+        if (xhr.status === 404) {
+            let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`
+            generateMissingNo(reason)
+        }
         if(xhr.readyState === 4) {
             const pokemon = JSON.parse(xhr.responseText)
             updatePokemonResult(pokemon);
@@ -165,8 +170,8 @@ document.getElementById("teamColor").addEventListener("click",function(e) {
     }
 });
 
-const mainDiv = document.getElementById('enterTeam');
-mainDiv.addEventListener('click', (e) => {
+const enterTeam = document.getElementById('enterTeam');
+enterTeam.addEventListener('click', (e) => {
     e.preventDefault();
     if(e.target.tagName === 'BUTTON') {
         e.preventDefault();
@@ -192,13 +197,16 @@ mainDiv.addEventListener('click', (e) => {
             teamName.removeChild(span);
             button.textContent = 'Save';
         } else if (action === 'Add') {
-            const missingNo = document.getElementById('missingNo')
-            if (missingNo !== null) {
-                missingNo.remove()   
-            }
-            if (input.value == '') {
+            const placeHolder = document.getElementById('placeHolder')
+            if (placeHolder !== null) {
+                const placeHolder = document.getElementById('placeHolder')
+                placeHolder.remove()
+            };
+            if (input.value === '' || input.value === 'Pokémon name') {
+                let reason = `<h5>No P̷o̶k̵e̷m̸o̵n̴ Listed!</h5> <p>Please supply a Pok&eacute;mon</p>`;
+                generateMissingNo(reason);
                 return
-            }
+            };
             const data = input.value;
             const name = data.toLowerCase()
             input.value = '';

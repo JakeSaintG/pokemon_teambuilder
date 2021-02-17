@@ -77,7 +77,7 @@ water #56B0FF
 }
 
 .platinum {
-    background-color: #4EA1B1;
+    background-color: #EF7257;
 }
 
 .black {
@@ -191,6 +191,16 @@ water #56B0FF
 .water {
     background-color: #56B0FF;
 } 
+
+.missingNo {
+    background-color: white;
+    border:  5px solid black;
+}
+
+.placeHolder {
+    background-color: #261785;
+    border:  5px solid #173E91;
+}
 
 .rockBorder {
     border: 5px solid #CEBD72;

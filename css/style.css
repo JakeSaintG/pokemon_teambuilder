@@ -65,6 +65,9 @@ h1 {
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .title {
@@ -92,8 +95,29 @@ h1 {
 }
 
 .PokeImg {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+
+.PokeballImg {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.PokeNameImg {
     width: 200px;
-    height: 200px;
+    height: 74px;
+    margin: 10px auto;
+}
+
+.PokeNameImgInvert {
+    width: 200px;
+    height: 74px;
+    transform: rotate(180deg);
+    margin: 10px auto;
 }
 
 .types {
@@ -120,5 +144,22 @@ option {
 
 .statsGraph {
     margin: 10px auto;
+}
+
+/* ================================= 
+Media Queries
+==================================== */
+
+@media (min-width: 769px) {
+    .PokeImg {
+        width: 150px;
+        height: 150px;
+    }
+
+} /* for better display on iPads/Tablets  */
+
+@media (min-width: 1025px) {
+
+
 }
 
