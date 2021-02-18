@@ -1,4 +1,6 @@
-function generateMissingNo(reason){
+let uniqueID = 0 
+
+function generateMissingNo(reason){   
     let noEntry = document.createElement('div')
     noEntry.className = 'missingNo entry'
     noEntry.innerHTML = `
@@ -11,7 +13,7 @@ function generateMissingNo(reason){
         <div class="types">
             <p class="typeIcon" style="background-color:black;">Ň̷̨ȕ̷͕l̷͇̑l̸̠̏</p>
         </div>
-        <select id="missingAbility" onchange="missing(value);">
+        <select id="missingAbility-${uniqueID}" onchange="missing(${uniqueID});">
         <option value="1" style="display: none;">Abilties</option>
         <option value="2">Item Duplication</option>
         <option value="3">Crash Game</option>
@@ -28,17 +30,16 @@ function generateMissingNo(reason){
     if (teamOf6.childElementCount === 6) {
         enterMon.parentNode.style.display = "none";
     };
+
+    uniqueID++;
 };
 
-function missing(){
-    let foo = document.getElementById("missingAbility");
+function missing(id){
+    let foo = document.getElementById(`missingAbility-${id}`);
     let bar = foo.options[foo.selectedIndex].value;
     if (bar == '3'){
         window.location.reload();
     } else {
         return
     }
-    // =====================BUG====================
-    // Crash Game only works on first missingno: fix later
-    // =====================BUG====================
 };

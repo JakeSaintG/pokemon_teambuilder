@@ -8,11 +8,11 @@ const teamName = document.getElementById('teamName');
 requestByName = (url) => {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
-        if (xhr.status === 404) {
+        if (xhr.status === 404 && xhr.readyState === 4) {
             let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`
-            generateMissingNo(reason)
+            generateMissingNo(reason);
         }
-        if(xhr.readyState === 4) {
+        if(xhr.readyState === 4 && xhr.status === 200) {
             const pokemon = JSON.parse(xhr.responseText)
             updatePokemonResult(pokemon);
         };
