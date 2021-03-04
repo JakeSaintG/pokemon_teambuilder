@@ -143,7 +143,46 @@ option {
 }
 
 .statsGraph {
-    margin: 10px auto;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.statName {
+    margin: 0 2px 0 0;
+}
+
+.statBar {
+    margin: 0 0 0 0;
+    text-align: left;
+    color: white;
+    width: 100%;
+}
+
+.hp {
+    background-color: #FF0000;
+}
+.attack {
+    background-color: #F08030;
+}
+.defense {
+    background-color: #b99c25;
+}
+.special-attack {
+    background-color: #6890F0;
+}
+.special-defense {
+    background-color: #78C850;
+}
+.speed {
+    background-color: #F85888;
+}
+
+.statItem {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    height: 25px;
+    line-height: 25px;
 }
 
 /* ================================= 

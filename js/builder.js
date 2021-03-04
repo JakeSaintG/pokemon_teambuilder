@@ -137,15 +137,20 @@ const updatePokemonResult = (pokemon) => {
     getAllNatures(pokeUrl+`nature`);
 
     // =================================================================================================FINISH STATS====================
-    stats.textContent = "StatsPlaceholder"
-    stats.className = 'statsGraph'
-    entry.appendChild(stats);
+    // stats.textContent = "StatsPlaceholder"
+    let foo = statBuilder(pokemon);
+    foo.className = 'statsGraph'
+    entry.appendChild(foo);
     // =================================================================================================FINISH STATS====================
 
     if (teamOf6.childElementCount === 6) {
         enterMon.parentNode.style.display = "none";
     };
 };
+
+// =====================================================================================================================================
+                                // Use Promise.all() to make sure everything is returned before generating anything!!!!!!!!
+// =====================================================================================================================================
 
 // ===================================================================================================EVENT LISTENERS===================
 
