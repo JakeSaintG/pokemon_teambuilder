@@ -194,67 +194,62 @@ water #56B0FF
 
 .missingNo {
     background-color: white;
-    border:  5px solid black;
-}
-
-.placeHolder {
-    background-color: #261785;
-    border:  5px solid #173E91;
+    border:  8px solid black;
 }
 
 .rockBorder {
-    border: 5px solid #CEBD72;
+    border: 8px solid #CEBD72;
 }
 .bugBorder {
-    border: 5px solid #C3D21F;
+    border: 8px solid #C3D21F;
 }
 .fireBorder {
-    border: 5px solid #FA5442;
+    border: 8px solid #FA5442;
 }
 .grassBorder {
-    border: 5px solid #86D04C;
+    border: 8px solid #86D04C;
 }
 .electricBorder {
-    border: 5px solid #FEE844;
+    border: 8px solid #FEE844;
 }
 .normalBorder {
-    border: 5px solid #B8B7A9;
+    border: 8px solid #B8B7A9;
 }
 .darkBorder {
-    border: 5px solid #8D6855;
+    border: 8px solid #8D6855;
 }
 .fairyBorder {
-    border: 5px solid #F9ADFF;
+    border: 8px solid #F9ADFF;
 }
 .flyingBorder {
-    border: 5px solid #79A3FF;
+    border: 8px solid #79A3FF;
 }
 .groundBorder {
-    border: 5px solid #F0CF5C;
+    border: 8px solid #F0CF5C;
 }
 .poisonBorder {
-    border: 5px solid #AA5DA1;
+    border: 8px solid #AA5DA1;
 }
 .steelBorder {
-    border: 5px solid #C4C2D9;
+    border: 8px solid #C4C2D9;
 }
 .dragonBorder {
-    border: 5px solid #8975FF;
+    border: 8px solid #8975FF;
 }
 .fightingBorder {
-    border: 5px solid #A75545;
+    border: 8px solid #A75545;
 }
 .ghostBorder {
-    border: 5px solid #7975D7;
+    border: 8px solid #7975D7;
 }
 .iceBorder {
-    border: 5px solid #96F1FF;
+    border: 8px solid #96F1FF;
 }
 .psychicBorder {
-    border: 5px solid #FA64B5;
+    border: 8px solid #FA64B5;
 }
 .waterBorder {
-    border: 5px solid #56B0FF;
+    border: 8px solid #56B0FF;
 }
 
 .rockBorder2 {

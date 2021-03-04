@@ -1,4 +1,3 @@
-
 * {
 	box-sizing: border-box; /*IE*/
 	-webkit-box-sizing: border-box; /* Safari/Chrome*/
@@ -7,36 +6,76 @@
 
 body {
 	font-family: 'Josefin Sans', sans-serif;
+    margin: 0px;
+    background-color: rgb(231, 208, 178);
 }
 
 nav > ul  {
     display: flex;
     list-style-type: none;
     justify-content: space-evenly; 
+    padding: 0;
+    margin: 0;
+}
+
+nav > ul > li {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+.pokeDex {
+    background-color: rgb(109, 194, 121);
+}
+
+.teamBuilder {
+    background-color: rgb(231, 208, 178);
+}
+
+.collectionTracker {
+    background-color: rgb(88, 170, 202);
+}
+
+h1 {
+    margin: 10px auto;
 }
 
 form,
 h1 {
     text-align: center;
 }
+
 .teamOf6 {
-    display: flex;
-    justify-content: space-evenly;
+    margin: 20px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5%;
 }
 
 .enterTeam {
     background-color: rgb(160, 160, 160);
-}
+} /* separate from ID to set default background color and allow for JS changes */
 
 #enterTeam {
     border: 5px solid #000000;
     border-radius: 11px;
+    margin: 0 8px 8px 8px;
 }
 
-.teamOptions > h2,
+.teamOptions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.teamOptions > div > h2,
 .team > div > h2 {
     text-align: center;
     margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 20px;
 }
 
 #teamName > span {
@@ -45,11 +84,17 @@ h1 {
     margin-top: 20px;
 }
 
+input {
+    width: 150px
+}
+
 .teamColor {
-    display: flex;
+    display: grid;
     list-style-type: none;
-    justify-content: space-evenly;
-    margin: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 3px;
+    column-gap: 3px;
+    margin: 0;
     padding: 0;
 }
 
@@ -59,15 +104,21 @@ h1 {
     width: 25px;
 }
 
+.placeHolder {
+    background-color: #261785;
+    border:  8px solid #173E91;
+    width: 250px;
+    margin: 20px auto;
+}
+
 .entry {
     border-radius: 5px;
     box-shadow: 0px 0px 6px 5px rgba(0,0,0,0.52);
-    margin-top: 20px;
-    margin-bottom: 20px;
     text-align: center;
     align-content: center;
     display: flex;
     flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .title {
@@ -132,7 +183,7 @@ h1 {
     font-size: 14px;
     font-weight: bolder;
     padding: 3px;
-    border: 2px solid white;
+    border: 3px solid white;
     border-radius: 5px;
     box-shadow: 0px 0px 4px 3px #000000;
     text-shadow: 2px 2px 5px rgba(0,0,0,0.61);
@@ -190,6 +241,24 @@ Media Queries
 ==================================== */
 
 @media (min-width: 769px) {
+    h1 {
+        margin: 25px auto;
+    }
+
+    .teamColor {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    .teamOf6 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 2%;
+    }
+
     .PokeImg {
         width: 150px;
         height: 150px;
@@ -197,8 +266,18 @@ Media Queries
 
 } /* for better display on iPads/Tablets  */
 
-@media (min-width: 1025px) {
+@media (min-width: 1115px) {
 
+    .teamOf6 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        column-gap: 2%;
+    }
+}
 
+@media (min-width: 1320px) {
+    h2 {
+        font-size: 1.5em;
+    }
 }
 

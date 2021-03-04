@@ -156,21 +156,21 @@ const updatePokemonResult = (pokemon) => {
 
 document.getElementById("teamColor").addEventListener("click",function(e) {
     if(e.target.nodeName === "LI") {
-        if (e.target.parentElement.parentElement.parentElement.parentElement.className == "black") {
+        if (e.target.parentElement.parentElement.parentElement.parentElement.parentElement.className == "black") {
             for (i = 0; i < e.target.parentElement.childElementCount; i++) {
                 e.target.parentElement.children[i].style.borderColor = "black"
             }
-            e.target.parentElement.parentElement.parentElement.parentElement.style.color = 'black';
-            e.target.parentElement.parentElement.parentElement.parentElement.style.borderColor = 'black';
+            e.target.parentElement.parentElement.parentElement.parentElement.parentElement.style.color = 'black';
+            e.target.parentElement.parentElement.parentElement.parentElement.parentElement.style.borderColor = 'black';
         }
         const teamColor = e.target.className;
-        e.target.parentElement.parentElement.parentElement.parentElement.className = teamColor;
+        e.target.parentElement.parentElement.parentElement.parentElement.parentElement.className = teamColor;
         if (teamColor == "black") {
             for (i = 0; i < e.target.parentElement.childElementCount; i++) {
                 e.target.parentElement.children[i].style.borderColor = "white"
             }
-            e.target.parentElement.parentElement.parentElement.parentElement.style.color = 'white';
-            e.target.parentElement.parentElement.parentElement.parentElement.style.borderColor = 'grey';
+            e.target.parentElement.parentElement.parentElement.parentElement.parentElement.style.color = 'white';
+            e.target.parentElement.parentElement.parentElement.parentElement.parentElement.style.borderColor = 'grey';
         }
     }
 });

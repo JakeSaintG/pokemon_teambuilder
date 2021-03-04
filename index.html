@@ -12,69 +12,72 @@
 <body>
     <nav role =”navigation” aria-label =”pagenav”>
         <ul class="nav">
-            <li class="PokeDex">
+            <li class="pokeDex">
                 PokeDex
             </li>
-            <li class="Team Builder">
+            <li class="teamBuilder">
                 Team Builder
             </li>
-            <li class="Collection Tracker">
+            <li class="collectionTracker">
                 Collection Tracker
             </li>
         </ul>
     </nav>
-    <header>
-
-    </header>
+    <!-- <header></header> -->
     <main>
         <h1>Build a team!</h1>
         <div id="enterTeam" class="enterTeam">
             <div class="team" id="team">
                 <div class="teamOptions" id="teamOptions">
-                    <h2>Name your team!</h2>
-                    <form id="teamName">
-                        <input type="text" class="teamNameInput" id="teamNameInput" value="Team Name" onfocus="this.value=''" maxlength="25">
-                        <button type="submit" name="submit" value="submit">Save</button>
-                    </form>
-                    <h3>Team Color:</h3>
-                    <ul class="teamColor" id="teamColor">
-                        <li id="versionColor" class="red"></li>
-                        <li id="versionColor" class="blue"></li>
-                        <li id="versionColor" class="green"></li>
-                        <li id="versionColor" class="yellow"></li>
-                        <li id="versionColor" class="gold"></li>
-                        <li id="versionColor" class="silver"></li>
-                        <li id="versionColor" class="crystal"></li>
-                        <li id="versionColor" class="ruby"></li>
-                        <li id="versionColor" class="sapphire"></li>
-                        <li id="versionColor" class="emerald"></li>
-                        <li id="versionColor" class="diamond"></li>
-                        <li id="versionColor" class="pearl"></li>
-                        <li id="versionColor" class="platinum"></li>
-                        <li id="versionColor" class="black"></li>
-                        <li id="versionColor" class="white"></li>
-                        <li id="versionColor" class="x-version"></li>
-                        <li id="versionColor" class="y-version"></li>
-                        <li id="versionColor" class="sun"></li>
-                        <li id="versionColor" class="moon"></li>
-                        <li id="versionColor" class="sword"></li>
-                        <li id="versionColor" class="shield"></li>
-                        <li id="versionColor" class="letsGoE"></li>
-                    </ul>
+                    <div>
+                        <h2>Name your team!</h2>
+                        <form id="teamName">
+                            <input type="text" class="teamNameInput" id="teamNameInput" value="Team Name" onfocus="this.value=''" onblur="this.value='Team Name'" maxlength="25">
+                            <button type="submit" name="submit" value="submit">Save</button>
+                        </form>
+                    </div>
+                    <div>
+                        <h2>Team Color:</h2>
+                        <ul class="teamColor" id="teamColor">
+                            <li id="versionColor" class="red"></li>
+                            <li id="versionColor" class="blue"></li>
+                            <li id="versionColor" class="green"></li>
+                            <li id="versionColor" class="yellow"></li>
+                            <li id="versionColor" class="gold"></li>
+                            <li id="versionColor" class="silver"></li>
+                            <li id="versionColor" class="crystal"></li>
+                            <li id="versionColor" class="ruby"></li>
+                            <li id="versionColor" class="sapphire"></li>
+                            <li id="versionColor" class="emerald"></li>
+                            <li id="versionColor" class="diamond"></li>
+                            <li id="versionColor" class="pearl"></li>
+                            <li id="versionColor" class="platinum"></li>
+                            <li id="versionColor" class="black"></li>
+                            <li id="versionColor" class="white"></li>
+                            <li id="versionColor" class="x-version"></li>
+                            <li id="versionColor" class="y-version"></li>
+                            <li id="versionColor" class="sun"></li>
+                            <li id="versionColor" class="moon"></li>
+                            <li id="versionColor" class="sword"></li>
+                            <li id="versionColor" class="shield"></li>
+                            <li id="versionColor" class="letsGoE"></li>
+                        </ul>
+                    </div>
                 </div>
                 <div>
                     <h2>Pick a Pok&eacute;mon!</h2>
                     <form id="enterMon">
-                        <input type="text" class="description" id="description" value="Pok&eacute;mon name" onfocus="this.value=''">
+                        <input type="text" class="description" id="description" value="Pok&eacute;mon name" onfocus="this.value=''" onblur="this.value='Pok&eacute;mon name'">
                         <button type="submit" name="submit" value="submit">Add</button>
                     </form>
                 </div>
+                <div id="placeHolder" class="placeHolder entry">
+                    <img src="imgs/pokemonName.webp" class="PokeNameImg">
+                    <img src="imgs/Poké_Ball_Origin.webp" class="PokeballImg">
+                    <img src="imgs/pokemonName.webp" class="PokeNameImgInvert">
+                </div>
                 <div class="teamOf6" id="teamOf6">
-                    <div id="placeHolder" class="placeHolder entry">
-                        <img src="imgs/pokemonName.webp" class="PokeNameImg">
-                        <img src="imgs/Poké_Ball_Origin.webp" class="PokeballImg">
-                        <img src="imgs/pokemonName.webp" class="PokeNameImgInvert">
-                    </div>
+
                 </div>
             </div>
         </div>
