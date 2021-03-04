@@ -75,7 +75,7 @@ h1 {
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 #teamName > span {
@@ -203,8 +203,9 @@ option {
 }
 
 .statBar {
-    margin: 0 0 0 0;
+    margin: 0;
     text-align: left;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     color: white;
     width: 100%;
 }
@@ -266,7 +267,7 @@ Media Queries
 
 } /* for better display on iPads/Tablets  */
 
-@media (min-width: 1115px) {
+@media (min-width: 1155px) {
 
     .teamOf6 {
         display: grid;

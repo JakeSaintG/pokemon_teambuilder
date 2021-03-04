@@ -22,7 +22,7 @@ function generateMissingNo(reason){
             <option style="display: none;">Forms</option>
             <option>(Test) Alolan</option>
         </select>
-        <div class="statsGraph">
+        <div>
             ${reason}
         </div>
     `
