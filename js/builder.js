@@ -4,7 +4,6 @@ const enterMon = document.getElementById('enterMon');
 const teamOf6 = document.getElementById('teamOf6');
 const teamName = document.getElementById('teamName');
 
-
 requestByName = (url) => {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
@@ -35,7 +34,6 @@ getAllNatures = (url) => {
 
 natureBuilder = (natures) => {
     const nature = document.createElement('select')
-
     const defaultNature = document.createElement('option');
     defaultNature.textContent = 'Natures'
     defaultNature.style="display:none";
@@ -59,8 +57,6 @@ const updatePokemonResult = (pokemon) => {
     const remove = document.createElement('button')
     const title = document.createElement('div')
     const dex = document.createElement('img');
-    const stats = document.createElement('div');
-    const forms = document.createElement('select');
 
     // Adds the entry for the pokemon
     teamOf6.appendChild(entry);
@@ -72,14 +68,24 @@ const updatePokemonResult = (pokemon) => {
     dex.title = "Show in PokeDex not functional yet"
     title.appendChild(dex);
     title.className='title';
-    h2.textContent = pokemon.name;
+
+    let alterName = pokemon.name
+    if(alterName.includes(`-`)) {
+        alterName = alterName.substring(0, alterName.indexOf("-")); 
+        /* ========================================================
+            This gets a substring from the beginning of the string 
+            to the first index of the character "-".
+        ======================================================== */  
+    }
+    h2.textContent = alterName;
+
     title.appendChild(h2);
     entry.appendChild(title);
     remove.textContent = 'X'
     remove.title = "Show in PokeDex not functional yet"
     title.appendChild(remove)
 
-    //Currently, not all sprites are available for special forms (Alolan, Galar, some megas, etc) and shiny pokemon.
+    //Currently, not all sprites are available for special forms and shiny pokemon.
     //When they become available, the below code can be used to make a shiny sprite easter-egg in the teamOf6 builder.
     //For example, the below code works for "Mudkip" and "Ditto" but not Alolan Sandshrew or Mega Swampert
     //
@@ -89,7 +95,7 @@ const updatePokemonResult = (pokemon) => {
     //     img.src = pokemon.sprites.front_default;
     // }
 
-    //this will do for now
+
     img.src = pokemon.sprites.other["official-artwork"].front_default;
     img.className="PokeImg"
     entry.appendChild(img);
@@ -123,25 +129,17 @@ const updatePokemonResult = (pokemon) => {
         ability.appendChild(abiltiesOption);
     }
 
-    // =================================================================================================FINISH FORMS====================
-    entry.appendChild(forms);
-    const defaultFormsOption = document.createElement('option');
-    defaultFormsOption.textContent = 'Forms'
-    defaultFormsOption.style="display:none";
-    forms.appendChild(defaultFormsOption);
-    const formsOption = document.createElement('option');
-    formsOption.textContent = '(Test) Alolan';
-    forms.appendChild(formsOption);
-    // =================================================================================================FINISH FORMS====================
-
+    let pokemonBaseName = pokemon.name
+    if(pokemonBaseName.includes(`-`)) {
+        pokemonBaseName = pokemonBaseName.substring(0, pokemonBaseName.indexOf("-"));  
+    }
+    entry.appendChild(findAllForms(pokemonBaseName));
+    
     getAllNatures(pokeUrl+`nature`);
 
-    // =================================================================================================FINISH STATS====================
-    // stats.textContent = "StatsPlaceholder"
     let foo = statBuilder(pokemon);
     foo.className = 'statsGraph'
     entry.appendChild(foo);
-    // =================================================================================================FINISH STATS====================
 
     if (teamOf6.childElementCount === 6) {
         enterMon.parentNode.style.display = "none";

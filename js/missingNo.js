@@ -34,7 +34,7 @@ function generateMissingNo(reason){
     uniqueID++;
 };
 
-function missing(id){
+function missing(id) {
     let foo = document.getElementById(`missingAbility-${id}`);
     let bar = foo.options[foo.selectedIndex].value;
     if (bar == '3'){
