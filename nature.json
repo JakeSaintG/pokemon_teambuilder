@@ -1,0 +1,204 @@
+{
+  "results": [
+    {
+      "name": "Hardy",
+      "stats": {
+          "attack": 0,
+          "defense": 0,
+          "speed": 0,
+          "sp-attack": 0,
+          "sp-defense": 0
+      }
+    },
+    {
+      "name": "bold",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "modest",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "calm",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "timid",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "lonely",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "docile",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "mild",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "gentle",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "hasty",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "adamant",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "impish",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "bashful",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "careful",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "rash",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "jolly",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "naughty",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "lax",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "quirky",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    },
+    {
+      "name": "naive",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0,
+        "sp-attack": 0,
+        "sp-defense": 0
+      }
+    }
+  ]
+}

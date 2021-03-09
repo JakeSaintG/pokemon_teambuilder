@@ -1,7 +1,7 @@
 let forms = []
 
 window.onload = function pullAllMonsList()  {
-    let foo = `https://pokeapi.co/api/v2/pokemon?limit=1283`
+    let foo = `https://pokeapi.co/api/v2/pokemon-form?limit=1283`
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
         if(xhr.readyState === 4 && xhr.status === 200) {

@@ -20,33 +20,6 @@ requestByName = (url) => {
     xhr.send();
 }
 
-getAllNatures = (url) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onload = () => {
-        if (xhr.status === 200) {
-            const natures = JSON.parse(xhr.responseText);
-            natureBuilder(natures);
-        };
-    };
-    xhr.open('GET', `${url}`);
-    xhr.send();
-}
-
-natureBuilder = (natures) => {
-    const nature = document.createElement('select')
-    const defaultNature = document.createElement('option');
-    defaultNature.textContent = 'Natures'
-    defaultNature.style="display:none";
-    nature.appendChild(defaultNature);
-
-    for (i = 0; i < natures.results.length; i++) {
-        const option = document.createElement('option');
-        option.textContent = natures.results[i].name;
-        nature.appendChild(option);
-    }; 
-    teamOf6.lastElementChild.appendChild(nature);
-}
-
 const updatePokemonResult = (pokemon) => {
     const entry = document.createElement('div');
     const h2 = document.createElement('h2');
@@ -78,7 +51,7 @@ const updatePokemonResult = (pokemon) => {
         ======================================================== */  
     }
     h2.textContent = alterName;
-
+    
     title.appendChild(h2);
     entry.appendChild(title);
     remove.textContent = 'X'
@@ -135,7 +108,7 @@ const updatePokemonResult = (pokemon) => {
     }
     entry.appendChild(findAllForms(pokemonBaseName));
     
-    getAllNatures(pokeUrl+`nature`);
+    getAllNatures('nature.json');
 
     let foo = statBuilder(pokemon);
     foo.className = 'statsGraph'
