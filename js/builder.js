@@ -85,6 +85,9 @@ updatePokemonResult = (pokemon) => {
     if (pokemon.id === 782) {
         alterName = `jangmo-o`
     }; // Fixes name
+    if (pokemon.id === 151) {
+        alterName = `mew`
+    }; // Fixes name
 
     h2.textContent = alterName;
     title.appendChild(h2);
@@ -99,8 +102,6 @@ updatePokemonResult = (pokemon) => {
     // } else {
     //     img.src = pokemon.sprites.front_default;
     // } 
-    console.log(loadedImg)
-    console.log(pokemon)
     const img = document.createElement('img');
     img.src = loadedImg[0];
     img.className="PokeImg";
@@ -275,6 +276,7 @@ async function filterEdgeCases(name) {
     if (name === 'mew') {
         pokeNameUrl = pokeUrl+`pokemon/${name}`
         pokeImageUrl = pokeUrl+`pokemon-form/${name}`;
+        requestByName(pokeNameUrl);
         //Mew is a weird edge case. Most version of this filter would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
         //This literally checks if the user wants a mew and just gives it to them.
     };
@@ -298,8 +300,14 @@ async function filterEdgeCases(name) {
             requestImage(pokeImageUrl)
         )
     });
- 
-    if (filteredImgForms[0] === undefined) {
+    
+    if (name === 'mew') {
+        pokeNameUrl = pokeUrl+`pokemon/${name}`
+        pokeImageUrl = pokeUrl+`pokemon-form/${name}`;
+        // requestByName(pokeNameUrl);
+        //Mew is a weird edge case. Most version of this filter would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
+        //This literally checks if the user wants a mew and just gives it to them.
+    } else if (filteredImgForms[0] === undefined) {
         requestByName(name);
         //checks to see if forms has what the user is looking for. If not, it throws to requestByName() to generate a 404-MissingNo/Error.
         input.value = '';
