@@ -304,7 +304,6 @@ async function filterEdgeCases(name) {
     if (name === 'mew') {
         pokeNameUrl = pokeUrl+`pokemon/${name}`
         pokeImageUrl = pokeUrl+`pokemon-form/${name}`;
-        // requestByName(pokeNameUrl);
         //Mew is a weird edge case. Most version of this filter would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
         //This literally checks if the user wants a mew and just gives it to them.
     } else if (filteredImgForms[0] === undefined) {
