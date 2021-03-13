@@ -68,7 +68,7 @@ updatePokemonResult = (pokemon) => {
         alterName = `${alterName}. Mime`
     }; // Fixes Galar Mr. Mime's name
     if (pokemon.id === 866) {
-        alterName = `${alterName}. Rime's`
+        alterName = `${alterName}. Rime`
     }; // Fixes Mr. Rime's name
     if (pokemon.id === 83) {
         alterName = `Farfetch'd`
@@ -99,6 +99,8 @@ updatePokemonResult = (pokemon) => {
     // } else {
     //     img.src = pokemon.sprites.front_default;
     // } 
+    console.log(loadedImg)
+    console.log(pokemon)
     const img = document.createElement('img');
     img.src = loadedImg[0];
     img.className="PokeImg";
@@ -262,9 +264,8 @@ enterTeam.addEventListener('click', (e) => {
     }
 });
 
-let loadedImg = [];
+let loadedImg = {};
 async function filterEdgeCases(name) {
-  
     const filteredImgForms = forms.filter((mon) => { 
         return mon.name.includes(name);
     });
@@ -288,7 +289,7 @@ async function filterEdgeCases(name) {
                     }
                     if(xhr.readyState === 4 && xhr.status === 200) {
                         const pokemon = JSON.parse(xhr.responseText)
-                        loadedImg.splice(0, 1, pokemon.sprites.front_default)
+                        loadedImg[0] = pokemon.sprites.front_default;
                     };
                 };
                 xhr.open('GET', `${pokeImageUrl}`);
