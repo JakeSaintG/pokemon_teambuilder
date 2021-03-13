@@ -2,23 +2,11 @@
 // ultimately increasing one of its non-HP stats (Attack, Defense,
 // Special Attack, Special Defense, or Speed) by 10% and decreasing another by 10%.
 
-// getNatures = () => {
-//     fetch('nature.json')
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-// };
-
 getAllNatures = (url) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onload = () => {
-        if (xhr.status === 200) {
-            const natures = JSON.parse(xhr.responseText);
-            natureBuilder(natures);
-        };
-    };
-    xhr.open('GET', `${url}`);
-    xhr.send();
-}
+    fetch(url)
+    .then(response => response.json())
+    .then(natures => natureBuilder(natures))
+};
 
 natureBuilder = (natures) => {
     const nature = document.createElement('select')

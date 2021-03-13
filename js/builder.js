@@ -3,6 +3,7 @@ const input = document.getElementById('description');
 const enterMon = document.getElementById('enterMon');
 const teamOf6 = document.getElementById('teamOf6');
 const teamName = document.getElementById('teamName');
+const placeHolder = document.getElementById('placeHolder')
 
 requestByName = (url) => {
     const xhr = new XMLHttpRequest();
@@ -10,6 +11,7 @@ requestByName = (url) => {
         if (xhr.status === 404 && xhr.readyState === 4) {
             let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`
             generateMissingNo(reason);
+            removePlaceholder();
         }
         if(xhr.readyState === 4 && xhr.status === 200) {
             const pokemon = JSON.parse(xhr.responseText)
@@ -20,10 +22,25 @@ requestByName = (url) => {
     xhr.send();
 }
 
+requestImage = (pokeImageUrl) => {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {
+        if (xhr.status === 404 && xhr.readyState === 4) {
+            console.log('error')
+        }
+        if(xhr.readyState === 4 && xhr.status === 200) {
+            const pokemon = JSON.parse(xhr.responseText)
+            loadedImg.splice(0, 1, pokemon.sprites.front_default)
+        };
+    };
+    xhr.open('GET', `${pokeImageUrl}`);
+    xhr.send();
+}
+let loadedImg = [];
+
 const updatePokemonResult = (pokemon) => {
     const entry = document.createElement('div');
     const h2 = document.createElement('h2');
-    const img = document.createElement('img');
     const types = document.createElement('div')
     const type1 = document.createElement('p')
     const ability = document.createElement('select')
@@ -45,32 +62,35 @@ const updatePokemonResult = (pokemon) => {
     let alterName = pokemon.name
     if(alterName.includes(`-`)) {
         alterName = alterName.substring(0, alterName.indexOf("-")); 
-        /* ========================================================
-            This gets a substring from the beginning of the string 
-            to the first index of the character "-".
-        ======================================================== */  
-    }
+        // Gets a substring from the beginning of the string to the first instance of the character "-". 
+        // Removes hyphens and other form info from the end of the pokemon name.
+    };
+    if (pokemon.id === 29) {
+        alterName = `${alterName}♀`
+    };
+    if (pokemon.id === 32) {
+        alterName = `${alterName}♂`
+    };
+    if (pokemon.id === 474) {
+        alterName = `${alterName}-Z`
+    };
     h2.textContent = alterName;
-    
+
     title.appendChild(h2);
     entry.appendChild(title);
     remove.textContent = 'X'
     remove.title = "Show in PokeDex not functional yet"
     title.appendChild(remove)
-
-    //Currently, not all sprites are available for special forms and shiny pokemon.
-    //When they become available, the below code can be used to make a shiny sprite easter-egg in the teamOf6 builder.
-    //For example, the below code works for "Mudkip" and "Ditto" but not Alolan Sandshrew or Mega Swampert
-    //
+    
+    
     // if (Math.floor(Math.random() * 8192) + 1 === 1) {
     //     img.src = pokemon.sprites.front_shiny;
     // } else {
     //     img.src = pokemon.sprites.front_default;
-    // }
-
-
-    img.src = pokemon.sprites.other["official-artwork"].front_default;
-    img.className="PokeImg"
+    // } 
+    const img = document.createElement('img');
+    img.src = loadedImg[0];
+    img.className="PokeImg";
     entry.appendChild(img);
     
     types.className = "types";
@@ -114,8 +134,10 @@ const updatePokemonResult = (pokemon) => {
     foo.className = 'statsGraph'
     entry.appendChild(foo);
 
+    removePlaceholder();
+
     if (teamOf6.childElementCount === 6) {
-        enterMon.parentNode.style.display = "none";
+        document.getElementById('descriptionAdd').disabled = true;
     };
 };
 
@@ -124,6 +146,12 @@ const updatePokemonResult = (pokemon) => {
 // =====================================================================================================================================
 
 // ===================================================================================================EVENT LISTENERS===================
+
+removePlaceholder = () => {
+    if (placeHolder !== null) {
+        placeHolder.style.display = 'none';
+    }
+}
 
 document.getElementById("teamColor").addEventListener("click",function(e) {
     if(e.target.nodeName === "LI") {
@@ -173,26 +201,81 @@ enterTeam.addEventListener('click', (e) => {
             teamName.removeChild(span);
             button.textContent = 'Save';
         } else if (action === 'Add') {
-            const placeHolder = document.getElementById('placeHolder')
-            if (placeHolder !== null) {
-                const placeHolder = document.getElementById('placeHolder')
-                placeHolder.remove()
-            };
             if (input.value === '' || input.value === 'Pokémon name') {
                 let reason = `<h5>No P̷o̶k̵e̷m̸o̵n̴ Listed!</h5> <p>Please supply a Pok&eacute;mon</p>`;
                 generateMissingNo(reason);
                 return
             };
             const data = input.value;
-            const name = data.toLowerCase()
+            let name = data.toLowerCase()
+            if (name === 'mew') {
+                let pokeNameUrl = pokeUrl+`pokemon/${data}`
+                requestByName(pokeNameUrl)
+                let pokeImageUrl = pokeUrl+`pokemon-form/${data}`;
+                requestImage(pokeImageUrl);
+                //Mew is a weird edge case. filterEdgeCases would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
+                //This literally checks if the user wants a mew and gives it to them.
+            } else {
+                filterEdgeCases(name)
+            }
+            
+            //A surprisingly large amount of pokemon in the API are named something like "toxtricity-amped" which breaks if the user does not know that and just types "toxtricity".
+            //filterEdgeCases() takes the forms array from getForms.js and matches the user input first result in the array.
+            //This allows at least something to generate and the user can then pick the form that they want.
             input.value = '';
-            let pokeNameUrl = pokeUrl+`pokemon/${name}`
-            requestByName(pokeNameUrl);
         } else if (action === 'X') {
             e.target.parentElement.parentElement.remove()
             if (teamOf6.childElementCount === 5) {
-                enterMon.parentNode.style.display = "block";
+                document.getElementById('descriptionAdd').disabled = false;
+            };
+            if (teamOf6.childElementCount === 0) {
+                placeHolder.style.display = 'flex';
             };
         }
     }
 });
+
+filterEdgeCases = (name) => {
+    const filteredImgForms = forms.filter((mon) => { 
+        return mon.name.includes(name);
+    });
+    let filteredForms = filteredImgForms
+    if (filteredImgForms[0] === undefined) {
+        requestByName(name);
+        //checks to see if forms has what the user is looking for. If not, it throws to requestByName() to generate a 404-MissingNo/Error.
+        input.value = '';
+    } else if (
+        filteredImgForms[0].name.includes(`unown`) || 
+        filteredImgForms[0].name.includes(`burmy`) ||
+        filteredImgForms[0].name.includes(`deerling`) ||
+        filteredImgForms[0].name.includes(`shellos`) ||
+        filteredImgForms[0].name.includes(`arceus`) ||
+        filteredImgForms[0].name.includes(`cherrim`) ||
+        filteredImgForms[0].name.includes(`vivillon`) ||
+        filteredImgForms[0].name.includes(`sawsbuck`) ||
+        filteredImgForms[0].name.includes(`flabebe`) ||
+        filteredImgForms[0].name.includes(`floette`) ||
+        filteredImgForms[0].name.includes(`florges`) ||
+        filteredImgForms[0].name.includes(`furfrou`) ||
+        filteredImgForms[0].name.includes(`xerneas`) ||
+        filteredImgForms[0].name.includes(`sinistea`)
+        ) {
+        let filteredForms = filteredImgForms[0].name
+        filteredForms = filteredForms.substring(0, filteredForms.indexOf("-"));
+        let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
+        requestByName(pokeNameUrl)
+    } else if (filteredImgForms[0].name.includes(`pichu-spiky-eared`)) {
+        let filteredForms = 'pichu'
+        let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
+        requestByName(pokeNameUrl)
+    } else if (filteredImgForms[0].name.includes(`genesect`)) {
+        let filteredForms = 'genesect'
+        let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
+        requestByName(pokeNameUrl)
+    } else { 
+        let pokeNameUrl = pokeUrl+`pokemon/${filteredForms[0].name}`
+        requestByName(pokeNameUrl)
+    }
+    let pokeImageUrl = pokeUrl+`pokemon-form/${filteredImgForms[0].name}`;
+    requestImage(pokeImageUrl);
+}
