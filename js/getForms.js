@@ -44,6 +44,7 @@ function findAllForms(pokemon) {
     defaultForm.style="display:none";
     formSelect.appendChild(defaultForm);
     //The above chunk adds the select element for the forms.
+
     for (i = 0; i < filteredForms.length; i++) {
         const option = document.createElement('option');
         option.className = filteredForms[i].name;

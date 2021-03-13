@@ -22,23 +22,7 @@ requestByName = (url) => {
     xhr.send();
 }
 
-requestImage = (pokeImageUrl) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-        if (xhr.status === 404 && xhr.readyState === 4) {
-            console.log('error')
-        }
-        if(xhr.readyState === 4 && xhr.status === 200) {
-            const pokemon = JSON.parse(xhr.responseText)
-            loadedImg.splice(0, 1, pokemon.sprites.front_default)
-        };
-    };
-    xhr.open('GET', `${pokeImageUrl}`);
-    xhr.send();
-}
-let loadedImg = [];
-
-const updatePokemonResult = (pokemon) => {
+updatePokemonResult = (pokemon) => {
     const entry = document.createElement('div');
     const h2 = document.createElement('h2');
     const types = document.createElement('div')
@@ -47,10 +31,6 @@ const updatePokemonResult = (pokemon) => {
     const remove = document.createElement('button')
     const title = document.createElement('div')
     const dex = document.createElement('img');
-
-    // Adds the entry for the pokemon
-    teamOf6.appendChild(entry);
-    entry.style.backgroundColor = 'white';
     
     // Adds title header for the pokemon
     dex.src = 'imgs/dexicon.png'
@@ -67,15 +47,46 @@ const updatePokemonResult = (pokemon) => {
     };
     if (pokemon.id === 29) {
         alterName = `${alterName}♀`
+        // Alters the name of nidoran to the correct Dex form of "Nidoran♀".
     };
     if (pokemon.id === 32) {
         alterName = `${alterName}♂`
-    };
+    }; // Alters the name of nidoran to the correct Dex form of "Nidoran♂".
     if (pokemon.id === 474) {
         alterName = `${alterName}-Z`
-    };
-    h2.textContent = alterName;
+    }; // Fixes Porygon-Z's name
+    if (pokemon.id === 250) {
+        alterName = `${alterName}-oh`
+    }; // Attempt to fix Ho-Oh's name
+    if (pokemon.id === 439) {
+        alterName = `${alterName} Jr.`
+    }; // Fixes Mime Jr.'s name
+    if (pokemon.id === 122) {
+        alterName = `${alterName}. Mime`
+    }; // Fixes Mr. Mime's name
+    if (pokemon.id === 10165) {
+        alterName = `${alterName}. Mime`
+    }; // Fixes Galar Mr. Mime's name
+    if (pokemon.id === 866) {
+        alterName = `${alterName}. Rime's`
+    }; // Fixes Mr. Rime's name
+    if (pokemon.id === 83) {
+        alterName = `Farfetch'd`
+    }; // Fixes Farfetch'd's name
+    if (pokemon.id === 10163) {
+        alterName = `Farfetch'd`
+    }; // Fixes Galar Farfetch'd's name
+    if (pokemon.id === 784) {
+        alterName = `kommo-o`
+    }; // Fixes name
+    if (pokemon.id === 783) {
+        alterName = `hakamo-o`
+    }; // Fixes name
+    if (pokemon.id === 782) {
+        alterName = `jangmo-o`
+    }; // Fixes name
 
+    h2.textContent = alterName;
     title.appendChild(h2);
     entry.appendChild(title);
     remove.textContent = 'X'
@@ -123,7 +134,9 @@ const updatePokemonResult = (pokemon) => {
     }
 
     let pokemonBaseName = pokemon.name
-    if(pokemonBaseName.includes(`-`)) {
+    if (pokemonBaseName === 'mr-rime' || pokemonBaseName === 'ho-oh') {
+        pokemonBaseName
+    } else if(pokemonBaseName.includes(`-`)) {
         pokemonBaseName = pokemonBaseName.substring(0, pokemonBaseName.indexOf("-"));  
     }
     entry.appendChild(findAllForms(pokemonBaseName));
@@ -134,6 +147,9 @@ const updatePokemonResult = (pokemon) => {
     foo.className = 'statsGraph'
     entry.appendChild(foo);
 
+    // Adds the entry for the pokemon
+    teamOf6.appendChild(entry);
+    entry.style.backgroundColor = 'white';
     removePlaceholder();
 
     if (teamOf6.childElementCount === 6) {
@@ -207,18 +223,29 @@ enterTeam.addEventListener('click', (e) => {
                 return
             };
             const data = input.value;
-            let name = data.toLowerCase()
-            if (name === 'mew') {
-                let pokeNameUrl = pokeUrl+`pokemon/${data}`
-                requestByName(pokeNameUrl)
-                let pokeImageUrl = pokeUrl+`pokemon-form/${data}`;
-                requestImage(pokeImageUrl);
-                //Mew is a weird edge case. filterEdgeCases would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
-                //This literally checks if the user wants a mew and gives it to them.
-            } else {
-                filterEdgeCases(name)
-            }
-            
+            let name = data.toLowerCase();
+            if (name.includes('farfet')) {
+                name = `farfetchd`
+            };            
+            if (name.includes('jr')) {
+                name = `mime-jr`
+            };
+            if (name.includes('mr. rime')) {
+                name = `mr-rime`
+            };
+            if (name.includes('mr. mime')) {
+                name = `mr-mime`
+            };
+            if (name.includes('kommo')) {
+                name = `kommo-o`
+            };
+            if (name.includes('hakam')) {
+                name = `hakamo-o`
+            };
+            if (name.includes('jangmo')) {
+                name = `jangmo-o`
+            };
+            filterEdgeCases(name);
             //A surprisingly large amount of pokemon in the API are named something like "toxtricity-amped" which breaks if the user does not know that and just types "toxtricity".
             //filterEdgeCases() takes the forms array from getForms.js and matches the user input first result in the array.
             //This allows at least something to generate and the user can then pick the form that they want.
@@ -235,11 +262,42 @@ enterTeam.addEventListener('click', (e) => {
     }
 });
 
-filterEdgeCases = (name) => {
+let loadedImg = [];
+async function filterEdgeCases(name) {
+  
     const filteredImgForms = forms.filter((mon) => { 
         return mon.name.includes(name);
     });
     let filteredForms = filteredImgForms
+    let pokeImageUrl = pokeUrl+`pokemon-form/${filteredImgForms[0].name}`;
+    
+    if (name === 'mew') {
+        pokeNameUrl = pokeUrl+`pokemon/${name}`
+        pokeImageUrl = pokeUrl+`pokemon-form/${name}`;
+        //Mew is a weird edge case. Most version of this filter would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
+        //This literally checks if the user wants a mew and just gives it to them.
+    };
+
+    let loadImgFirst = await new Promise((resolve) => {
+        resolve(
+            requestImage = (pokeImageUrl) => {
+                const xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = () => {
+                    if (xhr.status === 404 && xhr.readyState === 4) {
+                        console.log('error')
+                    }
+                    if(xhr.readyState === 4 && xhr.status === 200) {
+                        const pokemon = JSON.parse(xhr.responseText)
+                        loadedImg.splice(0, 1, pokemon.sprites.front_default)
+                    };
+                };
+                xhr.open('GET', `${pokeImageUrl}`);
+                xhr.send();
+            },
+            requestImage(pokeImageUrl)
+        )
+    });
+ 
     if (filteredImgForms[0] === undefined) {
         requestByName(name);
         //checks to see if forms has what the user is looking for. If not, it throws to requestByName() to generate a 404-MissingNo/Error.
@@ -262,20 +320,22 @@ filterEdgeCases = (name) => {
         ) {
         let filteredForms = filteredImgForms[0].name
         filteredForms = filteredForms.substring(0, filteredForms.indexOf("-"));
-        let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
-        requestByName(pokeNameUrl)
+        let pokeNameUrl = loadImgFirst;
+        pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
+        requestByName(pokeNameUrl);
     } else if (filteredImgForms[0].name.includes(`pichu-spiky-eared`)) {
         let filteredForms = 'pichu'
-        let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
-        requestByName(pokeNameUrl)
+        let pokeNameUrl = loadImgFirst;
+        pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
+        requestByName(pokeNameUrl);
     } else if (filteredImgForms[0].name.includes(`genesect`)) {
         let filteredForms = 'genesect'
-        let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
-        requestByName(pokeNameUrl)
+        let pokeNameUrl = loadImgFirst;
+        pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
+        requestByName(pokeNameUrl);
     } else { 
-        let pokeNameUrl = pokeUrl+`pokemon/${filteredForms[0].name}`
-        requestByName(pokeNameUrl)
-    }
-    let pokeImageUrl = pokeUrl+`pokemon-form/${filteredImgForms[0].name}`;
-    requestImage(pokeImageUrl);
+        let pokeNameUrl = loadImgFirst;
+        pokeNameUrl = pokeUrl+`pokemon/${filteredForms[0].name}`
+        requestByName(pokeNameUrl);
+    };  
 }
