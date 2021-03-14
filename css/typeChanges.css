@@ -28,6 +28,7 @@ water #56B0FF
 /*============================================
                 Versions
 ============================================*/
+
 .red {
     background-color: #df102f;
 }
@@ -119,6 +120,11 @@ water #56B0FF
 /*============================================
                 Versions
 ============================================*/
+
+.typeIcon {
+    border-radius: 17px;
+    font-family: 'Josefin Sans', sans-serif;
+}
 
 .bug {
     background-color: #C3D21F;

@@ -26,7 +26,6 @@ function findAllForms(pokemon) {
         const defaultForm = document.createElement('option');
         defaultForm.textContent = 'Forms'
         formSelect.className = `formSelect`
-        defaultForm.style="display:none";
         formSelect.appendChild(defaultForm);
         return formSelect
     } 

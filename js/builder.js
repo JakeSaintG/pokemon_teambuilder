@@ -47,8 +47,7 @@ updatePokemonResult = (pokemon) => {
     };
     if (pokemon.id === 29) {
         alterName = `${alterName}♀`
-        // Alters the name of nidoran to the correct Dex form of "Nidoran♀".
-    };
+    }; // Alters the name of nidoran to the correct Dex form of "Nidoran♀".
     if (pokemon.id === 32) {
         alterName = `${alterName}♂`
     }; // Alters the name of nidoran to the correct Dex form of "Nidoran♂".
@@ -92,7 +91,7 @@ updatePokemonResult = (pokemon) => {
     h2.textContent = alterName;
     title.appendChild(h2);
     entry.appendChild(title);
-    remove.textContent = 'X'
+    remove.textContent = `X`;
     remove.title = "Show in PokeDex not functional yet"
     title.appendChild(remove)
     
@@ -160,10 +159,6 @@ updatePokemonResult = (pokemon) => {
     };
 };
 
-// =====================================================================================================================================
-                                // Use Promise.all() to make sure everything is returned before generating anything!!!!!!!!
-// =====================================================================================================================================
-
 // ===================================================================================================EVENT LISTENERS===================
 
 removePlaceholder = () => {
@@ -173,6 +168,7 @@ removePlaceholder = () => {
 }
 
 document.getElementById("teamColor").addEventListener("click",function(e) {
+    //The eventual goal is to have multiple teams on the page and the .parentElement chain keeps the color change in the desired team.
     if(e.target.nodeName === "LI") {
         if (e.target.parentElement.parentElement.parentElement.parentElement.parentElement.className == "black") {
             for (i = 0; i < e.target.parentElement.childElementCount; i++) {
@@ -214,6 +210,10 @@ enterTeam.addEventListener('click', (e) => {
             const nameYourTeam = document.createElement('h2')
             nameYourTeam.textContent = "Rename your team!"
             input.type = 'text';
+            // input.setAttribute(class="teamNameInput" id="teamNameInput");
+            input.setAttribute('maxlength', '25');
+            input.setAttribute('class', "teamNameInput");
+            input.setAttribute('id', "teamNameInput");
             input.value = span.textContent;
             teamName.parentNode.insertBefore(nameYourTeam, teamName);
             teamName.insertBefore(input, span);
@@ -233,20 +233,11 @@ enterTeam.addEventListener('click', (e) => {
             if (name.includes('jr')) {
                 name = `mime-jr`
             };
-            if (name.includes('mr. rime')) {
+            if (name.includes('rime') && name.includes('mr')) {
                 name = `mr-rime`
             };
             if (name.includes('mr. mime')) {
                 name = `mr-mime`
-            };
-            if (name.includes('kommo')) {
-                name = `kommo-o`
-            };
-            if (name.includes('hakam')) {
-                name = `hakamo-o`
-            };
-            if (name.includes('jangmo')) {
-                name = `jangmo-o`
             };
             filterEdgeCases(name);
             //A surprisingly large amount of pokemon in the API are named something like "toxtricity-amped" which breaks if the user does not know that and just types "toxtricity".
@@ -266,7 +257,7 @@ enterTeam.addEventListener('click', (e) => {
 });
 
 let loadedImg = {};
-async function filterEdgeCases(name) {
+function filterEdgeCases(name) {
     const filteredImgForms = forms.filter((mon) => { 
         return mon.name.includes(name);
     });
@@ -281,69 +272,67 @@ async function filterEdgeCases(name) {
         //This literally checks if the user wants a mew and just gives it to them.
     };
 
-    let loadImgFirst = await new Promise((resolve) => {
-        resolve(
-            requestImage = (pokeImageUrl) => {
-                const xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = () => {
-                    if (xhr.status === 404 && xhr.readyState === 4) {
-                        console.log('error')
-                    }
-                    if(xhr.readyState === 4 && xhr.status === 200) {
-                        const pokemon = JSON.parse(xhr.responseText)
-                        loadedImg[0] = pokemon.sprites.front_default;
-                    };
+    //I was having an issue where the rest Pokemon would generate before the loadedImg object was populated.
+    //This would lead to some goofy image loading so I went with the below promise to hopefully let the object be populated before the rest of the pokemon loads.
+    function requestbyImg(pokeImageUrl) {
+        return new Promise((resolve) => {
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = () => {
+                if (xhr.status === 404 && xhr.readyState === 4) {
+                    console.log('error')
+                }
+                if(xhr.readyState === 4 && xhr.status === 200) {
+                    const pokemon = JSON.parse(xhr.responseText)
+                    resolve(loadedImg[0] = pokemon.sprites.front_default)
                 };
-                xhr.open('GET', `${pokeImageUrl}`);
-                xhr.send();
-            },
-            requestImage(pokeImageUrl)
-        )
-    });
-    
-    if (name === 'mew') {
-        pokeNameUrl = pokeUrl+`pokemon/${name}`
-        pokeImageUrl = pokeUrl+`pokemon-form/${name}`;
-        //Mew is a weird edge case. Most version of this filter would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
-        //This literally checks if the user wants a mew and just gives it to them.
-    } else if (filteredImgForms[0] === undefined) {
-        requestByName(name);
-        //checks to see if forms has what the user is looking for. If not, it throws to requestByName() to generate a 404-MissingNo/Error.
-        input.value = '';
-    } else if (
-        filteredImgForms[0].name.includes(`unown`) || 
-        filteredImgForms[0].name.includes(`burmy`) ||
-        filteredImgForms[0].name.includes(`deerling`) ||
-        filteredImgForms[0].name.includes(`shellos`) ||
-        filteredImgForms[0].name.includes(`arceus`) ||
-        filteredImgForms[0].name.includes(`cherrim`) ||
-        filteredImgForms[0].name.includes(`vivillon`) ||
-        filteredImgForms[0].name.includes(`sawsbuck`) ||
-        filteredImgForms[0].name.includes(`flabebe`) ||
-        filteredImgForms[0].name.includes(`floette`) ||
-        filteredImgForms[0].name.includes(`florges`) ||
-        filteredImgForms[0].name.includes(`furfrou`) ||
-        filteredImgForms[0].name.includes(`xerneas`) ||
-        filteredImgForms[0].name.includes(`sinistea`)
-        ) {
-        let filteredForms = filteredImgForms[0].name
-        filteredForms = filteredForms.substring(0, filteredForms.indexOf("-"));
-        let pokeNameUrl = loadImgFirst;
-        pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
-        requestByName(pokeNameUrl);
-    } else if (filteredImgForms[0].name.includes(`pichu-spiky-eared`)) {
-        let filteredForms = 'pichu'
-        let pokeNameUrl = loadImgFirst;
-        pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
-        requestByName(pokeNameUrl);
-    } else if (filteredImgForms[0].name.includes(`genesect`)) {
-        let filteredForms = 'genesect'
-        let pokeNameUrl = loadImgFirst;
-        pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
-        requestByName(pokeNameUrl);
-    } else { 
-        let pokeNameUrl = loadImgFirst;
-        pokeNameUrl = pokeUrl+`pokemon/${filteredForms[0].name}`
-        requestByName(pokeNameUrl);
-    };  
-}
+            };
+            xhr.open('GET', `${pokeImageUrl}`);
+            xhr.send();
+        });   
+    }
+    requestbyImg(pokeImageUrl).then( 
+        () => {
+            if (name === 'mew') {
+            pokeNameUrl = pokeUrl+`pokemon/${name}`
+            pokeImageUrl = pokeUrl+`pokemon-form/${name}`;
+            //Mew is a weird edge case. Most version of this filter would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
+            //This literally checks if the user wants a mew and just gives it to them.
+            } else if (filteredImgForms[0] === undefined) {
+                requestByName(name);
+                //checks to see if forms has what the user is looking for. If not, it throws to requestByName() to generate a 404-MissingNo/Error.
+                input.value = '';
+            } else if (
+                filteredImgForms[0].name.includes(`unown`) || 
+                filteredImgForms[0].name.includes(`burmy`) ||
+                filteredImgForms[0].name.includes(`deerling`) ||
+                filteredImgForms[0].name.includes(`shellos`) ||
+                filteredImgForms[0].name.includes(`arceus`) ||
+                filteredImgForms[0].name.includes(`cherrim`) ||
+                filteredImgForms[0].name.includes(`vivillon`) ||
+                filteredImgForms[0].name.includes(`sawsbuck`) ||
+                filteredImgForms[0].name.includes(`flabebe`) ||
+                filteredImgForms[0].name.includes(`floette`) ||
+                filteredImgForms[0].name.includes(`florges`) ||
+                filteredImgForms[0].name.includes(`furfrou`) ||
+                filteredImgForms[0].name.includes(`xerneas`) ||
+                filteredImgForms[0].name.includes(`sinistea`)
+                ) {
+                let filteredForms = filteredImgForms[0].name
+                filteredForms = filteredForms.substring(0, filteredForms.indexOf("-"));
+                let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
+                requestByName(pokeNameUrl);
+            } else if (filteredImgForms[0].name.includes(`pichu-spiky-eared`)) {
+                let filteredForms = 'pichu'
+                let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
+                requestByName(pokeNameUrl);
+            } else if (filteredImgForms[0].name.includes(`genesect`)) {
+                let filteredForms = 'genesect'
+                let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
+                requestByName(pokeNameUrl);
+            } else { 
+                let pokeNameUrl = pokeUrl+`pokemon/${filteredForms[0].name}`
+                requestByName(pokeNameUrl);
+            };
+        }
+    );  
+};

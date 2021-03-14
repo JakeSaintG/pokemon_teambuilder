@@ -7,7 +7,7 @@
 body {
 	font-family: 'Josefin Sans', sans-serif;
     margin: 0px;
-    background-color: rgb(231, 208, 178);
+    background-color: rgb(228, 213, 194);
 }
 
 nav > ul  {
@@ -26,15 +26,15 @@ nav > ul > li {
 }
 
 .pokeDex {
-    background-color: rgb(109, 194, 121);
+    background-color: rgb(143, 194, 149);
 }
 
 .teamBuilder {
-    background-color: rgb(231, 208, 178);
+    background-color: rgb(228, 213, 194);
 }
 
 .collectionTracker {
-    background-color: rgb(88, 170, 202);
+    background-color: rgb(131, 180, 199);
 }
 
 h1 {
@@ -85,8 +85,35 @@ h2 {
 }
 
 input {
-    width: 150px
+    padding: 4px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    border-width: 3px;
+    border-color: #bbbbbb;
+    background-color: #f8f8f8;
+    color: #000000;
+    border-style: solid;
+    border-radius: 17px;
+    width: 160px;
+    box-shadow: 0px 0px 5px rgba(66,66,66,.7);
 }
+
+button {
+    background: #858585;
+    font-family: 'Josefin Sans', sans-serif;
+    background-image: linear-gradient(to bottom, #858585, #cccccc);
+    border-radius: 17px;
+    color: #000000;
+    font-weight: bold;
+    padding: 7px 20px 7px 20px;
+    text-decoration: none;
+  }
+  
+button:hover {
+    background: #787878;
+    background-image: linear-gradient(to bottom, #787878, #b3b3b3);
+    text-decoration: none;
+  }
 
 .teamColor {
     display: grid;
@@ -140,9 +167,11 @@ input {
 }
 
 .title > button {
-    height: 25px;
+    height: 30px;
     width: 25px;
+    padding: 5px;
     margin: 4px;
+    text-align: center;
 }
 
 .PokeImg {
