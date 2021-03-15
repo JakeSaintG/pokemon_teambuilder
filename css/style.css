@@ -66,6 +66,26 @@ h1 {
 .teamOptions {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "name name"
+      "char color";
+}
+
+#teamNameDiv {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    grid-area: name;
+}
+
+#teamCharDiv {
+    text-align: center;
+    grid-area: char;
+}
+
+#teamColorDiv {
+    grid-area: color;
 }
 
 .teamOptions > div > h2,
@@ -76,6 +96,12 @@ h1 {
 
 h2 {
     font-size: 18px;
+
+}
+
+#teamName {
+    display: flex;
+    align-items: center;
 }
 
 #teamName > span {
@@ -107,6 +133,7 @@ button {
     font-weight: bold;
     padding: 7px 20px 7px 20px;
     text-decoration: none;
+    height: 31px;
   }
   
 button:hover {
@@ -282,6 +309,28 @@ Media Queries
 
     h2 {
         font-size: 1em;
+    }
+
+    .teamOptions {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+          "char name color";
+    }
+
+    #teamNameDiv {
+        grid-area: name;
+    }
+    
+    #teamCharDiv {
+        width: auto;
+        grid-area: char;
+    }
+    
+    #teamColorDiv {
+        width: auto;
+        grid-area: color;
     }
 
     .teamOf6 {

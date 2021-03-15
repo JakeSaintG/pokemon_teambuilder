@@ -211,7 +211,7 @@ enterTeam.addEventListener('click', (e) => {
             nameYourTeam.textContent = "Rename your team!"
             input.type = 'text';
             // input.setAttribute(class="teamNameInput" id="teamNameInput");
-            input.setAttribute('maxlength', '25');
+            input.setAttribute('maxlength', '20');
             input.setAttribute('class', "teamNameInput");
             input.setAttribute('id', "teamNameInput");
             input.value = span.textContent;
@@ -261,6 +261,14 @@ function filterEdgeCases(name) {
     const filteredImgForms = forms.filter((mon) => { 
         return mon.name.includes(name);
     });
+
+    if (filteredImgForms[0] === undefined) {
+        requestByName(name);
+        //checks to see if forms has what the user is looking for. If not, it throws to requestByName() to generate a 404-MissingNo/Error.
+        input.value = '';
+        return
+    }
+
     let filteredForms = filteredImgForms
     let pokeImageUrl = pokeUrl+`pokemon-form/${filteredImgForms[0].name}`;
     
@@ -297,10 +305,6 @@ function filterEdgeCases(name) {
             pokeImageUrl = pokeUrl+`pokemon-form/${name}`;
             //Mew is a weird edge case. Most version of this filter would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
             //This literally checks if the user wants a mew and just gives it to them.
-            } else if (filteredImgForms[0] === undefined) {
-                requestByName(name);
-                //checks to see if forms has what the user is looking for. If not, it throws to requestByName() to generate a 404-MissingNo/Error.
-                input.value = '';
             } else if (
                 filteredImgForms[0].name.includes(`unown`) || 
                 filteredImgForms[0].name.includes(`burmy`) ||

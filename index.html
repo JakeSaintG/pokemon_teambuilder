@@ -29,14 +29,21 @@
         <div id="enterTeam" class="enterTeam">
             <div class="team" id="team">
                 <div class="teamOptions" id="teamOptions">
-                    <div>
+                    <div id="teamCharDiv">
+                        <h2>Pick your player!</h2>
+                        <select>
+                            <option value="Player Select">Player Select</option>
+                            <!-- <option value="red" style="background-image:url(imgs/players/Lyrawalkdown.png);">Lyra</option> -->
+                        </select>
+                    </div>
+                    <div id="teamNameDiv">
                         <h2>Name your team!</h2>
                         <form id="teamName">
-                            <input type="text" class="teamNameInput" id="teamNameInput" value="Team Name" onfocus="this.value=''" onblur="this.value='Team Name'" maxlength="25">
+                            <input type="text" class="teamNameInput" id="teamNameInput" value="Team Name" onfocus="this.value=''" maxlength="20">
                             <button type="submit" name="submit" value="submit">Save</button>
                         </form>
                     </div>
-                    <div>
+                    <div id="teamColorDiv">
                         <h2>Team Color:</h2>
                         <ul class="teamColor" id="teamColor">
                             <li id="versionColor" class="red"></li>
@@ -67,7 +74,7 @@
                 <div>
                     <h2>Pick a Pok&eacute;mon!</h2>
                     <form id="enterMon">
-                        <input type="text" class="description" id="description" value="Pok&eacute;mon name" onfocus="this.value=''" onblur="this.value='Pok&eacute;mon name'">
+                        <input type="text" class="description" id="description" value="Pok&eacute;mon name" onfocus="this.value=''">
                         <button type="submit" name="submit" id="descriptionAdd" value="submit">Add</button>
                     </form>
                 </div>
@@ -83,7 +90,7 @@
         </div>
     </main>
     <footer>
-        <div id="test"></div>
+        <!-- <div id="test"><img src="imgs/players/Lyrawalkdown.png" alt="red"></div> -->
     </footer>
     <script src="js/builder.js"></script>
     <script src="js/natureBuilder.js"></script>
