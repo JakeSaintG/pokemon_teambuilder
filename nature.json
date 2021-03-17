@@ -6,58 +6,60 @@
           "attack": 0,
           "defense": 0,
           "speed": 0,
-          "sp-attack": 0,
-          "sp-defense": 0
+          "spattack": 0,
+          "spdefense": 0
+      }
+    },
+    {
+      "name": "lonely",
+      "stats": 
+        {
+          "attack": 0.1,
+          "defense": -0.1,
+          "speed": 0,
+          "spattack": 0,
+          "spdefense": 0
+        }
+      
+    },
+    {
+      "name": "brave",
+      "stats": {
+        "attack": 0.1,
+        "defense": 0,
+        "speed": -0.1,
+        "spattack": 0,
+        "spdefense": 0
+      }
+    },
+    {
+      "name": "adamant",
+      "stats": {
+        "attack": 0.1,
+        "defense": 0,
+        "speed": 0,
+        "spattack": -0.1,
+        "spdefense": 0
+      }
+    },
+    {
+      "name": "naughty",
+      "stats": {
+        "attack": 0.1,
+        "defense": 0,
+        "speed": 0,
+        "spattack": 0,
+        "spdefense": -0.1
       }
     },
     {
       "name": "bold",
       "stats": {
-        "attack": 0,
-        "defense": 0,
+        "attack": -0.1,
+        "defense": 0.1,
         "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
-      }
-    },
-    {
-      "name": "modest",
-      "stats": {
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
-      }
-    },
-    {
-      "name": "calm",
-      "stats": {
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
-      }
-    },
-    {
-      "name": "timid",
-      "stats": {
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
-      }
-    },
-    {
-      "name": "lonely",
-      "stats": {
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
+        "spattack": 0,
+        "spdefense": 0
       }
     },
     {
@@ -66,58 +68,118 @@
         "attack": 0,
         "defense": 0,
         "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
+        "spattack": 0,
+        "spdefense": 0
       }
     },
     {
-      "name": "mild",
+      "name": "relaxed",
       "stats": {
         "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
-      }
-    },
-    {
-      "name": "gentle",
-      "stats": {
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
-      }
-    },
-    {
-      "name": "hasty",
-      "stats": {
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
-      }
-    },
-    {
-      "name": "adamant",
-      "stats": {
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
+        "defense": 0.1,
+        "speed": -0.1,
+        "spattack": 0,
+        "spdefense": 0
       }
     },
     {
       "name": "impish",
       "stats": {
         "attack": 0,
+        "defense": 0.1,
+        "speed": 0,
+        "spattack": -0.1,
+        "spdefense": 0
+      }
+    },
+    {
+      "name": "lax",
+      "stats": {
+        "attack": 0,
+        "defense": 0.1,
+        "speed": 0,
+        "spattack": 0,
+        "spdefense": -0.1
+      }
+    },
+    {
+      "name": "timid",
+      "stats": {
+        "attack": -0.1,
+        "defense": 0,
+        "speed": 0.1,
+        "spattack": 0,
+        "spdefense": 0
+      }
+    },
+    {
+      "name": "hasty",
+      "stats": {
+        "attack": 0,
+        "defense": -0.1,
+        "speed": 0.1,
+        "spattack": 0,
+        "spdefense": 0
+      }
+    },
+    {
+      "name": "mild",
+      "stats": {
+        "attack": 0,
+        "defense": -0.1,
+        "speed": 0,
+        "spattack": 0.1,
+        "spdefense": 0
+      }
+    },
+    {
+      "name": "jolly",
+      "stats": {
+        "attack": -0.1,
+        "defense": 0,
+        "speed": 0.1,
+        "spattack": 0,
+        "spdefense": 0
+      }
+    },
+    {
+      "name": "naive",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": 0.1,
+        "spattack": 0,
+        "spdefense": -0.1
+      }
+    },
+    {
+      "name": "modest",
+      "stats": {
+        "attack": -0.1,
         "defense": 0,
         "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
+        "spattack": 0.1,
+        "spdefense": 0
+      }
+    },
+    {
+      "name": "mild",
+      "stats": {
+        "attack": 0,
+        "defense": -0.1,
+        "speed": 0,
+        "spattack": 0.1,
+        "spdefense": 0
+      }
+    },
+    {
+      "name": "quiet",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": -0.1,
+        "spattack": 0.1,
+        "spdefense": 0
       }
     },
     {
@@ -126,18 +188,8 @@
         "attack": 0,
         "defense": 0,
         "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
-      }
-    },
-    {
-      "name": "careful",
-      "stats": {
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
+        "spattack": 0,
+        "spdefense": 0
       }
     },
     {
@@ -146,38 +198,48 @@
         "attack": 0,
         "defense": 0,
         "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
+        "spattack": 0.1,
+        "spdefense": -0.1
       }
     },
     {
-      "name": "jolly",
+      "name": "calm",
+      "stats": {
+        "attack": -0.1,
+        "defense": 0,
+        "speed": 0,
+        "spattack": 0,
+        "spdefense": 0.1
+      }
+    },
+    {
+      "name": "gentle",
+      "stats": {
+        "attack": 0,
+        "defense": -0.1,
+        "speed": 0,
+        "spattack": 0,
+        "spdefense": 0.1
+      }
+    },
+    {
+      "name": "sassy",
+      "stats": {
+        "attack": 0,
+        "defense": 0,
+        "speed": -0.1,
+        "spattack": 0,
+        "spdefense": 0.1
+      }
+    },
+    {
+      "name": "careful",
       "stats": {
         "attack": 0,
         "defense": 0,
         "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
-      }
-    },
-    {
-      "name": "naughty",
-      "stats": {
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
-      }
-    },
-    {
-      "name": "lax",
-      "stats": {
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
+        "spattack": -0.1,
+        "spdefense": 0.1
       }
     },
     {
@@ -186,18 +248,8 @@
         "attack": 0,
         "defense": 0,
         "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
-      }
-    },
-    {
-      "name": "naive",
-      "stats": {
-        "attack": 0,
-        "defense": 0,
-        "speed": 0,
-        "sp-attack": 0,
-        "sp-defense": 0
+        "spattack": 0,
+        "spdefense": 0
       }
     }
   ]

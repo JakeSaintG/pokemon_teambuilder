@@ -15,6 +15,7 @@ const statBuilder = (pokemon) => {
     for (i = 0; i < pokemon.stats.length; i++) {
         const stat = document.createElement('p');
         stat.innerHTML = `&nbsp;${pokemon.stats[i].base_stat}`;
+        stat.setAttribute('value', `${pokemon.stats[i].base_stat}`);
         const barWidth = `${(pokemon.stats[i].base_stat / 255) * 100}%`;
         stat.style.width = barWidth;
         stat.className = `statItem ${pokemon.stats[i].stat.name}`

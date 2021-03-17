@@ -1,0 +1,76 @@
+{
+    "results": [
+    {
+        "name": "Red",
+        "url": "imgs/players/Red.webp"
+        },
+        {
+        "name": "Red Classic",
+        "url": "imgs/players/Red_Classic.webp"  
+    },
+    {
+        "name": "Blue",
+        "url": "imgs/players/Blue.webp"
+    },
+    {
+        "name": "Blue Classic",
+        "url": "imgs/players/Blue_Classic.webp"  
+    },
+    {
+        "name": "Green",
+        "url": "imgs/players/Green.webp"
+    },
+    {
+        "name": "Youngster",
+        "url": "imgs/players/Youngster.webp"
+    },
+    {
+        "name": "Blue Classic",
+        "url": "imgs/players/Blue_Classic.webp"  
+    },
+    {
+        "name": "Lyra",
+        "url": "imgs/players/Lyra.webp"
+    },
+    {
+        "name": "Kris",
+        "url": "imgs/players/Kris.webp"
+    },
+    {
+        "name": "Ethan",
+        "url": "imgs/players/Ethan.webp"  
+    },
+    {
+        "name": "May",
+        "url": "imgs/players/May.webp"
+    },
+    {
+        "name": "Brendan",
+        "url": "imgs/players/Brendan.webp"  
+    },
+    {
+        "name": "Dawn",
+        "url": "imgs/players/Dawn.webp"  
+    },
+    {
+        "name": "Lucas",
+        "url": "imgs/players/Lucas.webp"
+    },
+    {
+        "name": "Hilda",
+        "url": "imgs/players/Hilda.webp"
+    },
+    {
+        "name": "Hilbert",
+        "url": "imgs/players/Hilbert.webp"  
+    },
+    {
+        "name": "Rosa",
+        "url": "imgs/players/Rosa.webp"  
+    },
+    {
+        "name": "Nate",
+        "url": "imgs/players/Nate.webp"
+    }
+    ]
+  }

@@ -142,12 +142,13 @@ updatePokemonResult = (pokemon) => {
         pokemonBaseName = pokemonBaseName.substring(0, pokemonBaseName.indexOf("-"));  
     }
     entry.appendChild(findAllForms(pokemonBaseName));
-    
-    getAllNatures('nature.json');
 
-    let foo = statBuilder(pokemon);
-    foo.className = 'statsGraph'
-    entry.appendChild(foo);
+    let statsGraph = statBuilder(pokemon);
+    statsGraph.className = 'statsGraph'
+    statsGraph.id = 'statsGraph'
+    entry.appendChild(statsGraph);
+
+    entry.appendChild(natureBuilder(naturesList));
 
     // Adds the entry for the pokemon
     teamOf6.appendChild(entry);
@@ -252,6 +253,10 @@ enterTeam.addEventListener('click', (e) => {
             if (teamOf6.childElementCount === 0) {
                 placeHolder.style.display = 'flex';
             };
+        } else if (action === '↺') {
+            e.target.parentElement.remove()
+            replacePlayerSelect()
+            // iconsBuilder(playerIcons)
         }
     }
 });
@@ -275,7 +280,6 @@ function filterEdgeCases(name) {
     if (name === 'mew') {
         pokeNameUrl = pokeUrl+`pokemon/${name}`
         pokeImageUrl = pokeUrl+`pokemon-form/${name}`;
-        requestByName(pokeNameUrl);
         //Mew is a weird edge case. Most version of this filter would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
         //This literally checks if the user wants a mew and just gives it to them.
     };
@@ -301,10 +305,7 @@ function filterEdgeCases(name) {
     requestbyImg(pokeImageUrl).then( 
         () => {
             if (name === 'mew') {
-            pokeNameUrl = pokeUrl+`pokemon/${name}`
-            pokeImageUrl = pokeUrl+`pokemon-form/${name}`;
-            //Mew is a weird edge case. Most version of this filter would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
-            //This literally checks if the user wants a mew and just gives it to them.
+            requestByName(pokeNameUrl);
             } else if (
                 filteredImgForms[0].name.includes(`unown`) || 
                 filteredImgForms[0].name.includes(`burmy`) ||

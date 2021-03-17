@@ -91,7 +91,11 @@ h1 {
 .teamOptions > div > h2,
 .team > div > h2 {
     text-align: center;
-    margin-bottom: 5px;
+}
+
+.playerIcon {
+    height: 100px;
+    width: 100px;
 }
 
 h2 {
@@ -149,6 +153,7 @@ button:hover {
     row-gap: 3px;
     column-gap: 3px;
     margin: 0;
+    margin-bottom: 10px;
     padding: 0;
 }
 
@@ -193,7 +198,8 @@ button:hover {
     margin: 4px;
 }
 
-.title > button {
+.title > button,
+.reload {
     height: 30px;
     width: 25px;
     padding: 5px;
@@ -309,6 +315,7 @@ Media Queries
 
     h2 {
         font-size: 1em;
+        margin-bottom: 20px;
     }
 
     .teamOptions {
@@ -317,15 +324,25 @@ Media Queries
         grid-template-rows: auto;
         grid-template-areas: 
           "char name color";
+        padding-bottom: 10px;
     }
 
     #teamNameDiv {
         grid-area: name;
+        height: 160px;
     }
     
     #teamCharDiv {
         width: auto;
         grid-area: char;
+    }
+
+    #teamCharDiv > h2 {
+        margin-bottom: 0;
+    }
+
+    #teamCharDiv > select {
+        margin-top: 20px;
     }
     
     #teamColorDiv {

@@ -31,9 +31,8 @@
                 <div class="teamOptions" id="teamOptions">
                     <div id="teamCharDiv">
                         <h2>Pick your player!</h2>
-                        <select>
+                        <select class="playerIconSelect" id="playerIconSelect" onchange="placePlayerImg(this)">
                             <option value="Player Select">Player Select</option>
-                            <!-- <option value="red" style="background-image:url(imgs/players/Lyrawalkdown.png);">Lyra</option> -->
                         </select>
                     </div>
                     <div id="teamNameDiv">
@@ -97,5 +96,6 @@
     <script src="js/missingNo.js"></script>
     <script src="js/statsBuilder.js"></script>
     <script src="js/getForms.js"></script>
+    <script src="js/playerIcon.js"></script>
 </body>
 </html>
