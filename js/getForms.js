@@ -3,19 +3,15 @@
 
 let forms = []
 
-window.onload = function pullAllMonsList()  {
-    let foo = `https://pokeapi.co/api/v2/pokemon-form?limit=1283`
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-        if(xhr.readyState === 4 && xhr.status === 200) {
-            const pokemonList = JSON.parse(xhr.responseText)
-            forms = pokemonList.results
-        } 
-    };
-    xhr.open('GET', foo);
-    xhr.send();
-    return(forms)
-}
+const pullAllMonsList = fetch(`https://pokeapi.co/api/v2/pokemon-form?limit=1283`)
+    .then(r=>r.json())
+    .then(pokemonList => {
+        forms = pokemonList.results
+        return(forms)
+});
+window.onload = async () => {
+    let placeholderData = await pullAllMonsList;
+};
 //Calls to store the name of every pokemon in the forms array
 //I chose to do it this way to avoid dozens of API requests for every form a pokemon may or may not have.
 //This mad it easy for every added pokemon to check for forms against an established list with no more API requests until the form is chosen.
