@@ -30,91 +30,106 @@ water #56B0FF
 ============================================*/
 
 .red {
-    background-color: #df102f;
+    background: linear-gradient(180deg, rgba(223,123,16,1) 20%, rgba(223,16,16,1) 80%);
 }
 
 .blue {
-    background-color: #0a679c;
+    background: linear-gradient(180deg, rgba(0,162,255,1) 20%, rgba(10,103,156,1) 80%);
 }
 
 .green {
-    background-color: #22A72B;
+    background: linear-gradient(180deg, rgba(105,222,113,1) 20%, rgba(34,167,43,1) 80%);
 }
 
 .yellow {
-    background-color: #e4c159;
+    background: linear-gradient(180deg, rgba(228,193,89,1) 83%, rgba(121,58,15,1) 100%);
 }
 
 .gold {
-    background-color: #988A56;
+    background: linear-gradient(180deg, rgba(198,170,69,1) 20%, rgba(152,138,86,1) 80%);
 }
 
 .silver {
-    background-color: #7B8591 ;
+    background: linear-gradient(180deg, rgba(158,168,181,1) 20%, rgba(93,101,110,1) 80%);
 }
 
 .crystal {
-    background-color: #7286C3;
+    background: linear-gradient(180deg, rgba(114,134,195,1) 20%, rgba(44,67,138,1) 80%);
 }
 
 .ruby {
-    background-color: #752117;
+    background: linear-gradient(180deg, rgba(205,52,34,1) 20%, rgba(117,33,23,1) 80%);
 }
 
 .sapphire {
-    background-color: #2A4D68;
+    background: linear-gradient(180deg, rgba(34,105,161,1) 20%, rgba(29,58,80,1) 80%);
 }
 
 .emerald {
-    background-color: #4B8978;
+    background: linear-gradient(180deg, rgba(70,187,155,1) 20%, rgba(70,126,111,1) 80%);
 }
 
 .diamond {
-    background-color: #4EA1B1;
+    background: linear-gradient(180deg, rgba(97,153,203,1) 20%, rgba(240,248,255,1) 80%);
 }
 
 .pearl {
-    background-color: #E9A5C1;
+    background: linear-gradient(180deg, rgba(201,130,194,1) 20%, rgba(225,215,223,1) 80%);
 }
 
 .platinum {
-    background-color: #EF7257;
+    background: linear-gradient(180deg, rgba(236,98,72,1) 20%, rgba(59,58,76,1) 80%);
 }
 
 .black {
-    background-color: black;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 90%, rgba(255,255,255,1) 100%);
 }
 
 .white {
-    background-color: white;
+    background: linear-gradient(180deg, white 90%, black 100%);
 }
 
 .x-version {
-    background-color: #00609D;
+    background: linear-gradient(180deg, rgba(114,199,176,1) 20%, rgba(0,62,102,1) 80%);
 }
 
 .y-version {
-    background-color: #CA2337;
+    background: linear-gradient(180deg, rgba(209,34,64,1) 20%, rgba(60,0,0,1) 80%);
 }
 
 .sun {
-    background-color: #FAA21A;
+    background: linear-gradient(180deg, rgba(253,213,2,1) 20%, rgba(186,46,33,1) 80%);
 }
 
 .moon {
-    background-color: #339cbd;
+    background: linear-gradient(180deg, rgba(5,77,157,1) 20%, rgba(79,31,131,1) 80%);
 }
 
 .letsGoE {
-    background-color: #C98240;
+    background: linear-gradient(180deg, #B38860 83%, #F1E7C2 100%);
 }
 
 .sword {
-    background-color: #16b0ec;
+    /* background-color: #16b0ec; */
+    background: linear-gradient(180deg, #16b0ec 83%, #16136F 100%);
 }
 
 .shield {
-    background-color: #ee2572;
+    /* background-color: #ee2572; */
+    background: linear-gradient(180deg, #ee2572 83%, #91013F 100%);
+}
+
+/*============================================
+                Versions
+============================================*/
+.mega {
+    background: linear-gradient(180deg, rgba(244,140,161,1) 0%, rgba(251,135,247,1) 20%, rgba(140,139,253,1) 40%, rgba(130,242,250,1) 60%, rgba(116,234,155,1) 80%, rgba(189,197,105,1) 100%);
+}
+
+.gmax {
+    background: linear-gradient(180deg, rgba(105,0,72,1) 20%, rgba(220,2,107,1) 80%);
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
 /*============================================

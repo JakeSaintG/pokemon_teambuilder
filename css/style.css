@@ -7,7 +7,8 @@
 body {
 	font-family: 'Josefin Sans', sans-serif;
     margin: 0px;
-    background-color: rgb(228, 213, 194);
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(228,213,194,1) 50%, rgba(200,181,158,1) 90%);
 }
 
 nav > ul  {
@@ -16,6 +17,7 @@ nav > ul  {
     justify-content: space-evenly; 
     padding: 0;
     margin: 0;
+    background-color: white;
 }
 
 nav > ul > li {
@@ -25,16 +27,43 @@ nav > ul > li {
     text-align: center;
 }
 
+.nav > li > a {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    width: 100%;
+}
+
 .pokeDex {
     background-color: rgb(143, 194, 149);
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border: 2px solid #000000;
 }
 
 .teamBuilder {
     background-color: rgb(228, 213, 194);
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border: 2px solid #000000;
+    border-bottom: none;
 }
 
 .collectionTracker {
     background-color: rgb(131, 180, 199);
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border: 2px solid #000000;
+}
+
+main {
+    text-align: center;
+}
+
+.mainLogo {
+    align-self: center;
+    margin: 10px auto;
+    height: 100px;
 }
 
 h1 {
@@ -54,7 +83,7 @@ h1 {
 }
 
 .enterTeam {
-    background-color: rgb(160, 160, 160);
+    background: linear-gradient(180deg, rgba(160,160,160,1) 20%, rgba(92,92,92,1) 80%);
 } /* separate from ID to set default background color and allow for JS changes */
 
 #enterTeam {
@@ -74,8 +103,9 @@ h1 {
 
 #teamNameDiv {
     display: flex;
+    align-content: center;
     flex-direction: column;
-    margin: 0 auto;
+    margin: 20px auto;
     grid-area: name;
 }
 
@@ -99,22 +129,40 @@ h1 {
 }
 
 h2 {
-    font-size: 18px;
-
+    font-size: 1.5em;
 }
 
-#teamName {
+#teamName,
+#enterMon {
     display: flex;
+    justify-content: center;
     align-items: center;
+    height: 31px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#teamName > span {
+.userTeamName {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.userTeamName > span {
     display: inline-block;
+    width: 250px;
+    word-wrap: break-word;
     font-size: 50px;
-    margin-top: 20px;
 }
 
-input {
+select {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    margin: 0 5px;
+    margin-bottom: 5px;
+}
+
+input,
+.playerIconSelect {
     padding: 4px;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 16px;
@@ -124,7 +172,10 @@ input {
     color: #000000;
     border-style: solid;
     border-radius: 17px;
+    height: 30px;
     width: 160px;
+    margin-left: 8px;
+    margin-right: 8px;
     box-shadow: 0px 0px 5px rgba(66,66,66,.7);
 }
 
@@ -199,7 +250,8 @@ button:hover {
 }
 
 .title > button,
-.reload {
+.reload,
+.useLater {
     height: 30px;
     width: 25px;
     padding: 5px;
@@ -242,7 +294,7 @@ button:hover {
     display: inline-block;
     color: white;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: bolder;
     padding: 3px;
     border: 3px solid white;
@@ -274,13 +326,13 @@ option {
 }
 
 .hp {
-    background-color: #FF0000;
+    background-color: #fc3131;
 }
 .attack {
     background-color: #F08030;
 }
 .defense {
-    background-color: #b99c25;
+    background-color: #c2a42e;
 }
 .special-attack {
     background-color: #6890F0;
@@ -289,15 +341,15 @@ option {
     background-color: #78C850;
 }
 .speed {
-    background-color: #F85888;
+    background-color: #f365b3;
 }
 
 .statItem {
     margin-top: 5px;
     margin-bottom: 5px;
     text-align: left;
-    height: 25px;
-    line-height: 25px;
+    height: 20px;
+    line-height: 20px;
 }
 
 /* ================================= 
@@ -305,6 +357,10 @@ Media Queries
 ==================================== */
 
 @media (min-width: 769px) {
+    .mainLogo {
+        height: 125px;
+    }
+    
     h1 {
         margin: 25px auto;
     }
@@ -314,7 +370,6 @@ Media Queries
     }
 
     h2 {
-        font-size: 1em;
         margin-bottom: 20px;
     }
 
@@ -330,6 +385,7 @@ Media Queries
     #teamNameDiv {
         grid-area: name;
         height: 160px;
+        margin: 0 auto;
     }
     
     #teamCharDiv {
@@ -356,25 +412,48 @@ Media Queries
         column-gap: 2%;
     }
 
-    .PokeImg {
-        width: 150px;
-        height: 150px;
-    }
-
 } /* for better display on iPads/Tablets  */
 
 @media (min-width: 1155px) {
+
+    .mainLogo {
+        height: 150px;
+    }
 
     .teamOf6 {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         column-gap: 2%;
     }
+
+    .userTeamName > span {
+        width: 400px;
+    }
+
+    .statItem {
+        height: 25px;
+        line-height: 25px;
+    }
+
+    .PokeImg {
+        width: 150px;
+        height: 150px;
+    }
+    
+
 }
 
 @media (min-width: 1320px) {
     h2 {
         font-size: 1.5em;
+    }
+
+    .userTeamName > span {
+        width: 500px;
+    }
+
+    .typeIcon {
+        font-size: 15px;
     }
 }
 

@@ -21,6 +21,10 @@ const statBuilder = (pokemon) => {
         stat.className = `statItem ${pokemon.stats[i].stat.name}`
         statBar.appendChild(stat);
     }
+    /*
+    + The chosen pokemon's stats are handled here. This loops over the stats and displays them as a number
+    + It also sets the width of the element to a percent based on a max stat of 255. This is styled by the CSS to show as a stat graph.
+    */
 
     statsNames.forEach((entry) => {
         const stat = document.createElement('p');
@@ -28,10 +32,12 @@ const statBuilder = (pokemon) => {
         stat.className = "statItem"
         statName.appendChild(stat);
     });
+    /* Gets each of the Stat Names from the statsNames array and displays it.*/
 
     statName.className = "statName";
     statBar.className = "statBar";
     statsDiv.appendChild(statName);
     statsDiv.appendChild(statBar);
     return statsDiv
+    /* This sets the statName div and statBar elements next to each other.*/
 }

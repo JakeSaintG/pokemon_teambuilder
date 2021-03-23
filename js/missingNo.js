@@ -6,10 +6,10 @@ function generateMissingNo(reason){
     noEntry.innerHTML = `
         <div class="title">
             <img src="imgs/dexicon.png" class="dex" title = "Show in PokeDex not functional yet">
-            <h2>MissingNo</h2>
+            <h2 class='entryName'>MissingNo</h2>
             <button>X</button>
         </div>
-        <img src="imgs/MissingNo.png" class="PokeImg">
+        <img src="imgs/MissingNo.webp" class="PokeImg">
         <div class="types">
             <p class="typeIcon" style="background-color:black;">Ň̷̨ȕ̷͕l̷͇̑l̸̠̏</p>
         </div>

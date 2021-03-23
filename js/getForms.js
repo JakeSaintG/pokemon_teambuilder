@@ -52,6 +52,10 @@ function findAllForms(pokemon) {
             option.textContent = 'Nidoran♀';
         } else if (filteredForms[i].name === 'nidoran-m') { //Changes the male Nidoran's option to match name (edge case)
             option.textContent = 'Nidoran♂';
+        } else if(filteredForms[i].name.includes(`mega`) && filteredForms[i].name.includes(`x`)) { //Handles the two Pokemon with X/Y evolutions
+            option.textContent = 'Mega Evolve X';
+        } else if(filteredForms[i].name.includes(`mega`) && filteredForms[i].name.includes(`y`)) { //Handles the two Pokemon with X/Y evolutions
+            option.textContent = 'Mega Evolve Y';
         } else if(filteredForms[i].name.includes(`mega`)) { //Changes option to just list "Mega Evolve"
             option.textContent = 'Mega Evolve';
         } else if (filteredForms[i].name.includes(`gmax`)) { //Changes option to just list "Gigantamax"

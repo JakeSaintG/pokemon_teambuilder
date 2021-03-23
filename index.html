@@ -6,33 +6,32 @@
     <title>Pokemon Team Builder</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/typeChanges.css">
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav role =”navigation” aria-label =”pagenav”>
         <ul class="nav">
             <li class="pokeDex">
-                PokeDex
+                <a href="#">Pok&eacute;Dex</a>
             </li>
             <li class="teamBuilder">
-                Team Builder
+                <a href="#">Team Builder</a>
             </li>
             <li class="collectionTracker">
-                Collection Tracker
+                <a href="#">Collection Tracker</a>
             </li>
         </ul>
     </nav>
     <!-- <header></header> -->
     <main>
-        <h1>Build a team!</h1>
+        <img src="imgs/Pokemon_logo.webp" alt="Logo for Pokemon Team Builder" class="mainLogo" height="300px">
         <div id="enterTeam" class="enterTeam">
             <div class="team" id="team">
                 <div class="teamOptions" id="teamOptions">
                     <div id="teamCharDiv">
                         <h2>Pick your player!</h2>
                         <select class="playerIconSelect" id="playerIconSelect" onchange="placePlayerImg(this)">
-                            <option value="Player Select">Player Select</option>
+                            <option value="Player Select" style="display:none">Player Select</option>
                         </select>
                     </div>
                     <div id="teamNameDiv">
@@ -89,7 +88,7 @@
         </div>
     </main>
     <footer>
-        <!-- <div id="test"><img src="imgs/players/Lyrawalkdown.png" alt="red"></div> -->
+        
     </footer>
     <script src="js/builder.js"></script>
     <script src="js/natureBuilder.js"></script>
