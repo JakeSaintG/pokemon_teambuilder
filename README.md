@@ -22,10 +22,13 @@ This application is meant for you to help create a visualize a team of Pokemon. 
 #### Examples and Special Instructions
 Enter "Gengar" as a Pokemon choice.
 - Gengar demonstrates both Mega-Evolution and Gigantamax form changes.
+
 Enter "Unown" as a Pokemon choice.
 - Unown has multiple different forms that do not affect stats but do change appearance.
+
 Enter "Meowth" as a Pokemon choice.
 - Meowth has an Alolan form and a Galarian form. These forms affect stats and type.
+
 Enter "Mew" as a Pokemon
 - Mew's stats are 100 across the board. Mew is a great demonstration for stat changes based on Pokemon Nature.
  
