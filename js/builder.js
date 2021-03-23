@@ -157,12 +157,12 @@ updatePokemonResult = (pokemon) => {
     } else {
         entry.style.backgroundColor = 'white';
     }
-    
+
     teamOf6.appendChild(entry);
-    console.log(pokemon.name)
     removePlaceholder();
 
     if (teamOf6.childElementCount === 6) {
+        input.parentElement.parentElement.firstElementChild.textContent = 'Can Only 6 Pokémon To Team!'
         document.getElementById('descriptionAdd').disabled = true;
     };
 };
@@ -266,6 +266,7 @@ enterTeam.addEventListener('click', (e) => {
             e.target.parentElement.parentElement.remove()
             if (teamOf6.childElementCount === 5) {
                 document.getElementById('descriptionAdd').disabled = false;
+                input.parentElement.parentElement.firstElementChild.textContent = 'Pick a Pokémon!'
                 //Re-enables the submission of more pokemon to be added to the team if there are 5 or less.
             };
             if (teamOf6.childElementCount === 0) { 
