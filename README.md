@@ -30,7 +30,7 @@ Enter "Meowth" as a Pokemon choice.
 - Meowth has an Alolan form and a Galarian form. These forms affect stats and type.
 
 Enter "Mew" as a Pokemon
-- Mew's stats are 100 across the board. Mew is a great demonstration for stat changes based on Pokemon Nature.
+- Mew's stats are 100 across the board. Mew is a great demonstration for stat changes based on a selected Pokemon Nature.
  
 #### Special Thanks
 - The PokeAPI! This project would not be possible without their incredible public API
