@@ -12,14 +12,24 @@ requestByName = (url) => {
             let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`
             generateMissingNo(reason);
             removePlaceholder();
+            return
         }
         if(xhr.readyState === 4 && xhr.status === 200) {
             const pokemon = JSON.parse(xhr.responseText)
-            updatePokemonResult(pokemon);
+            addEntry(updatePokemonResult(pokemon));
         };
     };
     xhr.open('GET', `${url}`);
     xhr.send();
+}
+
+addEntry = (entry) => {
+    teamOf6.appendChild(entry);
+    removePlaceholder();
+    if (teamOf6.childElementCount === 6) {
+        input.parentElement.parentElement.firstElementChild.textContent = 'Can Only 6 Pokémon To Team!'
+        document.getElementById('descriptionAdd').disabled = true;
+    };
 }
 
 updatePokemonResult = (pokemon) => {
@@ -158,13 +168,8 @@ updatePokemonResult = (pokemon) => {
         entry.style.backgroundColor = 'white';
     }
 
-    teamOf6.appendChild(entry);
-    removePlaceholder();
+    return entry;
 
-    if (teamOf6.childElementCount === 6) {
-        input.parentElement.parentElement.firstElementChild.textContent = 'Can Only 6 Pokémon To Team!'
-        document.getElementById('descriptionAdd').disabled = true;
-    };
 };
 
 // ===================================================================================================EVENT LISTENERS===================
@@ -287,9 +292,11 @@ function filterEdgeCases(name) {
     });
 
     if (filteredImgForms[0] === undefined) {
-        requestByName(name);
-        //checks to see if forms has what the user is looking for. If not, it throws to requestByName() to generate a 404-MissingNo/Error.
         input.value = '';
+        let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`
+        generateMissingNo(reason);
+        removePlaceholder();
+        //checks to see if forms has what the user is looking for. If not, generates a 404-MissingNo/Error.
         return
     }
 
@@ -302,6 +309,12 @@ function filterEdgeCases(name) {
     };
     //Mew is a weird edge case. Most versions of this filter would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
     //This literally checks if the user wants a mew and just gives it to them.
+
+    if (name === 'pidgeot') {
+        pokeNameUrl = pokeUrl+`pokemon/${name}`
+        pokeImageUrl = pokeUrl+`pokemon-form/${name}`;
+    };
+    //Like Mew, Pidgeotto's and Pidgeot's dex placement requires a little more specific selection.
 
     if (name.includes('sinistea')) {
         name = 'sinistea'
@@ -365,16 +378,17 @@ function filterEdgeCases(name) {
                 requestByName(pokeNameUrl);
             } else if (name === 'mew') {
                 requestByName(pokeNameUrl);
+            } else if (name === 'pidgeot') {
+                requestByName(pokeNameUrl);
             } else if (filteredImgForms[0].name.includes(`pichu-spiky-eared`)) {
                 let filteredForms = 'pichu'
                 let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
                 requestByName(pokeNameUrl);
-            } else if (name === "polteageist" || "sinistea") {
-                pokeNameUrl = pokeUrl+`pokemon/${name}`
-                requestByName(pokeNameUrl);
             } else if (filteredImgForms[0].name.includes(`genesect`)) {
-                let filteredForms = 'genesect'
-                let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
+                let pokeNameUrl = pokeUrl+`pokemon/649`
+                requestByName(pokeNameUrl);
+            } else if (filteredImgForms[0].name.includes(`polteageist`) || filteredImgForms[0].name.includes(`sinistea`)) {
+                pokeNameUrl = pokeUrl+`pokemon/${name}`
                 requestByName(pokeNameUrl);
             } else { 
                 let pokeNameUrl = pokeUrl+`pokemon/${filteredForms[0].name}`

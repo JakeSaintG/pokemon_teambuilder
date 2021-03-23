@@ -78,8 +78,8 @@ h1 {
 .teamOf6 {
     margin: 20px 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 5%;
+    grid-template-columns: 48% 48%;
+    column-gap: 4%;
 }
 
 .enterTeam {
@@ -250,13 +250,16 @@ button:hover {
 }
 
 .title > button,
-.reload,
-.useLater {
+.reload {
     height: 30px;
     width: 25px;
     padding: 5px;
     margin: 4px;
     text-align: center;
+}
+
+.useLater {
+    display: none;
 }
 
 .PokeImg {
@@ -367,6 +370,15 @@ Media Queries
 
     .teamColor {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .useLater {
+        display: inline;
+        height: 30px;
+        width: 25px;
+        padding: 5px;
+        margin: 4px;
+        text-align: center;
     }
 
     h2 {

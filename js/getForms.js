@@ -17,20 +17,6 @@ window.onload = async () => {
 //This mad it easy for every added pokemon to check for forms against an established list with no more API requests until the form is chosen.
 
 function findAllForms(pokemon) {
-    if (pokemon === 'mew') { //Prevents Mewtwo from showing up as a Mew form from showing up as forms. (edge case)
-        const formSelect = document.createElement('select');
-        const defaultForm = document.createElement('option');
-        defaultForm.textContent = 'Forms'
-        formSelect.className = `formSelect`
-        formSelect.appendChild(defaultForm);
-        return formSelect
-    } 
-    const filteredForms = forms.filter((mon) => { 
-        return mon.name.includes(pokemon);
-    });
-    //Searches for any form of the pokemon that the user chose (forms array).
-    //Form names are returned from the api as "pokemon-form" (ex: 'sandshrew-alola' or 'gengar-gmax').
-    //It finds everything that contains the pokemon name and returns it to the 'filteredForms' array.
     const formSelect = document.createElement('select');
     formSelect.setAttribute('onchange', "changeForm(this)");
     const defaultForm = document.createElement('option');
@@ -40,14 +26,40 @@ function findAllForms(pokemon) {
     formSelect.appendChild(defaultForm);
     //The above chunk adds the select element for the forms.
 
+    if (pokemon === 'pidgeot') { //Prevents Pidgeotto from showing up as a Pidgeot form.. (edge case)
+        let option = document.createElement('option');
+        option.textContent = 'pidgeot'
+        option.className = "pidgeot";
+        formSelect.appendChild(option);
+        option = document.createElement('option');
+        option.textContent = 'Mega Evolve'
+        option.className = "pidgeot-mega";
+        formSelect.appendChild(option);
+        return formSelect
+    }
+
+    if (pokemon === 'mew') { //Prevents Mewtwo from showing up as a Mew form. (edge case)
+        const option = document.createElement('option');
+        option.textContent = 'Mew'
+        formSelect.appendChild(option);
+        return formSelect
+    }
+
+    const filteredForms = forms.filter((mon) => { 
+        return mon.name.includes(pokemon);
+    });
+    //Searches for any form of the pokemon that the user chose (forms array).
+    //Form names are returned from the api as "pokemon-form" (ex: 'sandshrew-alola' or 'gengar-gmax').
+    //It finds everything that contains the pokemon name and returns it to the 'filteredForms' array.
+
     for (i = 0; i < filteredForms.length; i++) {
         const option = document.createElement('option');
         option.className = filteredForms[i].name;
         if (filteredForms[i].name.includes('porygon')) { //Prevents Porygon evolutions (Porygon2 and Porygon-Z) from showing up as forms. (edge case)
-            option.textContent = 'Forms';
+            option.textContent = filteredForms[i].name;
             formSelect.appendChild(option);
             break;
-        } 
+        }
         if (filteredForms[i].name === 'nidoran-f') { //Changes the female Nidoran's option to match name (edge case)
             option.textContent = 'Nidoran♀';
         } else if (filteredForms[i].name === 'nidoran-m') { //Changes the male Nidoran's option to match name (edge case)
