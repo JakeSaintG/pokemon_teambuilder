@@ -32,6 +32,7 @@ placePlayerImg = (sel) => {
     const playerIconDiv = document.createElement('div')
     const playerIcon = document.createElement('img')
     playerIcon.src = pickedPlayer
+    playerIcon.alt = `Chosen Player Icon`
     playerIcon.className = 'playerIcon'
     playerIconDiv.appendChild(playerIcon)
     const reload = document.createElement('button')    

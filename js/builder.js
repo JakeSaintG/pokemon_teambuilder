@@ -101,6 +101,7 @@ updatePokemonResult = (pokemon) => {
     entry.appendChild(title);
 
     img.src = loadedImg[0];
+    img.alt=`${alterName}'s icon`
     img.className="PokeImg";
     entry.appendChild(img);
     
