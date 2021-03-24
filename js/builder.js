@@ -5,34 +5,7 @@ const teamOf6 = document.getElementById('teamOf6');
 const teamName = document.getElementById('teamName');
 const placeHolder = document.getElementById('placeHolder')
 
-requestByName = (url) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-        if (xhr.status === 404 && xhr.readyState === 4) {
-            let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`
-            generateMissingNo(reason);
-            removePlaceholder();
-            return
-        }
-        if(xhr.readyState === 4 && xhr.status === 200) {
-            const pokemon = JSON.parse(xhr.responseText)
-            addEntry(updatePokemonResult(pokemon));
-        };
-    };
-    xhr.open('GET', `${url}`);
-    xhr.send();
-}
-
-addEntry = (entry) => {
-    teamOf6.appendChild(entry);
-    removePlaceholder();
-    if (teamOf6.childElementCount === 6) {
-        input.parentElement.parentElement.firstElementChild.textContent = 'Can Only 6 Pokémon To Team!'
-        document.getElementById('descriptionAdd').disabled = true;
-    };
-}
-
-updatePokemonResult = (pokemon) => {
+updatePokemonResultNew = (pokemon) => {
     const entry = document.createElement('div'); //The whole Pokemon element.
     const h2 = document.createElement('h2'); //Pokemon name
     const img = document.createElement('img'); //The pokemon's image icon.
@@ -103,7 +76,7 @@ updatePokemonResult = (pokemon) => {
     h2.textContent = alterName;
     title.appendChild(h2);
     
-    remove.textContent = `X`;
+    remove.textContent = `x`;
     remove.title = "Remove from team"
     title.appendChild(remove)
 
@@ -132,6 +105,8 @@ updatePokemonResult = (pokemon) => {
         types.appendChild(type2)
     };
 
+    entry.className = entry.className+' '+"replaceMe";
+    
     entry.appendChild(ability);
     const defaultAbilitiesOption = document.createElement('option');
     defaultAbilitiesOption.textContent = 'Abilties'
@@ -168,17 +143,12 @@ updatePokemonResult = (pokemon) => {
         entry.style.backgroundColor = 'white';
     }
 
-    return entry;
-
+    generateHere.parentElement.replaceChild(entry, generateHere)
+    
+    return entry
 };
 
 // ===================================================================================================EVENT LISTENERS===================
-
-removePlaceholder = () => {
-    if (placeHolder !== null) {
-        placeHolder.style.display = 'none';
-    }
-}
 
 document.getElementById("teamColor").addEventListener("click",function(e) {
     //The eventual goal is to have multiple teams on the page and the .parentElement chain keeps the color change in the desired team.
@@ -197,6 +167,7 @@ document.getElementById("teamColor").addEventListener("click",function(e) {
                 e.target.parentElement.children[i].style.borderColor = "white"
             }
             e.target.parentElement.parentElement.parentElement.parentElement.parentElement.style.color = 'white';
+            teamOf6.style.color = "black";
             e.target.parentElement.parentElement.parentElement.parentElement.parentElement.style.borderColor = 'grey';
         }
     }
@@ -233,172 +204,43 @@ enterTeam.addEventListener('click', (e) => {
             teamName.parentNode.firstElementChild.style.display = 'block';
             teamName.style.display = 'inline-block';
             //Removes the team-name span and replaces the entry field. Adds the previous entry to the field.
-        } else if (action === 'Add') {
-            if (input.value === '' || input.value === 'Pokémon name') {
-                let reason = `<h5>No P̷o̶k̵e̷m̸o̵n̴ Listed!</h5> <p>Please supply a Pok&eacute;mon</p>`;
-                generateMissingNo(reason);
-                return
-                //If the user did not put anything into the submission input, generate a MissingNo Error.
-            };
-            const data = input.value;
-            let name = data.toLowerCase();
-            if (name.includes('farfet')) {
-                name = `farfetchd`
-            };            
-            if (name.includes('jr')) {
-                name = `mime-jr`
-            };
-            if (name.includes('rime') && name.includes('mr')) {
-                name = `mr-rime`
-            };
-            if (name.includes('mime') && name.includes('mr')) {
-                name = `mr-mime`
-            };
-            if (name.includes('type') && name.includes('null')) {
-                name = `type-null`
-            };
-            if (name.includes(`ho`) && name.includes(`oh`)) {
-                name = `ho-oh`
-            } 
-            //The above if-chain fixes some of the Pokemon that have punctuation in their name and lets the user input them with or without punctuation.
+        } else if (action === 'x') {
+            if (teamOf6.childElementCount === 6 && document.getElementById('placeHolder') === null) {
+                replacePlaceholder = document.createElement('div')
+                replacePlaceholder.className = "placeHolder entry"
+                replacePlaceholder.id = "placeHolder"
+                replacePlaceholder.innerHTML = `<button class="addButton" type="submit" name="submit" value="submit">+</button>`
 
-            filterEdgeCases(name);
-            //A surprisingly large amount of pokemon in the API are named something like "toxtricity-amped" which breaks if the user does not know that and just types "toxtricity".
-            //filterEdgeCases() takes the forms array from getForms.js and matches the user input first result in the array.
-            //This allows at least something to generate and the user can then pick the form that they want.
-            input.value = '';
-        } else if (action === 'X') {
+                teamOf6.appendChild(replacePlaceholder);
+            }
             e.target.parentElement.parentElement.remove()
-            if (teamOf6.childElementCount === 5) {
-                document.getElementById('descriptionAdd').disabled = false;
-                input.parentElement.parentElement.firstElementChild.textContent = 'Pick a Pokémon!'
-                //Re-enables the submission of more pokemon to be added to the team if there are 5 or less.
-            };
-            if (teamOf6.childElementCount === 0) { 
-                placeHolder.style.display = 'flex';
-                //Brings the placeholder card back if there are no Pokemon added to the div.
-            };
-        } else if (action === '↺') {
+        }else if (action === '↺') {
             e.target.parentElement.remove()
             replacePlayerSelect()
+        } else if (action === '+') {
+            if (teamOf6.childElementCount < 7) {
+                const entry = document.createElement("div")
+                entry.className = "entry tempEntry"
+                const tempDiv = document.createElement("div")
+                tempDiv.className = 'tempDiv'
+                tempDiv.innerHTML =                     
+                    `<h2>Pick a Pok&eacute;mon!</h2>
+                    <p>Enter the name of a Pok&eacute;mon as it appears in the Pok&eacute;Dex.</p>
+                    <p>Spelling matters but punctuation does not!</p>
+                    <form id="enterPokemon">
+                        <input type="text" class="description" id="description" value="Pok&eacute;mon name" onfocus="this.value=''">
+                        <button type="submit" name="submit" id="descriptionAdd" value="submit">add</button>
+                    </form>`
+                entry.appendChild(tempDiv)
+                teamOf6.insertBefore(entry, e.target.parentElement)
+                tempDiv.lastElementChild.firstElementChild.focus()
+            };
+            if (teamOf6.childElementCount >= 7) {
+                e.target.parentElement.remove();
+            };
+            if (document.getElementById('tip') !== null) {
+                document.getElementById('tip').remove()
+            }
         }
     }
 });
-
-let loadedImg = {};
-function filterEdgeCases(name) {
-    const filteredImgForms = forms.filter((mon) => { 
-        return mon.name.includes(name);
-    });
-
-    if (filteredImgForms[0] === undefined) {
-        input.value = '';
-        let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`
-        generateMissingNo(reason);
-        removePlaceholder();
-        //checks to see if forms has what the user is looking for. If not, generates a 404-MissingNo/Error.
-        return
-    }
-
-    let filteredForms = filteredImgForms
-    let pokeImageUrl = pokeUrl+`pokemon-form/${filteredImgForms[0].name}`;
-    
-    if (name === 'mew') {
-        pokeNameUrl = pokeUrl+`pokemon/${name}`
-        pokeImageUrl = pokeUrl+`pokemon-form/${name}`;
-    };
-    //Mew is a weird edge case. Most versions of this filter would have it generate a Mewtwo if "mew" is entered since Mewtwo appears first in the array/pokedex.
-    //This literally checks if the user wants a mew and just gives it to them.
-
-    if (name === 'pidgeot') {
-        pokeNameUrl = pokeUrl+`pokemon/${name}`
-        pokeImageUrl = pokeUrl+`pokemon-form/${name}`;
-    };
-    //Like Mew, Pidgeotto's and Pidgeot's dex placement requires a little more specific selection.
-
-    if (name.includes('sinistea')) {
-        name = 'sinistea'
-        pokeImageUrl = pokeUrl+`pokemon-form/${name}-phony`;
-    };
-    if (name.includes('polteageist')) {
-        name = 'polteageist'
-        pokeImageUrl = pokeUrl+`pokemon-form/${name}-phony`;
-    };
-    //Sinistea and Polteageist don't have images in PokeAPI for their "Antique" forms and picking this form generates a MissingNo.
-    //Since the change in form is on the underside of the Pokemon and is not visible in the "Phony" form, I just set the image for 
-    //"Antique" and "Phony" as the same image.
-
-    function requestbyImg(pokeImageUrl) {
-        return new Promise((resolve) => {
-            //I was having an issue where the rest of the Pokemon element would generate before the loadedImg object was populated.
-            //This would lead to some goofy image loading so I went with the below promise to hopefully let the object be populated before the rest of the pokemon loads.
-            const xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = () => {
-                if (xhr.status === 404 && xhr.readyState === 4) {
-                    console.log('error')
-                }
-                if(xhr.readyState === 4 && xhr.status === 200) {
-                    const pokemon = JSON.parse(xhr.responseText)
-                    const shinyChance = 8192;
-                    if (Math.floor(Math.random() * shinyChance) + 1 === 1) {
-                        resolve(loadedImg[0] = pokemon.sprites.front_shiny)
-                    } else {
-                        resolve(loadedImg[0] = pokemon.sprites.front_default)
-                    } 
-                    //This "easter egg" has a 1-in-8192 chance of generating the Pokemon's image as their shiny form. 
-                    //The odds are based on the chance of a wild Pokemon encounter being shiny in the current main series games.
-                    //To test or change the odds, alter the value set in "shinyChance". For shinies all the time, set it to 1.
-                };
-            };
-            xhr.open('GET', `${pokeImageUrl}`);
-            xhr.send();
-        });   
-    }
-    requestbyImg(pokeImageUrl).then( 
-        () => {
-            if (
-                filteredImgForms[0].name.includes(`unown`) || 
-                filteredImgForms[0].name.includes(`burmy`) ||
-                filteredImgForms[0].name.includes(`deerling`) ||
-                filteredImgForms[0].name.includes(`shellos`) ||
-                filteredImgForms[0].name.includes(`arceus`) ||
-                filteredImgForms[0].name.includes(`cherrim`) ||
-                filteredImgForms[0].name.includes(`vivillon`) ||
-                filteredImgForms[0].name.includes(`sawsbuck`) ||
-                filteredImgForms[0].name.includes(`flabebe`) ||
-                filteredImgForms[0].name.includes(`floette`) ||
-                filteredImgForms[0].name.includes(`florges`) ||
-                filteredImgForms[0].name.includes(`furfrou`) ||
-                filteredImgForms[0].name.includes(`xerneas`) ||
-                filteredImgForms[0].name.includes(`silvally`)
-                ) {
-                let filteredForms = filteredImgForms[0].name
-                filteredForms = filteredForms.substring(0, filteredForms.indexOf("-"));
-                let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
-                requestByName(pokeNameUrl);
-            } else if (name === 'mew') {
-                requestByName(pokeNameUrl);
-            } else if (name === 'pidgeot') {
-                requestByName(pokeNameUrl);
-            } else if (filteredImgForms[0].name.includes(`pichu-spiky-eared`)) {
-                let filteredForms = 'pichu'
-                let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
-                requestByName(pokeNameUrl);
-            } else if (filteredImgForms[0].name.includes(`genesect`)) {
-                let pokeNameUrl = pokeUrl+`pokemon/649`
-                requestByName(pokeNameUrl);
-            } else if (filteredImgForms[0].name.includes(`polteageist`) || filteredImgForms[0].name.includes(`sinistea`)) {
-                pokeNameUrl = pokeUrl+`pokemon/${name}`
-                requestByName(pokeNameUrl);
-            } else { 
-                let pokeNameUrl = pokeUrl+`pokemon/${filteredForms[0].name}`
-                requestByName(pokeNameUrl);
-            };
-            /*
-            After hunting down all of the pokemon with differences in name between "https://pokeapi.co/api/v2/pokemon-form"(images) and
-            "https://pokeapi.co/api/v2/pokemon"(details like stats), this if-else statement helps process the correct URLs based on the
-            user's pick pokemon. These are the edge-cases that required a little more work get running.
-            */
-        }
-    );  
-};

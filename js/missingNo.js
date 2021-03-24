@@ -7,7 +7,7 @@ function generateMissingNo(reason){
         <div class="title">
             <span class="useLater"></span>
             <h2 class='entryName'>MissingNo</h2>
-            <button>X</button>
+            <button>x</button>
         </div>
         <img src="imgs/MissingNo.webp" class="PokeImg">
         <div class="types">
@@ -26,13 +26,11 @@ function generateMissingNo(reason){
             ${reason}
         </div>
     `
-    teamOf6.appendChild(noEntry)
-    if (teamOf6.childElementCount === 6) {
-        document.getElementById('descriptionAdd').disabled = true;
-    };
+
+    generateHere.parentElement.replaceChild(noEntry, generateHere)
+
     //This turns the form off if the user already as a team of 6 pokemon.
     uniqueID++;
-    removePlaceholder();
 };
 //This generates a MissingNo card if there is no way to generate a pokemon.
 //It takes the reason (404 issue from the user spelling the pokemon incorrectly or connection to API issue.)

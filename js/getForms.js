@@ -26,7 +26,7 @@ function findAllForms(pokemon) {
     formSelect.appendChild(defaultForm);
     //The above chunk adds the select element for the forms.
 
-    if (pokemon === 'pidgeot') { //Prevents Pidgeotto from showing up as a Pidgeot form.. (edge case)
+    if (pokemon === 'pidgeot') { //Prevents Pidgeotto from showing up as a Pidgeot form. (edge case)
         let option = document.createElement('option');
         option.textContent = 'pidgeot'
         option.className = "pidgeot";
@@ -87,7 +87,7 @@ function findAllForms(pokemon) {
 function changeForm(sel) {
     let foo = sel.options[sel.selectedIndex].className
     // Used className to avoid issues with style changes to list option.
+    generateHere = sel.parentElement
     filterEdgeCases(foo)
-    sel.parentElement.remove()
 };
 //This takes the users choice and modifies it to be searchable in the API.

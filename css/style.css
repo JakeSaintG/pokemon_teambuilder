@@ -76,7 +76,7 @@ h1 {
 }
 
 .teamOf6 {
-    margin: 20px 10px;
+    margin: 5px 10px;
     display: grid;
     grid-template-columns: 48% 48%;
     column-gap: 4%;
@@ -215,10 +215,52 @@ button:hover {
 }
 
 .placeHolder {
-    background-color: #261785;
-    border:  8px solid #173E91;
-    width: 250px;
-    margin: 20px auto;
+    background-color: rgba(255, 255, 255, .15);  
+    backdrop-filter: blur(5px);
+    border:  8px solid black;
+    height: 527px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-content: center;
+}
+
+.tempEntry {
+    border:  8px solid black;
+    background-color: rgba(255, 255, 255, .15);  
+    backdrop-filter: blur(5px);
+    font-weight: bold;
+}
+
+.description {
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+.tip {
+    background-color: black;
+    color: white;
+    height: 527px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: space-evenly;
+    
+}
+
+.tip > span {
+    display: flex;
+    margin: auto;
+    height: 33%;
+}
+
+.tip > span > p {
+    margin: auto;
+}
+
+.pointleft {
+    font-size: 50px;
 }
 
 .entry {
@@ -239,7 +281,7 @@ button:hover {
 .title > h2 {
     margin: 10px auto;
     flex-grow: 3;
-    text-align: center;
+    text-align: left;
     text-transform: capitalize;
 }
 
@@ -256,6 +298,18 @@ button:hover {
     padding: 5px;
     margin: 4px;
     text-align: center;
+}
+
+.addButton {
+    margin: auto;
+    display: block;
+    border:  8px solid black;
+    padding: 0;
+    border-radius: 5px;
+    font-size: 65px;
+    width: 75px;
+    height: 75px;
+    color: black;
 }
 
 .useLater {
@@ -318,6 +372,7 @@ option {
 
 .statName {
     margin: 0 2px 0 0;
+    font-weight: bolder;
 }
 
 .statBar {
@@ -378,6 +433,10 @@ Media Queries
         width: 25px;
         padding: 5px;
         margin: 4px;
+        text-align: center;
+    }
+
+    .title > h2 {
         text-align: center;
     }
 

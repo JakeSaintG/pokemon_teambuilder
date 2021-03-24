@@ -69,20 +69,15 @@
                         </ul>
                     </div>
                 </div>
-                <div>
-                    <h2>Pick a Pok&eacute;mon!</h2>
-                    <form id="enterMon">
-                        <input type="text" class="description" id="description" value="Pok&eacute;mon name" onfocus="this.value=''">
-                        <button type="submit" name="submit" id="descriptionAdd" value="submit">Add</button>
-                    </form>
-                </div>
-                <div id="placeHolder" class="placeHolder entry">
-                    <img src="imgs/pokemonName.webp" class="PokeNameImg" alt="Pokemon's Offical Text Logo">
-                    <img src="imgs/Poké_Ball_Origin.webp" class="PokeballImg" alt='Image of a PokeBall'>
-                    <img src="imgs/pokemonName.webp" class="PokeNameImgInvert" alt="Pokemon's Offical Text Logo">
-                </div>
                 <div class="teamOf6" id="teamOf6">
-
+                    <div id="placeHolder" class="placeHolder entry">
+                        <button class="addButton" type="submit" name="submit" value="submit">+</button>
+                    </div>
+                    <div id="tip" class="tip entry">
+                        <span><p>Start by pressing the "+" button to add your first Pokemon!</p></span>
+                        <span class="pointleft"><p>&#8678;</p></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,5 +91,6 @@
     <script src="js/statsBuilder.js"></script>
     <script src="js/getForms.js"></script>
     <script src="js/playerIcon.js"></script>
+    <script src="js/newGen.js"></script>
 </body>
 </html>
