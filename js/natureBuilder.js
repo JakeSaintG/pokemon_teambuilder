@@ -18,6 +18,7 @@ natureBuilder = (naturesList) => {
     const nature = document.createElement('select')
     nature.setAttribute('onchange', "natureChanger(this)");
     const defaultNature = document.createElement('option');
+    defaultNature.setAttribute(`role`, `option`);
     defaultNature.textContent = 'Natures'
     defaultNature.style="display:none";
     nature.appendChild(defaultNature);
@@ -25,6 +26,7 @@ natureBuilder = (naturesList) => {
     for (i = 0; i < naturesList.length; i++) {
         const option = document.createElement('option');
         option.textContent = naturesList[i].name;
+        option.setAttribute(`role`, `option`);
         option.className = naturesList[i].name;
         nature.appendChild(option);
     }; 

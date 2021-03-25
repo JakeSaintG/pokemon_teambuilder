@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav role =”navigation” aria-label =”pagenav”>
+    <nav role="navigation" aria-label =”pagenav”>
         <ul class="nav">
             <li class="pokeDex">
                 <a href="#">Pok&eacute;Dex</a>
@@ -23,8 +23,8 @@
         </ul>
     </nav>
     <!-- <header></header> -->
-    <main>
-        <img src="imgs/Pokemon_logo.webp" alt="Logo for Pokemon Team Builder" class="mainLogo" height="300px">
+    <main role="main">
+        <img src="imgs/Pokemon_logo.webp" alt="Logo for Pokemon Team Builder" role="img" class="mainLogo" height="300px">
         <div id="enterTeam" class="enterTeam">
             <div class="team" id="team">
                 <div class="teamOptions" id="teamOptions">
@@ -38,40 +38,40 @@
                         <h2>Name your team!</h2>
                         <form id="teamName">
                             <input type="text" class="teamNameInput" id="teamNameInput" value="Team Name" onfocus="this.value=''" maxlength="20">
-                            <button type="submit" name="submit" value="submit">Save</button>
+                            <button type="submit" name="submit" role="button" value="submit">Save</button>
                         </form>
                     </div>
                     <div id="teamColorDiv">
                         <h2>Team Color:</h2>
-                        <ul class="teamColor" id="teamColor">
-                            <li id="versionColor" title="Background for Pokemon Red Version" class="red"></li>
-                            <li id="versionColor" title="Background for Pokemon Blue Version" class="blue"></li>
-                            <li id="versionColor" title="Background for Pokemon Green Version" class="green"></li>
-                            <li id="versionColor" title="Background for Pokemon Yellow Version/Let's Go Pikachu" class="yellow"></li>
-                            <li id="versionColor" title="Background for Pokemon Gold Version" class="gold"></li>
-                            <li id="versionColor" title="Background for Pokemon Silver Version" class="silver"></li>
-                            <li id="versionColor" title="Background for Pokemon Crystal Version" class="crystal"></li>
-                            <li id="versionColor" title="Background for Pokemon Ruby Version" class="ruby"></li>
-                            <li id="versionColor" title="Background for Pokemon Sapphire Version" class="sapphire"></li>
-                            <li id="versionColor" title="Background for Pokemon Emerald Version" class="emerald"></li>
-                            <li id="versionColor" title="Background for Pokemon Diamond Version" class="diamond"></li>
-                            <li id="versionColor" title="Background for Pokemon Pearl Version" class="pearl"></li>
-                            <li id="versionColor" title="Background for Pokemon Platinum Version" class="platinum"></li>
-                            <li id="versionColor" title="Background for Pokemon Black Version" class="black"></li>
-                            <li id="versionColor" title="Background for Pokemon White Version" class="white"></li>
-                            <li id="versionColor" title="Background for Pokemon X Version" class="x-version"></li>
-                            <li id="versionColor" title="Background for Pokemon Y Version" class="y-version"></li>
-                            <li id="versionColor" title="Background for Pokemon Sun" class="sun"></li>
-                            <li id="versionColor" title="Background for Pokemon Moon" class="moon"></li>
-                            <li id="versionColor" title="Background for Pokemon Sword" class="sword"></li>
-                            <li id="versionColor" title="Background for Pokemon Shield" class="shield"></li>
-                            <li id="versionColor" title="Background for Pokemon Let's Go Eevee" class="letsGoE"></li>
+                        <ul class="teamColor" id="teamColor" role="list">
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Red Version" class="red"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Blue Version" class="blue"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Green Version" class="green"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Yellow Version/Let's Go Pikachu" class="yellow"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Gold Version" class="gold"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Silver Version" class="silver"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Crystal Version" class="crystal"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Ruby Version" class="ruby"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Sapphire Version" class="sapphire"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Emerald Version" class="emerald"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Diamond Version" class="diamond"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Pearl Version" class="pearl"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Platinum Version" class="platinum"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Black Version" class="black"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon White Version" class="white"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon X Version" class="x-version"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Y Version" class="y-version"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Sun" class="sun"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Moon" class="moon"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Sword" class="sword"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Shield" class="shield"></li>
+                            <li id="versionColor" role="listitem" title="Background for Pokemon Let's Go Eevee" class="letsGoE"></li>
                         </ul>
                     </div>
                 </div>
                 <div class="teamOf6" id="teamOf6">
                     <div id="placeHolder" class="placeHolder entry">
-                        <button class="addButton" type="submit" name="submit" value="submit">+</button>
+                        <button class="addButton" role="button" type="submit" name="submit" value="submit">+</button>
                     </div>
                     <div id="tip" class="tip entry">
                         <span><p>Start by pressing the "+" button to add your first Pokemon!</p></span>
@@ -85,12 +85,12 @@
     <footer>
         
     </footer>
-    <script src="js/builder.js"></script>
+    <script src="js/inputAndRequest.js"></script>
     <script src="js/natureBuilder.js"></script>
     <script src="js/missingNo.js"></script>
     <script src="js/statsBuilder.js"></script>
     <script src="js/getForms.js"></script>
     <script src="js/playerIcon.js"></script>
-    <script src="js/newGen.js"></script>
+    <script src="js/generatePokemon.js"></script>
 </body>
 </html>

@@ -9,14 +9,14 @@ function generateMissingNo(reason){
             <h2 class='entryName'>MissingNo</h2>
             <button>x</button>
         </div>
-        <img src="imgs/MissingNo.webp" class="PokeImg">
+        <img src="imgs/MissingNo.webp" role="img" alt="MissingNo Img" class="PokeImg">
         <div class="types">
             <p class="typeIcon" style="background-color:black;">Ň̷̨ȕ̷͕l̷͇̑l̸̠̏</p>
         </div>
         <select id="missingAbility-${uniqueID}" onchange="missing(${uniqueID});">
-        <option value="1" style="display: none;">Abilties</option>
-        <option value="2">Item Duplication</option>
-        <option value="3">Crash Game</option>
+        <option role="option" value="1" style="display: none;">Abilties</option>
+        <option role="option" value="2">Item Duplication</option>
+        <option role="option" value="3">Crash Game</option>
     </select>
         <select>
             <option style="display: none;">Forms</option>
@@ -26,9 +26,7 @@ function generateMissingNo(reason){
             ${reason}
         </div>
     `
-
     generateHere.parentElement.replaceChild(noEntry, generateHere)
-
     //This turns the form off if the user already as a team of 6 pokemon.
     uniqueID++;
 };

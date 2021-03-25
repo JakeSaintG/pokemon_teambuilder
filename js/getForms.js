@@ -20,6 +20,7 @@ function findAllForms(pokemon) {
     const formSelect = document.createElement('select');
     formSelect.setAttribute('onchange', "changeForm(this)");
     const defaultForm = document.createElement('option');
+    defaultForm.setAttribute(`role`, `option`);
     defaultForm.textContent = 'Forms'
     formSelect.className = `formSelect`
     defaultForm.style="display:none";
@@ -30,10 +31,12 @@ function findAllForms(pokemon) {
         let option = document.createElement('option');
         option.textContent = 'pidgeot'
         option.className = "pidgeot";
+        option.setAttribute(`role`, `option`);
         formSelect.appendChild(option);
         option = document.createElement('option');
         option.textContent = 'Mega Evolve'
         option.className = "pidgeot-mega";
+        option.setAttribute(`role`, `option`);
         formSelect.appendChild(option);
         return formSelect
     }
@@ -41,6 +44,7 @@ function findAllForms(pokemon) {
     if (pokemon === 'mew') { //Prevents Mewtwo from showing up as a Mew form. (edge case)
         const option = document.createElement('option');
         option.textContent = 'Mew'
+        option.setAttribute(`role`, `option`);
         formSelect.appendChild(option);
         return formSelect
     }
@@ -54,6 +58,7 @@ function findAllForms(pokemon) {
 
     for (i = 0; i < filteredForms.length; i++) {
         const option = document.createElement('option');
+        option.setAttribute(`role`, `option`);
         option.className = filteredForms[i].name;
         if (filteredForms[i].name.includes('porygon')) { //Prevents Porygon evolutions (Porygon2 and Porygon-Z) from showing up as forms. (edge case)
             option.textContent = filteredForms[i].name;

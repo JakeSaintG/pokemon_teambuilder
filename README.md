@@ -6,7 +6,7 @@ This application is meant for you to help create a visualize a team of Pokemon. 
 - Selectable player icons featuring old heros in the Pokemon games!
 - Name your team!
 -- Don't like that name? Rename it!
-- Pick a cool background!
+- Pick a cool background! --All themes have been checked with Spectrum to ensure application visibility with multiple variations of color-blindness.
 - Input your dream Pokemon into the field and watch them appear in your team! --Spelling matters. Capitalization and punctuations don't.
 - Your Pokemon's name, image, and stats are visible immediately.
 - You can change the form of your Pokemon! --Galarian? Mega? Unown X? If the Pokemon has it, it's there.

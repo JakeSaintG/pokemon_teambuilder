@@ -5,7 +5,7 @@ const teamOf6 = document.getElementById('teamOf6');
 const teamName = document.getElementById('teamName');
 const placeHolder = document.getElementById('placeHolder')
 
-updatePokemonResultNew = (pokemon) => {
+updatePokemonResult = (pokemon) => {
     const entry = document.createElement('div'); //The whole Pokemon element.
     const h2 = document.createElement('h2'); //Pokemon name
     const img = document.createElement('img'); //The pokemon's image icon.
@@ -77,6 +77,7 @@ updatePokemonResultNew = (pokemon) => {
     title.appendChild(h2);
     
     remove.textContent = `x`;
+    remove.setAttribute(`role`, `button`)
     remove.title = "Remove from team"
     title.appendChild(remove)
 
@@ -209,7 +210,7 @@ enterTeam.addEventListener('click', (e) => {
                 replacePlaceholder = document.createElement('div')
                 replacePlaceholder.className = "placeHolder entry"
                 replacePlaceholder.id = "placeHolder"
-                replacePlaceholder.innerHTML = `<button class="addButton" type="submit" name="submit" value="submit">+</button>`
+                replacePlaceholder.innerHTML = `<button class="addButton" role="button" type="submit" name="submit" value="submit">+</button>`
 
                 teamOf6.appendChild(replacePlaceholder);
             }
@@ -228,8 +229,8 @@ enterTeam.addEventListener('click', (e) => {
                     <p>Enter the name of a Pok&eacute;mon as it appears in the Pok&eacute;Dex.</p>
                     <p>Spelling matters but punctuation does not!</p>
                     <form id="enterPokemon">
-                        <input type="text" class="description" id="description" value="Pok&eacute;mon name" onfocus="this.value=''">
-                        <button type="submit" name="submit" id="descriptionAdd" value="submit">add</button>
+                        <input type="text" class="description" role="searchbox" id="description" value="Pok&eacute;mon name" onfocus="this.value=''">
+                        <button type="submit" role="button" name="submit" id="descriptionAdd" value="submit">add</button>
                     </form>`
                 entry.appendChild(tempDiv)
                 teamOf6.insertBefore(entry, e.target.parentElement)

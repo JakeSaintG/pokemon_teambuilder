@@ -95,7 +95,7 @@ function filterEdgeCases(name) {
         fetch(url)
             .then(r=>r.json())
             .then(pokemon => {
-                updatePokemonResultNew(pokemon)
+                updatePokemonResult(pokemon)
             })
             .catch((error) => {
                 let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`

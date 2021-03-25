@@ -18,6 +18,7 @@ iconsBuilder = (playerIcons) => {
         const option = document.createElement('option');
         option.textContent = playerIcons[i].name;
         option.className = playerIcons[i].url;
+        option.setAttribute(`role`, `option`);
         playerIconSelect.appendChild(option);
     }; 
 }
@@ -29,18 +30,20 @@ iconsBuilder = (playerIcons) => {
 
 placePlayerImg = (sel) => {
     let pickedPlayer = sel.options[sel.selectedIndex].className
-    const playerIconDiv = document.createElement('div')
-    const playerIcon = document.createElement('img')
+    const playerIconDiv = document.createElement('div');
+    const playerIcon = document.createElement('img');
     playerIcon.src = pickedPlayer
-    playerIcon.alt = `Chosen Player Icon`
+    playerIcon.alt = `${sel.options[sel.selectedIndex].textContent}'s Player Icon`
+    playerIcon.setAttribute(`role`, `img`);
     playerIcon.className = 'playerIcon'
-    playerIconDiv.appendChild(playerIcon)
-    const reload = document.createElement('button')    
+    playerIconDiv.appendChild(playerIcon);
+    const reload = document.createElement('button');
+    reload.setAttribute(`role`, `button`);  
     reload.textContent = `↺`;
     reload.className = "reload"
-    playerIconDiv.appendChild(reload)
-    playerIconSelect.parentElement.appendChild(playerIconDiv)
-    playerIconSelect.remove()
+    playerIconDiv.appendChild(reload);
+    playerIconSelect.parentElement.appendChild(playerIconDiv);
+    playerIconSelect.remove();
 }
 /*
 + The function is run 'onchange' of the playerIconSelect.
@@ -55,8 +58,9 @@ replacePlayerSelect = () => {
     const defaultPLayer = document.createElement('option');
     defaultPLayer.textContent = 'Player Select'
     defaultPLayer.style="display:none";
+    defaultPLayer.setAttribute(`role`, `option`);
     playerList.appendChild(defaultPLayer);
-    chooseCharDiv.appendChild(playerList)
+    chooseCharDiv.appendChild(playerList);
 }
 /*
 + The event listers in builder.js look for the '↺'-action to fired and then runs this function.

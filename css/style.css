@@ -35,7 +35,7 @@ nav > ul > li {
 }
 
 .pokeDex {
-    background-color: rgb(143, 194, 149);
+    background-color: rgb(224, 93, 93);
     border-top-left-radius: 11px;
     border-top-right-radius: 11px;
     border: 2px solid #000000;
@@ -218,7 +218,7 @@ button:hover {
     background-color: rgba(255, 255, 255, .15);  
     backdrop-filter: blur(5px);
     border:  8px solid black;
-    height: 527px;
+    height: 433px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -229,7 +229,10 @@ button:hover {
     border:  8px solid black;
     background-color: rgba(255, 255, 255, .15);  
     backdrop-filter: blur(5px);
-    font-weight: bold;
+    font-weight: 1000;
+    height: 433px;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
 .description {
@@ -240,7 +243,7 @@ button:hover {
 .tip {
     background-color: black;
     color: white;
-    height: 527px;
+    height: 433px;
     width: 100%;
     margin: 0 auto;
     display: grid;
@@ -510,6 +513,12 @@ Media Queries
         width: 150px;
         height: 150px;
     }
+
+    .placeHolder,
+    .tip,
+    .tempEntry {
+        height: 513px;
+    }
     
 
 }
@@ -525,6 +534,12 @@ Media Queries
 
     .typeIcon {
         font-size: 15px;
+    }
+
+    .placeHolder,
+    .tip,
+    .tempEntry {
+        height: 527px;
     }
 }
 
