@@ -90,7 +90,10 @@ function filterEdgeCases(name) {
     //Sinistea and Polteageist don't have images in PokeAPI for their "Antique" forms and picking this form generates a MissingNo.
     //Since the change in form is on the underside of the Pokemon and is not visible in the "Phony" form, I just set the image for 
     //"Antique" and "Phony" as the same image.
-
+    if (name.includes(`pichu-spiky-eared`)) {
+        pokeImageUrl = "imgs/spriteFix/pichu.json";
+    };
+    
     requestByName = (url) => {
         fetch(url)
             .then(r=>r.json())

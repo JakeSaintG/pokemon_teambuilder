@@ -1,11 +1,10 @@
 # Unofficial Pokemon Teambuilder!
 ### A tool for building your dream team!
-This application is meant for you to help create a visualize a team of Pokemon. You can use it for fun or use it to help pick your dream team for playing one of the Pokemon games!
+This application is meant to help create and visualize a team of six Pokemon. You can use it for fun or use it to help pick your dream team for playing one of the Pokemon games!
  
 #### Features
 - Selectable player icons featuring old heros in the Pokemon games!
-- Name your team!
--- Don't like that name? Rename it!
+- Name your team! -- Don't like that name? Rename it!
 - Pick a cool background! --All themes have been checked with Spectrum to ensure application visibility with multiple variations of color-blindness.
 - Input your dream Pokemon into the field and watch them appear in your team! --Spelling matters. Capitalization and punctuations don't.
 - Your Pokemon's name, image, and stats are visible immediately.
@@ -30,13 +29,13 @@ Enter "Meowth" as a Pokemon choice.
 - Meowth has an Alolan form and a Galarian form. These forms affect stats and type.
 
 Enter "Mew" as a Pokemon
-- Mew's stats are 100 across the board. Mew is a great demonstration for stat changes based on a selected Pokemon Nature.
+- Mew's base-stats are 100 across the board. Mew is a great demonstration for stat changes based on a selected Pokemon Nature.
  
 #### Special Thanks
 - The PokeAPI! This project would not be possible without their incredible public API
 -- https://pokeapi.co/
 - Code Louisville
-- Advice/QA: Michael Wrock, Izzak Prats, Ashley Needy, Jacob Kastensidt, Bradley Cypert, and Drew Walker.
+- Advice/QA: Michael Wrock, Izzak Prats, Ashley Needy, Jacob Kastensmidt, Bradley Cypert, and Drew Walker.
  
 ### Side notes
 - Pokemon is a trademark of Nintendo, Game Freak, and Creatures Inc.

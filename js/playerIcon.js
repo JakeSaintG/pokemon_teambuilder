@@ -24,8 +24,8 @@ iconsBuilder = (playerIcons) => {
 }
 
 /*
-+ Gets all of the of the names from the playerIcons object and places them in a select element for the user to pick from.
-+ The URL is assigned to the class name to be grabbed later.
+Gets all of the of the names from the playerIcons object and places them in a select element for the user to pick from.
+The URL is assigned to the class name to be grabbed later.
 */
 
 placePlayerImg = (sel) => {
@@ -46,9 +46,9 @@ placePlayerImg = (sel) => {
     playerIconSelect.remove();
 }
 /*
-+ The function is run 'onchange' of the playerIconSelect.
-+ It takes class name (url) and assigns it to the source of an img that is appended.
-+ A reload button is added and then the playerIconSelect element is removed.
+The function is run 'onchange' of the playerIconSelect.
+It takes class name (url) and assigns it to the source of an img that is appended.
+A reload button is added and then the playerIconSelect element is removed.
 */
 
 replacePlayerSelect = () => {
@@ -63,6 +63,6 @@ replacePlayerSelect = () => {
     chooseCharDiv.appendChild(playerList);
 }
 /*
-+ The event listers in builder.js look for the '↺'-action to fired and then runs this function.
-+ This removes the chosen player image and replaces/rebuilds the select element to pick a different icon.
+The event listers in builder.js look for the '↺'-action to fired and then runs this function.
+This removes the chosen player image and replaces/rebuilds the select element to pick a different icon.
 */

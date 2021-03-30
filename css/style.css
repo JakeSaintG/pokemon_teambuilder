@@ -288,11 +288,10 @@ button:hover {
     text-transform: capitalize;
 }
 
-.dex {
-    height: 25px;
-    width: 25px;
-    margin: 4px;
+.entryName {
+    font-size: 1.25em;
 }
+
 
 .title > button,
 .reload {
@@ -320,8 +319,8 @@ button:hover {
 }
 
 .PokeImg {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     margin: 0 auto;
 }
 
@@ -443,6 +442,10 @@ Media Queries
         text-align: center;
     }
 
+    .entryName {
+        font-size: 1.5em;
+    }
+
     h2 {
         margin-bottom: 20px;
     }
@@ -488,7 +491,7 @@ Media Queries
 
 } /* for better display on iPads/Tablets  */
 
-@media (min-width: 1155px) {
+@media (min-width: 1195px) {
 
     .mainLogo {
         height: 150px;
@@ -509,9 +512,13 @@ Media Queries
         line-height: 25px;
     }
 
+    .entryName {
+        font-size: 1.25em;
+    }
+
     .PokeImg {
-        width: 150px;
-        height: 150px;
+        width: 125px;
+        height: 125px;
     }
 
     .placeHolder,
@@ -523,7 +530,7 @@ Media Queries
 
 }
 
-@media (min-width: 1320px) {
+@media (min-width: 1333px) {
     h2 {
         font-size: 1.5em;
     }
@@ -531,6 +538,16 @@ Media Queries
     .userTeamName > span {
         width: 500px;
     }
+
+    .entryName {
+        font-size: 1.5em;
+    }
+
+    .PokeImg {
+        width: 150px;
+        height: 150px;
+    }
+
 
     .typeIcon {
         font-size: 15px;

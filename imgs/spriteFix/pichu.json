@@ -1,0 +1,6 @@
+{
+    "sprites": {
+        "front_default": "imgs/spriteFix/PichuSpike.png",
+        "front_shiny": "imgs/spriteFix/pichuSpikeShine.png"
+      }
+}
