@@ -115,7 +115,7 @@ function filterEdgeCases(name) {
             const xhr = new XMLHttpRequest();
             xhr.onreadystatechange = () => {
                 if (xhr.status === 404 && xhr.readyState === 4) {
-                    console.log('error')
+                    console.error('Error:', error);
                 }
                 if(xhr.readyState === 4 && xhr.status === 200) {
                     const pokemon = JSON.parse(xhr.responseText)
