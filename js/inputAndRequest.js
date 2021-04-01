@@ -35,7 +35,7 @@ enterTeam.addEventListener('click', (e) => {
             };
             if (name.includes(`ho`) && name.includes(`oh`)) {
                 name = `ho-oh`
-            } 
+            }; 
             //The above if-chain fixes some of the Pokemon that have punctuation in their name and lets the user input them with or without punctuation.
 
             filterEdgeCases(name);
@@ -56,7 +56,6 @@ function filterEdgeCases(name) {
     });
 
     if (filteredImgForms[0] === undefined) {
-        // input.value = '';
         let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`
         generateMissingNo(reason);
         //checks to see if forms has what the user is looking for. If not, generates a 404-MissingNo/Error.
@@ -90,9 +89,11 @@ function filterEdgeCases(name) {
     //Sinistea and Polteageist don't have images in PokeAPI for their "Antique" forms and picking this form generates a MissingNo.
     //Since the change in form is on the underside of the Pokemon and is not visible in the "Phony" form, I just set the image for 
     //"Antique" and "Phony" as the same image.
+
     if (name.includes(`pichu-spiky-eared`)) {
         pokeImageUrl = "imgs/spriteFix/pichu.json";
     };
+    //This Pichu form exists in the API but does not have an image so I added one myself.
     
     requestByName = (url) => {
         fetch(url)

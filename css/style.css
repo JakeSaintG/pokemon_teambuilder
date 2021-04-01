@@ -82,9 +82,8 @@ h1 {
     column-gap: 4%;
 }
 
-.enterTeam {
-    background: linear-gradient(180deg, rgba(160,160,160,1) 20%, rgba(92,92,92,1) 80%);
-} /* separate from ID to set default background color and allow for JS changes */
+.enterTeam {background: linear-gradient(180deg, rgba(160,160,160,1) 20%, rgba(92,92,92,1) 80%)} 
+/* separate from ID to set default background color and allow for JS changes */
 
 #enterTeam {
     border: 5px solid #000000;
@@ -114,9 +113,7 @@ h1 {
     grid-area: char;
 }
 
-#teamColorDiv {
-    grid-area: color;
-}
+#teamColorDiv {grid-area: color}
 
 .teamOptions > div > h2,
 .team > div > h2 {
@@ -128,9 +125,7 @@ h1 {
     width: 100px;
 }
 
-h2 {
-    font-size: 1.5em;
-}
+h2 {font-size: 1.5em}
 
 #teamName,
 #enterMon {
@@ -262,9 +257,7 @@ button:hover {
     margin: auto;
 }
 
-.pointleft {
-    font-size: 50px;
-}
+.pointleft {font-size: 50px}
 
 .entry {
     border-radius: 5px;
@@ -288,9 +281,7 @@ button:hover {
     text-transform: capitalize;
 }
 
-.entryName {
-    font-size: 1.25em;
-}
+.entryName {font-size: 1.25em}
 
 
 .title > button,
@@ -304,7 +295,6 @@ button:hover {
 
 .addButton {
     margin: auto;
-    display: block;
     border:  8px solid black;
     padding: 0;
     border-radius: 5px;
@@ -312,11 +302,10 @@ button:hover {
     width: 75px;
     height: 75px;
     color: black;
+    line-height: 40px;
 }
 
-.useLater {
-    display: none;
-}
+.useLater {display: none}
 
 .PokeImg {
     width: 130px;
@@ -385,24 +374,12 @@ option {
     width: 100%;
 }
 
-.hp {
-    background-color: #fc3131;
-}
-.attack {
-    background-color: #F08030;
-}
-.defense {
-    background-color: #c2a42e;
-}
-.special-attack {
-    background-color: #6890F0;
-}
-.special-defense {
-    background-color: #78C850;
-}
-.speed {
-    background-color: #f365b3;
-}
+.hp {background-color: #fc3131}
+.attack {background-color: #F08030}
+.defense {background-color: #c2a42e}
+.special-attack {background-color: #6890F0}
+.special-defense {background-color: #78C850}
+.speed {background-color: #f365b3}
 
 .statItem {
     margin-top: 5px;
@@ -412,22 +389,18 @@ option {
     line-height: 20px;
 }
 
+.statBar > .statItem {border: 2px solid #000000;}
+
 /* ================================= 
 Media Queries
 ==================================== */
 
 @media (min-width: 769px) {
-    .mainLogo {
-        height: 125px;
-    }
+    .mainLogo {height: 125px}
     
-    h1 {
-        margin: 25px auto;
-    }
+    h1 {margin: 25px auto}
 
-    .teamColor {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
+    .teamColor {grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr}
 
     .useLater {
         display: inline;
@@ -438,17 +411,11 @@ Media Queries
         text-align: center;
     }
 
-    .title > h2 {
-        text-align: center;
-    }
+    .title > h2 {text-align: center}
 
-    .entryName {
-        font-size: 1.5em;
-    }
+    .entryName {font-size: 1.5em}
 
-    h2 {
-        margin-bottom: 20px;
-    }
+    h2 {margin-bottom: 20px}
 
     .teamOptions {
         display: grid;
@@ -470,13 +437,9 @@ Media Queries
         grid-area: char;
     }
 
-    #teamCharDiv > h2 {
-        margin-bottom: 0;
-    }
+    #teamCharDiv > h2 {margin-bottom: 0}
 
-    #teamCharDiv > select {
-        margin-top: 20px;
-    }
+    #teamCharDiv > select {margin-top: 20px}
     
     #teamColorDiv {
         width: auto;
@@ -493,9 +456,7 @@ Media Queries
 
 @media (min-width: 1195px) {
 
-    .mainLogo {
-        height: 150px;
-    }
+    .mainLogo {height: 150px}
 
     .teamOf6 {
         display: grid;
@@ -503,18 +464,14 @@ Media Queries
         column-gap: 2%;
     }
 
-    .userTeamName > span {
-        width: 400px;
-    }
+    .userTeamName > span {width: 400px}
 
     .statItem {
         height: 25px;
         line-height: 25px;
     }
 
-    .entryName {
-        font-size: 1.25em;
-    }
+    .entryName {font-size: 1.25em}
 
     .PokeImg {
         width: 125px;
@@ -531,27 +488,18 @@ Media Queries
 }
 
 @media (min-width: 1333px) {
-    h2 {
-        font-size: 1.5em;
-    }
+    h2 {font-size: 1.5em}
 
-    .userTeamName > span {
-        width: 500px;
-    }
+    .userTeamName > span {width: 500px}
 
-    .entryName {
-        font-size: 1.5em;
-    }
+    .entryName {font-size: 1.5em}
 
     .PokeImg {
         width: 150px;
         height: 150px;
     }
 
-
-    .typeIcon {
-        font-size: 15px;
-    }
+    .typeIcon {font-size: 15px;}
 
     .placeHolder,
     .tip,

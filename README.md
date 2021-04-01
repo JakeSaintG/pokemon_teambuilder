@@ -12,7 +12,7 @@ This application is meant to help create and visualize a team of six Pokemon. Yo
 - Natures affect stats! Pick a nature and see what it does.
  
 #### Code Louisville Project Requirements
-- Reads and parses an external file and displays data.
+- Reads and parses from an external file and displays data.
 - Retrieves data from PokeAPI via fetch and AJAX.
 - Multiple Arrays and Objects that are populated with multiple values, retrieved, and use or displayed.
 - Visualized data in a graph form for Pokemon Stats.

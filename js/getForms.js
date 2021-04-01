@@ -1,4 +1,4 @@
-//The way that the API handled forms of pokemon is kind of tricky and the below functions prevent the user from having to search for each form
+//The way that the API handled forms of pokemon is kind of tricky and the below functions prevent the user from having to search for each form.
 //with the syntax that the API wants.
 
 let forms = []
@@ -14,7 +14,7 @@ window.onload = async () => {
 };
 //Calls to store the name of every pokemon in the forms array
 //I chose to do it this way to avoid dozens of API requests for every form a pokemon may or may not have.
-//This mad it easy for every added pokemon to check for forms against an established list with no more API requests until the form is chosen.
+//This made it easy for every added pokemon to check for forms against an established list with no more API requests until the form is chosen.
 
 function findAllForms(pokemon) {
     const formSelect = document.createElement('select');
