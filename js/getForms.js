@@ -6,9 +6,8 @@ let forms = []
 const pullAllMonsList = fetch(`https://pokeapi.co/api/v2/pokemon-form?limit=1283`)
     .then(r=>r.json())
     .then(pokemonList => {
-        forms = pokemonList.results
-        return(forms)
-});
+        forms = pokemonList.results;
+    });
 window.onload = async () => {
     let placeholderData = await pullAllMonsList;
 };
@@ -78,21 +77,21 @@ function findAllForms(pokemon) {
         } else if (filteredForms[i].name.includes(`gmax`)) { //Changes option to just list "Gigantamax"
             option.textContent = 'Gigantamax';
         } else if (filteredForms[i].name.includes(`-`)) { //Removes hyphens from anything that is not covered above edge cases
-            let baz = filteredForms[i].name.split('-').join(' ');
-            option.textContent = baz;
+            let noHyphen = filteredForms[i].name.split('-').join(' ');
+            option.textContent = noHyphen;
         } else {
             option.textContent = filteredForms[i].name;
         };
         formSelect.appendChild(option);
     }; 
     //This loops through the 'filteredForms' array and adds an option for each form.
-    return formSelect
+    return formSelect;
 }
 
 function changeForm(sel) {
-    let foo = sel.options[sel.selectedIndex].className
+    let foo = sel.options[sel.selectedIndex].className;
     // Used className to avoid issues with style changes to list option.
-    generateHere = sel.parentElement
-    filterEdgeCases(foo)
+    generateHere = sel.parentElement;
+    filterEdgeCases(foo);
 };
 //This takes the users choice and modifies it to be searchable in the API.

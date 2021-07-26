@@ -41,5 +41,4 @@ function missing(id) {
     } else {
         return
     }
-};
-//lol. I lost my Pokemon Blue version save data because I misused the power of a MissingNo.
+}; //lol. I lost my Pokemon Blue version save data because I misused the power of a MissingNo.
