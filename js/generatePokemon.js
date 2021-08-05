@@ -149,75 +149,21 @@ updatePokemonResult = (pokemon) => {
     return entry
 };
 
-// ===================================================================================================EVENT LISTENERS===================
-
-document.getElementById("teamColor").addEventListener("click",function(e) {
-    //The eventual goal is to have multiple teams on the page and the .parentElement chain keeps the color change in the desired team.
-    if(e.target.nodeName === "LI") {
-        if (e.target.parentElement.parentElement.parentElement.parentElement.parentElement.className == "black") {
-            for (i = 0; i < e.target.parentElement.childElementCount; i++) {
-                e.target.parentElement.children[i].style.borderColor = "black"
-            }
-            e.target.parentElement.parentElement.parentElement.parentElement.parentElement.style.color = 'black';
-            e.target.parentElement.parentElement.parentElement.parentElement.parentElement.style.borderColor = 'black';
-        }
-        const teamColor = e.target.className;
-        e.target.parentElement.parentElement.parentElement.parentElement.parentElement.className = teamColor;
-        if (teamColor == "black") {
-            for (i = 0; i < e.target.parentElement.childElementCount; i++) {
-                e.target.parentElement.children[i].style.borderColor = "white"
-            }
-            e.target.parentElement.parentElement.parentElement.parentElement.parentElement.style.color = 'white';
-            teamOf6.style.color = "black";
-            e.target.parentElement.parentElement.parentElement.parentElement.parentElement.style.borderColor = 'grey';
-        }
-    }
-});
-
-const enterTeam = document.getElementById('enterTeam');
-enterTeam.addEventListener('click', (e) => {
+document.getElementById('teamOf6').addEventListener('click', (e) => {
     e.preventDefault();
     if(e.target.tagName === 'BUTTON') {
         e.preventDefault();
         const button = e.target;
         const action = button.textContent;
-        if(action === 'Save') {
-            const input = teamName.firstElementChild
-            const div = document.createElement('div')
-            const span = document.createElement('span')
-            const editButton = document.createElement('button')
-            editButton.textContent = 'Edit';
-            span.textContent = input.value;
-            div.className = "userTeamName"
-            div.id = "userTeamName"
-            div.appendChild(span)
-            div.appendChild(editButton)
-            teamName.parentNode.appendChild(div)
-            teamName.parentNode.firstElementChild.style.display = 'none';
-            teamName.style.display = 'none';
-            //Adds a Span with the user-input team name as well as an "edit" button.
-            //Removes the input for entering a team name.
-        } else if (action === 'Edit') {
-            const removeOldName = document.getElementById("userTeamName")
-            removeOldName.remove()
-            teamName.firstElementChild.removeAttribute("onfocus");
-            teamName.parentNode.firstElementChild.textContent = "Rename your team!"
-            teamName.parentNode.firstElementChild.style.display = 'block';
-            teamName.style.display = 'inline-block';
-            //Removes the team-name span and replaces the entry field. Adds the previous entry to the field.
-        } else if (action === 'x') {
+        if (action === 'x') {
             if (teamOf6.childElementCount === 6 && document.getElementById('placeHolder') === null) {
                 replacePlaceholder = document.createElement('div')
                 replacePlaceholder.className = "placeHolder entry"
                 replacePlaceholder.id = "placeHolder"
                 replacePlaceholder.innerHTML = `<button class="addButton" role="button" type="submit" name="submit" value="submit">+</button>`
-
                 teamOf6.appendChild(replacePlaceholder);
             }
             e.target.parentElement.parentElement.remove()
-        }else if (action === '↺') {
-            e.target.parentElement.remove()
-            replacePlayerSelect()
         } else if (action === '+') {
             if (teamOf6.childElementCount < 7) {
                 const entry = document.createElement("div")

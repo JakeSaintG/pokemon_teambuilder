@@ -14,10 +14,10 @@ function generateMissingNo(reason){
             <p class="typeIcon" style="background-color:black;">Ň̷̨ȕ̷͕l̷͇̑l̸̠̏</p>
         </div>
         <select id="missingAbility-${uniqueID}" onchange="missing(${uniqueID});">
-        <option role="option" value="1" style="display: none;">Abilties</option>
-        <option role="option" value="2">Item Duplication</option>
-        <option role="option" value="3">Crash Game</option>
-    </select>
+            <option role="option" value="1" style="display: none;">Abilties</option>
+            <option role="option" value="2">Item Duplication</option>
+            <option role="option" value="3">Crash Game</option>
+        </select>
         <select>
             <option style="display: none;">Forms</option>
             <option>Only One</option>

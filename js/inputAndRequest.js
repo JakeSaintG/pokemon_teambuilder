@@ -1,14 +1,14 @@
-let generateHere
+let generateHere;
 
-enterTeam.addEventListener('click', (e) => {
+document.querySelector(".teamOf6").addEventListener('click', (e) => {
     e.preventDefault();
     if(e.target.tagName === 'BUTTON') {
         e.preventDefault();
         const button = e.target;
         const action = button.textContent;
         if (action === 'add') {
-            const enteredPokemon = e.target.parentElement.firstElementChild.value
-            generateHere = e.target.parentElement.parentElement.parentElement
+            const enteredPokemon = e.target.parentElement.firstElementChild.value;
+            generateHere = e.target.parentElement.parentElement.parentElement;
 
             if (enteredPokemon === '' || enteredPokemon === 'Pokémon name') {
                 let reason = `<h5>No P̷o̶k̵e̷m̸o̵n̴ Listed!</h5> <p>Please supply a Pok&eacute;mon</p>`;
@@ -93,47 +93,7 @@ function filterEdgeCases(name) {
         pokeImageUrl = "imgs/spriteFix/pichu.json";
     };
     //This Pichu form exists in the API but does not have an image so I had to add one to avoid breaking.
-    
-    requestByName = (url) => {
-        fetch(url)
-            .then(r=>r.json())
-            .then(pokemon => {
-                updatePokemonResult(pokemon)
-            })
-            .catch((error) => {
-                let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`
-                generateMissingNo(reason);
-                console.error('Error:', error);
-                return
-            })
-    }
 
-    function requestbyImg(pokeImageUrl) {
-        return new Promise((resolve) => {
-            //I was having an issue where the rest of the Pokemon element would generate before the loadedImg object was populated.
-            //This would lead to some goofy image loading so I went with the below promise to hopefully let the object be populated before the rest of the pokemon loads.
-            const xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = () => {
-                if (xhr.status === 404 && xhr.readyState === 4) {
-                    console.error('Error:', error);
-                }
-                if(xhr.readyState === 4 && xhr.status === 200) {
-                    const pokemon = JSON.parse(xhr.responseText)
-                    const shinyChance = 8192;
-                    if (Math.floor(Math.random() * shinyChance) + 1 === 1) {
-                        resolve(loadedImg[0] = pokemon.sprites.front_shiny)
-                    } else {
-                        resolve(loadedImg[0] = pokemon.sprites.front_default)
-                    } 
-                    //This "easter egg" has a 1-in-8192 chance of generating the Pokemon's image as their shiny form. 
-                    //The odds are based on the chance of a wild Pokemon encounter being shiny in the current main series games.
-                    //To test or change the odds, alter the value set in "shinyChance". For shinies all the time, set it to 1.
-                };
-            };
-            xhr.open('GET', `${pokeImageUrl}`);
-            xhr.send();
-        });   
-    }
     requestbyImg(pokeImageUrl).then( 
         () => {
             if (
@@ -182,3 +142,44 @@ function filterEdgeCases(name) {
         }
     );  
 };
+
+requestByName = (url) => {
+    fetch(url)
+        .then(r=>r.json())
+        .then(pokemon => {
+            updatePokemonResult(pokemon)
+        })
+        .catch((error) => {
+            let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`
+            generateMissingNo(reason);
+            console.error('Error:', error);
+            return
+        })
+}
+
+requestbyImg = (pokeImageUrl) => {
+    return new Promise((resolve) => {
+        //I was having an issue where the rest of the Pokemon element would generate before the loadedImg object was populated.
+        //This would lead to some goofy image loading so I went with the below promise to hopefully let the object be populated before the rest of the pokemon loads.
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+            if (xhr.status === 404 && xhr.readyState === 4) {
+                console.error('Error:', error);
+            }
+            if(xhr.readyState === 4 && xhr.status === 200) {
+                const pokemon = JSON.parse(xhr.responseText)
+                const shinyChance = 8192;
+                if (Math.floor(Math.random() * shinyChance) + 1 === 1) {
+                    resolve(loadedImg[0] = pokemon.sprites.front_shiny)
+                } else {
+                    resolve(loadedImg[0] = pokemon.sprites.front_default)
+                } 
+                //This "easter egg" has a 1-in-8192 chance of generating the Pokemon's image as their shiny form. 
+                //The odds are based on the chance of a wild Pokemon encounter being shiny in the current main series games.
+                //To test or change the odds, alter the value set in "shinyChance". For shinies all the time, set it to 1.
+            };
+        };
+        xhr.open('GET', `${pokeImageUrl}`);
+        xhr.send();
+    });   
+}
