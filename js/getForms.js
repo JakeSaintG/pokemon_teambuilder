@@ -91,7 +91,7 @@ function findAllForms(pokemon) {
 function changeForm(sel) {
     let foo = sel.options[sel.selectedIndex].className;
     // Used className to avoid issues with style changes to list option.
-    generateHere = sel.parentElement;
+    openSlotInTeam = sel.parentElement;
     filterEdgeCases(foo);
 };
 //This takes the users choice and modifies it to be searchable in the API.

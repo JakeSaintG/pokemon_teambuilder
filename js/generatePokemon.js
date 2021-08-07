@@ -5,7 +5,7 @@ const teamOf6 = document.getElementById('teamOf6');
 const teamName = document.getElementById('teamName');
 const placeHolder = document.getElementById('placeHolder')
 
-updatePokemonResult = (pokemon) => {
+updatePokemonResult = (pokemon, pokeIMG) => {
     const entry = document.createElement('div'); //The whole Pokemon element.
     const h2 = document.createElement('h2'); //Pokemon name
     const img = document.createElement('img'); //The pokemon's image icon.
@@ -21,59 +21,9 @@ updatePokemonResult = (pokemon) => {
     title.appendChild(useLater);
     //May be used later to let user change the img to the shiny version.
 
-    let alterName = pokemon.name
-    if(alterName.includes(`-`)) {
-        alterName = alterName.substring(0, alterName.indexOf("-")); 
-        // Gets a substring from the beginning of the string to the first instance of the character "-". 
-        // Removes hyphens and other form info from the end of the pokemon name.
-    };
-    if (pokemon.id === 29) {
-        alterName = `${alterName}♀`
-    }; // Alters the name of nidoran to the correct Dex form of "Nidoran♀".
-    if (pokemon.id === 32) {
-        alterName = `${alterName}♂`
-    }; // Alters the name of nidoran to the correct Dex form of "Nidoran♂".
-    if (pokemon.id === 474) {
-        alterName = `${alterName}-Z`
-    }; // Fixes Porygon-Z's name
-    if (pokemon.id === 250) {
-        alterName = `${alterName}-oh`
-    }; // Attempt to fix Ho-Oh's name
-    if (pokemon.id === 439) {
-        alterName = `${alterName} Jr.`
-    }; // Fixes Mime Jr.'s name
-    if (pokemon.id === 122) {
-        alterName = `${alterName}. Mime`
-    }; // Fixes Mr. Mime's name
-    if (pokemon.id === 10165) {
-        alterName = `${alterName}. Mime`
-    }; // Fixes Galar Mr. Mime's name
-    if (pokemon.id === 866) {
-        alterName = `${alterName}. Rime`
-    }; // Fixes Mr. Rime's name
-    if (pokemon.id === 83) {
-        alterName = `Farfetch'd`
-    }; // Fixes Farfetch'd's name
-    if (pokemon.id === 10163) {
-        alterName = `Farfetch'd`
-    }; // Fixes Galar Farfetch'd's name
-    if (pokemon.id === 784) {
-        alterName = `kommo-o`
-    }; // Fixes name
-    if (pokemon.id === 783) {
-        alterName = `hakamo-o`
-    }; // Fixes name
-    if (pokemon.id === 782) {
-        alterName = `jangmo-o`
-    }; // Fixes name
-    if (pokemon.id === 151) {
-        alterName = `mew`
-    }; // Fixes name
-    if (pokemon.id === 772) {
-        alterName = `Type: Null`
-    }; // Fixes name
     h2.className = "entryName"
-    h2.textContent = alterName;
+    let pokemonName = formatNameOutput(pokemon);
+    h2.textContent = pokemonName;
     title.appendChild(h2);
     
     remove.textContent = `x`;
@@ -84,8 +34,8 @@ updatePokemonResult = (pokemon) => {
     title.className='title';
     entry.appendChild(title);
 
-    img.src = loadedImg[0];
-    img.alt=`${alterName}'s icon`
+    img.src = pokeIMG;
+    img.alt=`${pokemonName}'s icon`
     img.className="PokeImg";
     entry.appendChild(img);
     
@@ -144,7 +94,7 @@ updatePokemonResult = (pokemon) => {
         entry.style.backgroundColor = 'white';
     }
 
-    generateHere.parentElement.replaceChild(entry, generateHere)
+    openSlotInTeam.parentElement.replaceChild(entry, openSlotInTeam)
     
     return entry
 };

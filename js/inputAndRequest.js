@@ -1,4 +1,4 @@
-let generateHere;
+let openSlotInTeam;
 
 document.querySelector(".teamOf6").addEventListener('click', (e) => {
     e.preventDefault();
@@ -8,7 +8,7 @@ document.querySelector(".teamOf6").addEventListener('click', (e) => {
         const action = button.textContent;
         if (action === 'add') {
             const enteredPokemon = e.target.parentElement.firstElementChild.value;
-            generateHere = e.target.parentElement.parentElement.parentElement;
+            openSlotInTeam = e.target.parentElement.parentElement.parentElement;
 
             if (enteredPokemon === '' || enteredPokemon === 'Pokémon name') {
                 let reason = `<h5>No P̷o̶k̵e̷m̸o̵n̴ Listed!</h5> <p>Please supply a Pok&eacute;mon</p>`;
@@ -16,8 +16,7 @@ document.querySelector(".teamOf6").addEventListener('click', (e) => {
                 return
                 //If the user did not put anything into the submission input, generate a MissingNo Error.
             };
-            const data = enteredPokemon;
-            let name = data.toLowerCase();
+            let name = enteredPokemon.toLowerCase();
             if (name.includes('farfet')) {
                 name = `farfetchd`
             };            
@@ -48,22 +47,74 @@ document.querySelector(".teamOf6").addEventListener('click', (e) => {
     }
 })
 
-let loadedImg = {};
+formatNameOutput = (pokemon) => {
+    let alterName = pokemon.name   
+    if(alterName.includes(`-`)) {
+        alterName = alterName.substring(0, alterName.indexOf("-")); 
+        // Gets a substring from the beginning of the string to the first instance of the character "-". 
+        // Removes hyphens and other form info from the end of the pokemon name.
+    };
+    if (pokemon.id === 29) {
+        alterName = `${alterName}♀`
+    }; // Alters the name of nidoran to the correct Dex form of "Nidoran♀".
+    if (pokemon.id === 32) {
+        alterName = `${alterName}♂`
+    }; // Alters the name of nidoran to the correct Dex form of "Nidoran♂".
+    if (pokemon.id === 474) {
+        alterName = `${alterName}-Z`
+    }; // Fixes Porygon-Z's name
+    if (pokemon.id === 250) {
+        alterName = `${alterName}-oh`
+    }; // Attempt to fix Ho-Oh's name
+    if (pokemon.id === 439) {
+        alterName = `${alterName} Jr.`
+    }; // Fixes Mime Jr.'s name
+    if (pokemon.id === 122) {
+        alterName = `${alterName}. Mime`
+    }; // Fixes Mr. Mime's name
+    if (pokemon.id === 10165) {
+        alterName = `${alterName}. Mime`
+    }; // Fixes Galar Mr. Mime's name
+    if (pokemon.id === 866) {
+        alterName = `${alterName}. Rime`
+    }; // Fixes Mr. Rime's name
+    if (pokemon.id === 83) {
+        alterName = `Farfetch'd`
+    }; // Fixes Farfetch'd's name
+    if (pokemon.id === 10163) {
+        alterName = `Farfetch'd`
+    }; // Fixes Galar Farfetch'd's name
+    if (pokemon.id === 784) {
+        alterName = `kommo-o`
+    }; // Fixes name
+    if (pokemon.id === 783) {
+        alterName = `hakamo-o`
+    }; // Fixes name
+    if (pokemon.id === 782) {
+        alterName = `jangmo-o`
+    }; // Fixes name
+    if (pokemon.id === 151) {
+        alterName = `mew`
+    }; // Fixes name
+    if (pokemon.id === 772) {
+        alterName = `Type: Null`
+    }; // Fixes name
+    return alterName;
+}
 
-function filterEdgeCases(name) {
-    const filteredImgForms = forms.filter((mon) => { 
+filterEdgeCases = (name) => {
+    const filteredImgs = forms.filter((mon) => { 
         return mon.name.includes(name);
     });
 
-    if (filteredImgForms[0] === undefined) {
+    if (filteredImgs[0] === undefined) {
         let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`
         generateMissingNo(reason);
         //checks to see if forms has what the user is looking for. If not, generates a 404-MissingNo/Error.
         return
     }
 
-    let filteredForms = filteredImgForms
-    let pokeImageUrl = pokeUrl+`pokemon-form/${filteredImgForms[0].name}`;
+    let pokeImageUrl = pokeUrl+`pokemon-form/${filteredImgs[0].name}`;
     
     if (name === 'mew') {
         pokeNameUrl = pokeUrl+`pokemon/${name}`
@@ -94,60 +145,83 @@ function filterEdgeCases(name) {
     };
     //This Pichu form exists in the API but does not have an image so I had to add one to avoid breaking.
 
-    requestbyImg(pokeImageUrl).then( 
-        () => {
-            if (
-                filteredImgForms[0].name.includes(`unown`) || 
-                filteredImgForms[0].name.includes(`burmy`) ||
-                filteredImgForms[0].name.includes(`deerling`) ||
-                filteredImgForms[0].name.includes(`shellos`) ||
-                filteredImgForms[0].name.includes(`arceus`) ||
-                filteredImgForms[0].name.includes(`cherrim`) ||
-                filteredImgForms[0].name.includes(`vivillon`) ||
-                filteredImgForms[0].name.includes(`sawsbuck`) ||
-                filteredImgForms[0].name.includes(`flabebe`) ||
-                filteredImgForms[0].name.includes(`floette`) ||
-                filteredImgForms[0].name.includes(`florges`) ||
-                filteredImgForms[0].name.includes(`furfrou`) ||
-                filteredImgForms[0].name.includes(`xerneas`) ||
-                filteredImgForms[0].name.includes(`silvally`)
-                ) {
-                let filteredForms = filteredImgForms[0].name
-                filteredForms = filteredForms.substring(0, filteredForms.indexOf("-"));
-                let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
-                requestByName(pokeNameUrl);
-            } else if (name === 'mew') {
-                requestByName(pokeNameUrl);
-            } else if (name === 'pidgeot') {
-                requestByName(pokeNameUrl);
-            } else if (filteredImgForms[0].name.includes(`pichu-spiky-eared`)) {
-                let filteredForms = 'pichu'
-                let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
-                requestByName(pokeNameUrl);
-            } else if (filteredImgForms[0].name.includes(`genesect`)) {
-                let pokeNameUrl = pokeUrl+`pokemon/649`
-                requestByName(pokeNameUrl);
-            } else if (filteredImgForms[0].name.includes(`polteageist`) || filteredImgForms[0].name.includes(`sinistea`)) {
-                pokeNameUrl = pokeUrl+`pokemon/${name}`
-                requestByName(pokeNameUrl);
-            } else { 
-                let pokeNameUrl = pokeUrl+`pokemon/${filteredForms[0].name}`
-                requestByName(pokeNameUrl);
-            };
-            /*
-            After hunting down all of the pokemon with differences in name between "https://pokeapi.co/api/v2/pokemon-form"(images) and
-            "https://pokeapi.co/api/v2/pokemon"(details like stats), this if-else statement helps process the correct URLs based on the
-            user's pick pokemon. These are the edge-cases that required a little more work get running.
-            */
-        }
-    );  
+    filterImgForms(filteredImgs, name, pokeImageUrl)  
 };
 
-requestByName = (url) => {
-    fetch(url)
+filterImgForms = (filteredImgs, name, pokeImageUrl) => {
+    if (
+        filteredImgs[0].name.includes(`unown`) || 
+        filteredImgs[0].name.includes(`burmy`) ||
+        filteredImgs[0].name.includes(`deerling`) ||
+        filteredImgs[0].name.includes(`shellos`) ||
+        filteredImgs[0].name.includes(`arceus`) ||
+        filteredImgs[0].name.includes(`cherrim`) ||
+        filteredImgs[0].name.includes(`vivillon`) ||
+        filteredImgs[0].name.includes(`sawsbuck`) ||
+        filteredImgs[0].name.includes(`flabebe`) ||
+        filteredImgs[0].name.includes(`floette`) ||
+        filteredImgs[0].name.includes(`florges`) ||
+        filteredImgs[0].name.includes(`furfrou`) ||
+        filteredImgs[0].name.includes(`xerneas`) ||
+        filteredImgs[0].name.includes(`silvally`)
+        ) {
+        let filteredForms = filteredImgs[0].name
+        filteredForms = filteredForms.substring(0, filteredForms.indexOf("-"));
+        let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
+        makeRequests(pokeNameUrl, pokeImageUrl);
+    } else if (name === 'mew') {
+        makeRequests(pokeNameUrl, pokeImageUrl);
+    } else if (name === 'pidgeot') {
+        makeRequests(pokeNameUrl, pokeImageUrl);
+    } else if (filteredImgs[0].name.includes(`pichu-spiky-eared`)) {
+        let filteredForms = 'pichu'
+        let pokeNameUrl = pokeUrl+`pokemon/${filteredForms}`
+        makeRequests(pokeNameUrl, pokeImageUrl);
+    } else if (filteredImgs[0].name.includes(`genesect`)) {
+        pokeNameUrl = pokeUrl+`pokemon/649`
+        makeRequests(pokeNameUrl, pokeImageUrl);
+    } else if (filteredImgs[0].name.includes(`polteageist`) || filteredImgs[0].name.includes(`sinistea`)) {
+        pokeNameUrl = pokeUrl+`pokemon/${name}`
+        makeRequests(pokeNameUrl, pokeImageUrl);
+    } else { 
+        pokeNameUrl = pokeUrl+`pokemon/${filteredImgs[0].name}`
+        makeRequests(pokeNameUrl, pokeImageUrl);
+    };
+    /*
+    After hunting down all of the pokemon with differences in name between "https://pokeapi.co/api/v2/pokemon-form"(images) and
+    "https://pokeapi.co/api/v2/pokemon"(details like stats), this if-else statement helps process the correct URLs based on the
+    user's pick pokemon. These are the edge-cases that required a little more work get running.
+    */
+}
+
+makeRequests = (url, pokeImageUrl) => {
+    let pokeIMG = "";
+    new Promise((resolve) => {
+        fetch(pokeImageUrl)
+        .then(r=>r.json())
+        .then(pokemonIMG => {
+            let shinyChance = 8192;
+            new Promise((resolve) => {
+                shinyChance = Math.floor(Math.random() * shinyChance) + 1;
+                resolve(shinyChance)
+            })
+            if (shinyChance === 1) {
+                pokeIMG = pokemonIMG.sprites.front_shiny;
+                resolve(pokeIMG)
+            } else {
+                pokeIMG = pokemonIMG.sprites.front_default;
+                resolve(pokeIMG)
+            } 
+            //This "easter egg" has a 1-in-8192 chance of generating the Pokemon's image as their shiny form. 
+            //The odds are based on the chance of a wild Pokemon encounter being shiny in the current main series games.
+            //To test or change the odds, alter the value set in "shinyChance". For shinies all the time, set it to 1.
+        })       
+    })
+    .then(
+        fetch(url)
         .then(r=>r.json())
         .then(pokemon => {
-            updatePokemonResult(pokemon)
+            updatePokemonResult(pokemon, pokeIMG)
         })
         .catch((error) => {
             let reason = `<h5>Error 404?</h5> <p> Something went wrong.</br>Connection/Spelling issue.</br>Please try again!</p>`
@@ -155,31 +229,5 @@ requestByName = (url) => {
             console.error('Error:', error);
             return
         })
-}
-
-requestbyImg = (pokeImageUrl) => {
-    return new Promise((resolve) => {
-        //I was having an issue where the rest of the Pokemon element would generate before the loadedImg object was populated.
-        //This would lead to some goofy image loading so I went with the below promise to hopefully let the object be populated before the rest of the pokemon loads.
-        const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = () => {
-            if (xhr.status === 404 && xhr.readyState === 4) {
-                console.error('Error:', error);
-            }
-            if(xhr.readyState === 4 && xhr.status === 200) {
-                const pokemon = JSON.parse(xhr.responseText)
-                const shinyChance = 8192;
-                if (Math.floor(Math.random() * shinyChance) + 1 === 1) {
-                    resolve(loadedImg[0] = pokemon.sprites.front_shiny)
-                } else {
-                    resolve(loadedImg[0] = pokemon.sprites.front_default)
-                } 
-                //This "easter egg" has a 1-in-8192 chance of generating the Pokemon's image as their shiny form. 
-                //The odds are based on the chance of a wild Pokemon encounter being shiny in the current main series games.
-                //To test or change the odds, alter the value set in "shinyChance". For shinies all the time, set it to 1.
-            };
-        };
-        xhr.open('GET', `${pokeImageUrl}`);
-        xhr.send();
-    });   
+    )
 }

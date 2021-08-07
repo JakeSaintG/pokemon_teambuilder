@@ -26,7 +26,7 @@ function generateMissingNo(reason){
             ${reason}
         </div>
     `
-    generateHere.parentElement.replaceChild(noEntry, generateHere)
+    openSlotInTeam.parentElement.replaceChild(noEntry, openSlotInTeam)
     //This turns the form off if the user already as a team of 6 pokemon.
     uniqueID++;
 };
