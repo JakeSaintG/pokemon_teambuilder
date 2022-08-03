@@ -3,7 +3,7 @@
 
 let forms = []
 
-const pullAllMonsList = fetch(`https://pokeapi.co/api/v2/pokemon-form?limit=1283`)
+const pullAllMonsList = fetch(`https://pokeapi.co/api/v2/pokemon-form?limit=100000`)
     .then(r=>r.json())
     .then(pokemonList => {
         forms = pokemonList.results;
